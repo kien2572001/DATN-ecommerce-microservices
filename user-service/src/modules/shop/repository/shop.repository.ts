@@ -16,6 +16,10 @@ export class ShopRepository {
     return query.lean();
   }
 
+  async findByUserId(userId: string) {
+    return this.shopModel.findOne({user_id: userId}).lean();
+  }
+
   async create(body: any) {
     return this.shopModel.create(body);
   }

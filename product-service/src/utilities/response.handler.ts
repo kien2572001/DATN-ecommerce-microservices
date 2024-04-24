@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {HttpStatus} from "@nestjs/common";
+import {HttpException, HttpStatus} from "@nestjs/common";
 
 @Injectable()
 export class ResponseHandler {

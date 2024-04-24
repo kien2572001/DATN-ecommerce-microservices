@@ -13,6 +13,10 @@ export class ShopService {
     return await this.shopRepository.findById(id);
   }
 
+  async getShopByUserId(userId: string) {
+    return await this.shopRepository.findByUserId(userId);
+  }
+
   async createShop(body: any) {
     return this.shopRepository.create(body);
   }
@@ -21,4 +25,5 @@ export class ShopService {
     const isShopExists = await this.shopRepository.existsByUserId(userId);
     return isShopExists;
   }
+
 }

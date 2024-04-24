@@ -42,7 +42,7 @@ export class AuthController {
 
     const userWithoutPassword = {...user};
     delete userWithoutPassword.password;
-    const accessToken = UserService.generateAccessToken({_id: user._id, email: user.email});
+    const accessToken = await UserService.generateAccessToken({_id: user._id, email: user.email, role: user.role});
     return this.responseHandler.createSuccessResponse({
       user: userWithoutPassword,
       accessToken
