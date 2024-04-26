@@ -7,4 +7,5 @@ export default () => ({
     password: process.env.RELATIONAL_DB_PASSWORD,
     database: process.env.RELATIONAL_DB_DATABASE,
   },
+  no_sql_db_uri: process.env.NO_SQL_DB_URI,
 });

@@ -5,6 +5,11 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import configuration from "./configs/configuration";
 import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
 import {TypeOrmModule} from '@nestjs/typeorm';
+import {CategoryModule} from "./modules/category/category.module";
+import {ProductModule} from "./modules/product/product.module";
+import {ReviewModule} from "./modules/review/review.module";
+import {ReactionModule} from "./modules/reaction/reaction.module";
+import {ProductVariationModule} from "./modules/product-variation/product-variation.module";
 
 @Module({
   imports: [
@@ -22,9 +27,15 @@ import {TypeOrmModule} from '@nestjs/typeorm';
         database: configService.get('relational_db.database'),
         entities: [],
         synchronize: true,
+        autoLoadEntities: true,
       }),
       inject: [ConfigService],
     }),
+    CategoryModule,
+    ProductModule,
+    ReactionModule,
+    ReviewModule,
+    ProductVariationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

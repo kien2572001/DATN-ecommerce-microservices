@@ -4260,188 +4260,6 @@
           </option>
         </requestHistoryState>
         <requestHistoryState>
-          <option name="dateTime" value="1713886566552" />
-          <option name="id" value="f9eddf6f-6abd-4a72-ac6d-481a89cf2aac" />
-          <option name="request">
-            <requestState>
-              <option name="body">
-                <bodyState>
-                  <option name="type" value="FORM_URL_ENCODED" />
-                  <option name="urlEncoded">
-                    <list>
-                      <urlEncodedParameterState>
-                        <option name="key" value="email" />
-                        <option name="value" value="kien@gmail.com" />
-                      </urlEncodedParameterState>
-                      <urlEncodedParameterState>
-                        <option name="key" value="password" />
-                        <option name="value" value="123456" />
-                      </urlEncodedParameterState>
-                    </list>
-                  </option>
-                </bodyState>
-              </option>
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/x-www-form-urlencoded" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
-              <option name="method" value="POST" />
-              <option name="name" value="login" />
-              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
-            </requestState>
-          </option>
-          <option name="response">
-            <responseState>
-              <option name="bodyBytesBase64" value="ewogICJtZXNzYWdlIjoiQW4gaW52YWxpZCByZXNwb25zZSB3YXMgcmVjZWl2ZWQgZnJvbSB0aGUgdXBzdHJlYW0gc2VydmVyIiwKICAicmVxdWVzdF9pZCI6IjFhZjYxOTU2YjY5NmMzNDAyOGQzMmExZmRhZGZhMDIyIgp9" />
-              <option name="bodyString" value="{&#10;  &quot;message&quot; : &quot;An invalid response was received from the upstream server&quot;,&#10;  &quot;request_id&quot; : &quot;1af61956b696c34028d32a1fdadfa022&quot;&#10;}" />
-              <option name="code" value="502" />
-              <option name="contentType" value="application/json; charset=utf-8" />
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Date" />
-                    <option name="value" value="Tue, 23 Apr 2024 15:36:06 GMT" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/json; charset=utf-8" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Connection" />
-                    <option name="value" value="keep-alive" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Content-Length" />
-                    <option name="value" value="126" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Upstream-Latency" />
-                    <option name="value" value="2" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Proxy-Latency" />
-                    <option name="value" value="2" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Via" />
-                    <option name="value" value="kong/3.6.1" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Request-Id" />
-                    <option name="value" value="1af61956b696c34028d32a1fdadfa022" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="f9eddf6f-6abd-4a72-ac6d-481a89cf2aac" />
-              <option name="message" value="Bad Gateway" />
-              <option name="prettyResponseType" value="JSON" />
-              <option name="rawBodyString" value="{&#10;  &quot;message&quot;:&quot;An invalid response was received from the upstream server&quot;,&#10;  &quot;request_id&quot;:&quot;1af61956b696c34028d32a1fdadfa022&quot;&#10;}" />
-              <option name="size" value="126" />
-              <option name="time" value="5" />
-            </responseState>
-          </option>
-        </requestHistoryState>
-        <requestHistoryState>
-          <option name="dateTime" value="1713886575542" />
-          <option name="id" value="617e303f-31c3-4b4f-bfd0-40dc998034b1" />
-          <option name="request">
-            <requestState>
-              <option name="body">
-                <bodyState>
-                  <option name="type" value="FORM_URL_ENCODED" />
-                  <option name="urlEncoded">
-                    <list>
-                      <urlEncodedParameterState>
-                        <option name="key" value="email" />
-                        <option name="value" value="kien@gmail.com" />
-                      </urlEncodedParameterState>
-                      <urlEncodedParameterState>
-                        <option name="key" value="password" />
-                        <option name="value" value="123456" />
-                      </urlEncodedParameterState>
-                    </list>
-                  </option>
-                </bodyState>
-              </option>
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/x-www-form-urlencoded" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
-              <option name="method" value="POST" />
-              <option name="name" value="login" />
-              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
-            </requestState>
-          </option>
-          <option name="response">
-            <responseState>
-              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJVc2VyIGxvZ2dlZCBpbiBzdWNjZXNzZnVsbHkiLCJkYXRhIjp7InVzZXIiOnsiX2lkIjoiNjYyNTNhNjRjMTUxNDRjZDBkZmE3ODYzIiwidXNlcm5hbWUiOiJraWVuMTIzIiwiZW1haWwiOiJraWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFkZHJlc3MiOltdLCJjcmVhdGVkQXQiOiIyMDI0LTA0LTIxVDE2OjEwOjEyLjM0NFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA0LTIxVDE2OjEwOjEyLjM0NFoiLCJfX3YiOjB9LCJhY2Nlc3NUb2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpmYVdRaU9pSTJOakkxTTJFMk5HTXhOVEUwTkdOa01HUm1ZVGM0TmpNaUxDSmxiV0ZwYkNJNkltdHBaVzVBWjIxaGFXd3VZMjl0SWl3aWEybGtJam9pUmpCbWJuZDBSMHRJVHpkWmJYQktkR1pIT0ZkeGVUaEVSR2RhWWtwdFUxQWlMQ0pwWVhRaU9qRTNNVE00T0RZMU56VXNJbVY0Y0NJNk1UY3hNemc1TURFM05YMC5rMURabF9KQk16RXY0blQ5SE5RNEstaWREVHkyYkVVbUdIbWR6NjR0M0hnIn19" />
-              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;User logged in successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;user&quot; : {&#10;      &quot;_id&quot; : &quot;66253a64c15144cd0dfa7863&quot;,&#10;      &quot;username&quot; : &quot;kien123&quot;,&#10;      &quot;email&quot; : &quot;kien@gmail.com&quot;,&#10;      &quot;role&quot; : &quot;admin&quot;,&#10;      &quot;address&quot; : [],&#10;      &quot;createdAt&quot; : &quot;2024-04-21T16:10:12.344Z&quot;,&#10;      &quot;updatedAt&quot; : &quot;2024-04-21T16:10:12.344Z&quot;,&#10;      &quot;__v&quot; : 0&#10;    },&#10;    &quot;accessToken&quot; : &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI1M2E2NGMxNTE0NGNkMGRmYTc4NjMiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTM4ODY1NzUsImV4cCI6MTcxMzg5MDE3NX0.k1DZl_JBMzEv4nT9HNQ4K-idDTy2bEUmGHmdz64t3Hg&quot;&#10;  }&#10;}" />
-              <option name="code" value="201" />
-              <option name="contentType" value="application/json; charset=utf-8" />
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/json; charset=utf-8" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Content-Length" />
-                    <option name="value" value="546" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Connection" />
-                    <option name="value" value="keep-alive" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Powered-By" />
-                    <option name="value" value="Express" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="ETag" />
-                    <option name="value" value="W/&quot;222-S6jj9LSXegmiZJdCUMOScL+pRpc&quot;" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Date" />
-                    <option name="value" value="Tue, 23 Apr 2024 15:36:15 GMT" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Upstream-Latency" />
-                    <option name="value" value="227" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Proxy-Latency" />
-                    <option name="value" value="1" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Via" />
-                    <option name="value" value="kong/3.6.1" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Request-Id" />
-                    <option name="value" value="2ad5ee1a9107fb4815601e329f1e4b0a" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="617e303f-31c3-4b4f-bfd0-40dc998034b1" />
-              <option name="message" value="Created" />
-              <option name="prettyResponseType" value="JSON" />
-              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;66253a64c15144cd0dfa7863&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-21T16:10:12.344Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-21T16:10:12.344Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI1M2E2NGMxNTE0NGNkMGRmYTc4NjMiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTM4ODY1NzUsImV4cCI6MTcxMzg5MDE3NX0.k1DZl_JBMzEv4nT9HNQ4K-idDTy2bEUmGHmdz64t3Hg&quot;}}" />
-              <option name="size" value="546" />
-              <option name="time" value="230" />
-            </responseState>
-          </option>
-        </requestHistoryState>
-        <requestHistoryState>
           <option name="dateTime" value="1713887644943" />
           <option name="id" value="b28e99a6-0e6f-4a88-aadf-530dee94de71" />
           <option name="request">
@@ -8678,6 +8496,196 @@
               <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;6629012db0def6107cff6b58&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTY1NzUwLCJleHAiOjE3MTM5NjkzNTB9.-kbhmnGNsf_VgTfLYXdfEHPi_On6yt-yaZPceUYnc4Y&quot;}}" />
               <option name="size" value="615" />
               <option name="time" value="220" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1713972612066" />
+          <option name="id" value="ca140086-1d4d-4cde-bfa6-bffadec6440b" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="email" />
+                        <option name="value" value="kien@gmail.com" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="password" />
+                        <option name="value" value="123456" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
+              <option name="method" value="POST" />
+              <option name="name" value="login" />
+              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJVc2VyIGxvZ2dlZCBpbiBzdWNjZXNzZnVsbHkiLCJkYXRhIjp7InVzZXIiOnsiX2lkIjoiNjYyOTAxMmRiMGRlZjYxMDdjZmY2YjU4IiwidXNlcm5hbWUiOiJraWVuMTIzIiwiZW1haWwiOiJraWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFkZHJlc3MiOltdLCJjcmVhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJfX3YiOjB9LCJhY2Nlc3NUb2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpmYVdRaU9pSTJOakk1TURFeVpHSXdaR1ZtTmpFd04yTm1aalppTlRnaUxDSmxiV0ZwYkNJNkltdHBaVzVBWjIxaGFXd3VZMjl0SWl3aWNtOXNaU0k2SW1Ga2JXbHVJaXdpYTJsa0lqb2lSakJtYm5kMFIwdElUemRaYlhCS2RHWkhPRmR4ZVRoRVJHZGFZa3B0VTFBaUxDSnphRzl3WDJsa0lqb2lOall5T1RBeFlXWmlNR1JsWmpZeE1EZGpabVkyWWpZd0lpd2lhV0YwSWpveE56RXpPVGN5TmpFeUxDSmxlSEFpT2pFM01UTTVOell5TVRKOS5zeGZGVWVzVktOR016SWVna2hBVU8xTTJmbTFnRlVwUmk4NTJKRU9lMEQ4In19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;User logged in successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;user&quot; : {&#10;      &quot;_id&quot; : &quot;6629012db0def6107cff6b58&quot;,&#10;      &quot;username&quot; : &quot;kien123&quot;,&#10;      &quot;email&quot; : &quot;kien@gmail.com&quot;,&#10;      &quot;role&quot; : &quot;admin&quot;,&#10;      &quot;address&quot; : [],&#10;      &quot;createdAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;updatedAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;__v&quot; : 0&#10;    },&#10;    &quot;accessToken&quot; : &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTcyNjEyLCJleHAiOjE3MTM5NzYyMTJ9.sxfFUesVKNGMzIegkhAUO1M2fm1gFUpRi852JEOe0D8&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="615" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;267-rku+k3v+nwobEusbFmmKXYJ7RH8&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Wed, 24 Apr 2024 15:30:12 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Upstream-Latency" />
+                    <option name="value" value="875" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Proxy-Latency" />
+                    <option name="value" value="1" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Via" />
+                    <option name="value" value="kong/3.6.1" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Request-Id" />
+                    <option name="value" value="1700d72853c8c7275bfc7954ab1cf774" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="ca140086-1d4d-4cde-bfa6-bffadec6440b" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;6629012db0def6107cff6b58&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTcyNjEyLCJleHAiOjE3MTM5NzYyMTJ9.sxfFUesVKNGMzIegkhAUO1M2fm1gFUpRi852JEOe0D8&quot;}}" />
+              <option name="size" value="615" />
+              <option name="time" value="876" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1713973340208" />
+          <option name="id" value="4320b05e-bb37-478e-b9ad-b71180e4555b" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="email" />
+                        <option name="value" value="kien@gmail.com" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="password" />
+                        <option name="value" value="123456" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
+              <option name="method" value="POST" />
+              <option name="name" value="login" />
+              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJVc2VyIGxvZ2dlZCBpbiBzdWNjZXNzZnVsbHkiLCJkYXRhIjp7InVzZXIiOnsiX2lkIjoiNjYyOTAxMmRiMGRlZjYxMDdjZmY2YjU4IiwidXNlcm5hbWUiOiJraWVuMTIzIiwiZW1haWwiOiJraWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFkZHJlc3MiOltdLCJjcmVhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJfX3YiOjB9LCJhY2Nlc3NUb2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpmYVdRaU9pSTJOakk1TURFeVpHSXdaR1ZtTmpFd04yTm1aalppTlRnaUxDSmxiV0ZwYkNJNkltdHBaVzVBWjIxaGFXd3VZMjl0SWl3aWNtOXNaU0k2SW1Ga2JXbHVJaXdpYTJsa0lqb2lSakJtYm5kMFIwdElUemRaYlhCS2RHWkhPRmR4ZVRoRVJHZGFZa3B0VTFBaUxDSnphRzl3WDJsa0lqb2lOall5T1RBeFlXWmlNR1JsWmpZeE1EZGpabVkyWWpZd0lpd2lhV0YwSWpveE56RXpPVGN6TXpRd0xDSmxlSEFpT2pFM01UTTVOelk1TkRCOS5MbHFHQk9iejRLNW43VjJtbVdaX0NIU3ZzTlZxWXJjQ2FxdXFlakJCb0Q0In19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;User logged in successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;user&quot; : {&#10;      &quot;_id&quot; : &quot;6629012db0def6107cff6b58&quot;,&#10;      &quot;username&quot; : &quot;kien123&quot;,&#10;      &quot;email&quot; : &quot;kien@gmail.com&quot;,&#10;      &quot;role&quot; : &quot;admin&quot;,&#10;      &quot;address&quot; : [],&#10;      &quot;createdAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;updatedAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;__v&quot; : 0&#10;    },&#10;    &quot;accessToken&quot; : &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTczMzQwLCJleHAiOjE3MTM5NzY5NDB9.LlqGBObz4K5n7V2mmWZ_CHSvsNVqYrcCaquqejBBoD4&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="615" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;267-tD0NlAU+CjiZOBCRBLHy2ejLkoU&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Wed, 24 Apr 2024 15:42:20 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Upstream-Latency" />
+                    <option name="value" value="223" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Proxy-Latency" />
+                    <option name="value" value="1" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Via" />
+                    <option name="value" value="kong/3.6.1" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Request-Id" />
+                    <option name="value" value="093011502532f62bd35da9030e172212" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="4320b05e-bb37-478e-b9ad-b71180e4555b" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;6629012db0def6107cff6b58&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTczMzQwLCJleHAiOjE3MTM5NzY5NDB9.LlqGBObz4K5n7V2mmWZ_CHSvsNVqYrcCaquqejBBoD4&quot;}}" />
+              <option name="size" value="615" />
+              <option name="time" value="225" />
             </responseState>
           </option>
         </requestHistoryState>
