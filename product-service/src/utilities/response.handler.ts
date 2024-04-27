@@ -11,7 +11,7 @@ export class ResponseHandler {
     };
   }
 
-  createErrorResponse(message: string = 'Error', statusCode: number = 500) {
+  createErrorResponse(message: string = 'Error', statusCode: number = HttpStatus.BAD_REQUEST) {
     return {
       statusCode,
       message,

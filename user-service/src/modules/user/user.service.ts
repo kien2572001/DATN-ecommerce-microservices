@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import * as process from "node:process";
 import {ShopService} from "../shop/shop.service";
+import {RolesEnum} from "../../enums/roles.enum";
 
 
 @Injectable()
@@ -45,9 +46,11 @@ export class UserService {
     payload.kid = process.env.KONG_JWT_KID;
     payload.role = payload.role;
     //find shop by user id
-    const shop = await this.shopService.getShopByUserId(payload._id);
-    if (shop) {
-      payload.shop_id = shop._id;
+    if (payload.role === RolesEnum.SELLER) {
+      const shop = await UserService.shopService.getShopByUserId(payload._id);
+      if (shop) {
+        payload.shop_id = shop._id;
+      }
     }
     return await jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'});
   }

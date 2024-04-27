@@ -10,7 +10,7 @@ export class CategoryEntity {
   @Column({
     nullable: true,
   })
-  shop_id: number;
+  shop_id: string;
 
   @Column()
   category_name: string;
@@ -18,10 +18,14 @@ export class CategoryEntity {
   @Column()
   category_slug: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   path: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   level: number;
 
   @Column({
