@@ -4568,101 +4568,6 @@
           </option>
         </requestHistoryState>
         <requestHistoryState>
-          <option name="dateTime" value="1713887954083" />
-          <option name="id" value="11e6c953-f6ce-4353-906e-e75aa4ab4cd5" />
-          <option name="request">
-            <requestState>
-              <option name="body">
-                <bodyState>
-                  <option name="type" value="FORM_URL_ENCODED" />
-                  <option name="urlEncoded">
-                    <list>
-                      <urlEncodedParameterState>
-                        <option name="key" value="email" />
-                        <option name="value" value="kien@gmail.com" />
-                      </urlEncodedParameterState>
-                      <urlEncodedParameterState>
-                        <option name="key" value="password" />
-                        <option name="value" value="123456" />
-                      </urlEncodedParameterState>
-                    </list>
-                  </option>
-                </bodyState>
-              </option>
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/x-www-form-urlencoded" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
-              <option name="method" value="POST" />
-              <option name="name" value="login" />
-              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
-            </requestState>
-          </option>
-          <option name="response">
-            <responseState>
-              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJVc2VyIGxvZ2dlZCBpbiBzdWNjZXNzZnVsbHkiLCJkYXRhIjp7InVzZXIiOnsiX2lkIjoiNjYyNTNhNjRjMTUxNDRjZDBkZmE3ODYzIiwidXNlcm5hbWUiOiJraWVuMTIzIiwiZW1haWwiOiJraWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFkZHJlc3MiOltdLCJjcmVhdGVkQXQiOiIyMDI0LTA0LTIxVDE2OjEwOjEyLjM0NFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA0LTIxVDE2OjEwOjEyLjM0NFoiLCJfX3YiOjB9LCJhY2Nlc3NUb2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpmYVdRaU9pSTJOakkxTTJFMk5HTXhOVEUwTkdOa01HUm1ZVGM0TmpNaUxDSmxiV0ZwYkNJNkltdHBaVzVBWjIxaGFXd3VZMjl0SWl3aWEybGtJam9pUmpCbWJuZDBSMHRJVHpkWmJYQktkR1pIT0ZkeGVUaEVSR2RhWWtwdFUxQWlMQ0pwWVhRaU9qRTNNVE00T0RjNU5UUXNJbVY0Y0NJNk1UY3hNemc1TVRVMU5IMC5GNmpKUTctYnFkaXRhMmtyU0lKSktuSkwyVFBWMDNObUhRaDQ0TXB4NHEwIn19" />
-              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;User logged in successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;user&quot; : {&#10;      &quot;_id&quot; : &quot;66253a64c15144cd0dfa7863&quot;,&#10;      &quot;username&quot; : &quot;kien123&quot;,&#10;      &quot;email&quot; : &quot;kien@gmail.com&quot;,&#10;      &quot;role&quot; : &quot;admin&quot;,&#10;      &quot;address&quot; : [],&#10;      &quot;createdAt&quot; : &quot;2024-04-21T16:10:12.344Z&quot;,&#10;      &quot;updatedAt&quot; : &quot;2024-04-21T16:10:12.344Z&quot;,&#10;      &quot;__v&quot; : 0&#10;    },&#10;    &quot;accessToken&quot; : &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI1M2E2NGMxNTE0NGNkMGRmYTc4NjMiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTM4ODc5NTQsImV4cCI6MTcxMzg5MTU1NH0.F6jJQ7-bqdita2krSIJJKnJL2TPV03NmHQh44Mpx4q0&quot;&#10;  }&#10;}" />
-              <option name="code" value="201" />
-              <option name="contentType" value="application/json; charset=utf-8" />
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/json; charset=utf-8" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Content-Length" />
-                    <option name="value" value="546" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Connection" />
-                    <option name="value" value="keep-alive" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Powered-By" />
-                    <option name="value" value="Express" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="ETag" />
-                    <option name="value" value="W/&quot;222-D1XmIQCIitZGWnN7YTBneQ0beYg&quot;" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Date" />
-                    <option name="value" value="Tue, 23 Apr 2024 15:59:14 GMT" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Upstream-Latency" />
-                    <option name="value" value="183" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Proxy-Latency" />
-                    <option name="value" value="1" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Via" />
-                    <option name="value" value="kong/3.6.1" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="X-Kong-Request-Id" />
-                    <option name="value" value="430f882a8dfaca387840966595c27f56" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="11e6c953-f6ce-4353-906e-e75aa4ab4cd5" />
-              <option name="message" value="Created" />
-              <option name="prettyResponseType" value="JSON" />
-              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;66253a64c15144cd0dfa7863&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-21T16:10:12.344Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-21T16:10:12.344Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI1M2E2NGMxNTE0NGNkMGRmYTc4NjMiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTM4ODc5NTQsImV4cCI6MTcxMzg5MTU1NH0.F6jJQ7-bqdita2krSIJJKnJL2TPV03NmHQh44Mpx4q0&quot;}}" />
-              <option name="size" value="546" />
-              <option name="time" value="185" />
-            </responseState>
-          </option>
-        </requestHistoryState>
-        <requestHistoryState>
           <option name="dateTime" value="1713887963463" />
           <option name="id" value="015e9e54-f6e6-47e3-ba38-ed93bc612b7d" />
           <option name="request">
@@ -8686,6 +8591,1938 @@
               <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;6629012db0def6107cff6b58&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJzaG9wX2lkIjoiNjYyOTAxYWZiMGRlZjYxMDdjZmY2YjYwIiwiaWF0IjoxNzEzOTczMzQwLCJleHAiOjE3MTM5NzY5NDB9.LlqGBObz4K5n7V2mmWZ_CHSvsNVqYrcCaquqejBBoD4&quot;}}" />
               <option name="size" value="615" />
               <option name="time" value="225" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714233321866" />
+          <option name="id" value="d088da5e-096f-4035-84ad-162e6d61e4b6" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="email" />
+                        <option name="value" value="kien@gmail.com" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="password" />
+                        <option name="value" value="123456" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="98becfb8-35d6-4ee3-864f-d60c2c6f5087" />
+              <option name="method" value="POST" />
+              <option name="name" value="login" />
+              <option name="url" value="http://192.168.25.106:8000/auth-service/login" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJVc2VyIGxvZ2dlZCBpbiBzdWNjZXNzZnVsbHkiLCJkYXRhIjp7InVzZXIiOnsiX2lkIjoiNjYyOTAxMmRiMGRlZjYxMDdjZmY2YjU4IiwidXNlcm5hbWUiOiJraWVuMTIzIiwiZW1haWwiOiJraWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFkZHJlc3MiOltdLCJjcmVhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA0LTI0VDEyOjU1OjA5Ljc2OFoiLCJfX3YiOjB9LCJhY2Nlc3NUb2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpmYVdRaU9pSTJOakk1TURFeVpHSXdaR1ZtTmpFd04yTm1aalppTlRnaUxDSmxiV0ZwYkNJNkltdHBaVzVBWjIxaGFXd3VZMjl0SWl3aWNtOXNaU0k2SW1Ga2JXbHVJaXdpYTJsa0lqb2lSakJtYm5kMFIwdElUemRaYlhCS2RHWkhPRmR4ZVRoRVJHZGFZa3B0VTFBaUxDSnBZWFFpT2pFM01UUXlNek16TWpFc0ltVjRjQ0k2TVRjeE5ESXpOamt5TVgwLjZlZ2plakdIXzBaWl9LbnRzbUtRaVlwX2xPRHZVRXp6R01hc2ZQZGRJZkEifX0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;User logged in successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;user&quot; : {&#10;      &quot;_id&quot; : &quot;6629012db0def6107cff6b58&quot;,&#10;      &quot;username&quot; : &quot;kien123&quot;,&#10;      &quot;email&quot; : &quot;kien@gmail.com&quot;,&#10;      &quot;role&quot; : &quot;admin&quot;,&#10;      &quot;address&quot; : [],&#10;      &quot;createdAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;updatedAt&quot; : &quot;2024-04-24T12:55:09.768Z&quot;,&#10;      &quot;__v&quot; : 0&#10;    },&#10;    &quot;accessToken&quot; : &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTQyMzMzMjEsImV4cCI6MTcxNDIzNjkyMX0.6egjejGH_0ZZ_KntsmKQiYp_lODvUEzzGMasfPddIfA&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="566" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;236-/579TvkYa4voPk/mvGlacehKAeU&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sat, 27 Apr 2024 15:55:21 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Upstream-Latency" />
+                    <option name="value" value="816" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Proxy-Latency" />
+                    <option name="value" value="0" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Via" />
+                    <option name="value" value="kong/3.6.1" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Kong-Request-Id" />
+                    <option name="value" value="29e319158db08778a28c941207b5df53" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="d088da5e-096f-4035-84ad-162e6d61e4b6" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;User logged in successfully&quot;,&quot;data&quot;:{&quot;user&quot;:{&quot;_id&quot;:&quot;6629012db0def6107cff6b58&quot;,&quot;username&quot;:&quot;kien123&quot;,&quot;email&quot;:&quot;kien@gmail.com&quot;,&quot;role&quot;:&quot;admin&quot;,&quot;address&quot;:[],&quot;createdAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;updatedAt&quot;:&quot;2024-04-24T12:55:09.768Z&quot;,&quot;__v&quot;:0},&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTQyMzMzMjEsImV4cCI6MTcxNDIzNjkyMX0.6egjejGH_0ZZ_KntsmKQiYp_lODvUEzzGMasfPddIfA&quot;}}" />
+              <option name="size" value="566" />
+              <option name="time" value="825" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278030913" />
+          <option name="id" value="87de367a-3fca-462e-9bd9-631eef76173e" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:30 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="87de367a-3fca-462e-9bd9-631eef76173e" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="6" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031106" />
+          <option name="id" value="5abb829a-0c77-4e63-9eb0-046b14a30f38" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="5abb829a-0c77-4e63-9eb0-046b14a30f38" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="4" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031282" />
+          <option name="id" value="87768e05-e762-43a5-b6ed-b7e1d1aabc58" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="87768e05-e762-43a5-b6ed-b7e1d1aabc58" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="4" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031450" />
+          <option name="id" value="f027cb4b-055b-4211-b79d-d97d74be4fdc" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="f027cb4b-055b-4211-b79d-d97d74be4fdc" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="3" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031634" />
+          <option name="id" value="8c52e6fc-adb7-4865-a9e6-07260366ae6b" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="8c52e6fc-adb7-4865-a9e6-07260366ae6b" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="3" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031814" />
+          <option name="id" value="b5899c5e-2843-4e32-8db3-f85bb471b138" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="b5899c5e-2843-4e32-8db3-f85bb471b138" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="4" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278031984" />
+          <option name="id" value="0ddfc3c5-4bcc-43e7-a3ee-cdc08f1345f6" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="0ddfc3c5-4bcc-43e7-a3ee-cdc08f1345f6" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="3" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278032156" />
+          <option name="id" value="cf48a115-5ef3-416e-9b28-e29a0e8ab803" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:20:32 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="cf48a115-5ef3-416e-9b28-e29a0e8ab803" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="4" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278261874" />
+          <option name="id" value="5820bc22-62c0-45f0-83d3-d2fb9079f689" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:24:21 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="5820bc22-62c0-45f0-83d3-d2fb9079f689" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="24" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278262470" />
+          <option name="id" value="5e3cdf53-c9d0-4b31-a49a-189c9c335400" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjo0MDAsIm1lc3NhZ2UiOiJUaGUgY29tbWFuZCBoYW5kbGVyIGZvciB0aGUgXCJDcmVhdGVDYXRlZ29yeUNvbW1hbmRcIiBjb21tYW5kIHdhcyBub3QgZm91bmQhIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 400,&#10;  &quot;message&quot; : &quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="107" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;6b-kiC60+Fgstc58AZB9hz3nftBvIA&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:24:22 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="5e3cdf53-c9d0-4b31-a49a-189c9c335400" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:400,&quot;message&quot;:&quot;The command handler for the \&quot;CreateCategoryCommand\&quot; command was not found!&quot;}" />
+              <option name="size" value="107" />
+              <option name="time" value="3" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278667009" />
+          <option name="id" value="6d8bf6f0-f407-443c-8f17-f60f28ad930a" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI3ODY2NjI0MCIsInNob3BfaWQiOm51bGwsInBhdGgiOm51bGwsImxldmVsIjpudWxsLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjEsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIxOjMxOjA2LjY1NVoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yN1QyMTozMTowNi42NTVaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714278666240&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : null,&#10;    &quot;level&quot; : null,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 1,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T21:31:06.655Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T21:31:06.655Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="291" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;123-E2iVLzDKx+HCQtPrDyspXForooM&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:31:07 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="6d8bf6f0-f407-443c-8f17-f60f28ad930a" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714278666240&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:null,&quot;level&quot;:null,&quot;category_thumb&quot;:null,&quot;category_id&quot;:1,&quot;updated_at&quot;:&quot;2024-04-27T21:31:06.655Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T21:31:06.655Z&quot;}}" />
+              <option name="size" value="291" />
+              <option name="time" value="804" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714278667840" />
+          <option name="id" value="6109d73d-683f-462e-acee-f17e904eaf5f" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI3ODY2NjkwNiIsInNob3BfaWQiOm51bGwsInBhdGgiOm51bGwsImxldmVsIjpudWxsLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjIsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIxOjMxOjA3LjM1N1oiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yN1QyMTozMTowNy4zNTdaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714278666906&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : null,&#10;    &quot;level&quot; : null,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 2,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T21:31:07.357Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T21:31:07.357Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="291" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;123-ktIQFrs2oQZ9bwHMiCHz3mqHhVE&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 04:31:07 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="6109d73d-683f-462e-acee-f17e904eaf5f" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714278666906&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:null,&quot;level&quot;:null,&quot;category_thumb&quot;:null,&quot;category_id&quot;:2,&quot;updated_at&quot;:&quot;2024-04-27T21:31:07.357Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T21:31:07.357Z&quot;}}" />
+              <option name="size" value="291" />
+              <option name="time" value="936" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714283746843" />
+          <option name="id" value="dded85d0-c2fb-4041-914f-70f284e0bd2f" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI4Mzc0NjQ4NSIsInNob3BfaWQiOm51bGwsInBhdGgiOm51bGwsImxldmVsIjpudWxsLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjMsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIyOjU1OjQ2LjU4OFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yN1QyMjo1NTo0Ni41ODhaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714283746485&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : null,&#10;    &quot;level&quot; : null,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 3,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T22:55:46.588Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T22:55:46.588Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="291" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;123-SqtKprYbpRDkU+qofZiszob1Dtc&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 05:55:46 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="dded85d0-c2fb-4041-914f-70f284e0bd2f" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714283746485&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:null,&quot;level&quot;:null,&quot;category_thumb&quot;:null,&quot;category_id&quot;:3,&quot;updated_at&quot;:&quot;2024-04-27T22:55:46.588Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T22:55:46.588Z&quot;}}" />
+              <option name="size" value="291" />
+              <option name="time" value="386" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714284300160" />
+          <option name="id" value="9fd732d6-bc80-4258-9854-053eb73d6c65" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Kho" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI4NDI5OTU0MyIsInNob3BfaWQiOm51bGwsInBhdGgiOiIvNCIsImxldmVsIjowLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjQsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIzOjA0OjU5LjAwMFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yN1QyMzowNDo1OS42MjVaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714284299543&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;/4&quot;,&#10;    &quot;level&quot; : 0,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 4,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T23:04:59.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T23:04:59.625Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="288" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;120-rkkiy5Ed82N4rNdnPvV80NvZbAM&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 06:05:00 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9fd732d6-bc80-4258-9854-053eb73d6c65" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714284299543&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;/4&quot;,&quot;level&quot;:0,&quot;category_thumb&quot;:null,&quot;category_id&quot;:4,&quot;updated_at&quot;:&quot;2024-04-27T23:04:59.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T23:04:59.625Z&quot;}}" />
+              <option name="size" value="288" />
+              <option name="time" value="651" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714284781430" />
+          <option name="id" value="834c31cd-ecc3-403d-81c2-a27557021240" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0Mjg0NzgwODM2Iiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Im51bGwvNSIsImxldmVsIjoxLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjUsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIzOjEzOjAxLjAwMFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yN1QyMzoxMzowMC45MThaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714284780836&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;null/5&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 5,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T23:13:01.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T23:13:00.918Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="294" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;126-bSyria6fSea/q2UfxIS5q0+ByUw&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 06:13:01 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="834c31cd-ecc3-403d-81c2-a27557021240" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714284780836&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;null/5&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:5,&quot;updated_at&quot;:&quot;2024-04-27T23:13:01.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T23:13:00.918Z&quot;}}" />
+              <option name="size" value="294" />
+              <option name="time" value="612" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714292488464" />
+          <option name="id" value="616c62d8-7b98-4fba-991b-2990c968b8d3" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0MjkyNDg3ODAzIiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Im51bGwvNiIsImxldmVsIjoxLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjYsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI4VDAxOjIxOjI4LjAwMFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yOFQwMToyMToyNy45MDFaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714292487803&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;null/6&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 6,&#10;    &quot;updated_at&quot; : &quot;2024-04-28T01:21:28.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-28T01:21:27.901Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="294" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;126-WhMyE1pgvMW8iZRoZzDNDaQRa2Y&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:21:28 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="616c62d8-7b98-4fba-991b-2990c968b8d3" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714292487803&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;null/6&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:6,&quot;updated_at&quot;:&quot;2024-04-28T01:21:28.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-28T01:21:27.901Z&quot;}}" />
+              <option name="size" value="294" />
+              <option name="time" value="688" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714292609501" />
+          <option name="id" value="840369f5-b8ff-412f-9644-540050cb3243" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0MjkyNjA4ODUxIiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Im51bGwvNyIsImxldmVsIjoxLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwiY2F0ZWdvcnlfaWQiOjcsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI4VDAxOjIzOjI5LjAwMFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yOFQwMToyMzoyOC45NTZaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714292608851&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;null/7&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 7,&#10;    &quot;updated_at&quot; : &quot;2024-04-28T01:23:29.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-28T01:23:28.956Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="294" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;126-uyTGyV6vU3wVQvStQUC+oI4TnvE&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:23:29 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="840369f5-b8ff-412f-9644-540050cb3243" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714292608851&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;null/7&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:7,&quot;updated_at&quot;:&quot;2024-04-28T01:23:29.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-28T01:23:28.956Z&quot;}}" />
+              <option name="size" value="294" />
+              <option name="time" value="668" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714292627909" />
+          <option name="id" value="66dffff5-fc5b-4a86-ab84-6f2d030ea620" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0MjkyNjI3MzA4Iiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Ii80LzgiLCJsZXZlbCI6MSwiY2F0ZWdvcnlfdGh1bWIiOm51bGwsImNhdGVnb3J5X2lkIjo4LCJ1cGRhdGVkX2F0IjoiMjAyNC0wNC0yOFQwMToyMzo0Ny4wMDBaIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDQtMjhUMDE6MjM6NDcuMzg5WiJ9fQ==" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714292627308&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;/4/8&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 8,&#10;    &quot;updated_at&quot; : &quot;2024-04-28T01:23:47.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-28T01:23:47.389Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="292" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;124-uOHH6VGwPae8f/pwmpHmAnfizZM&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:23:47 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="66dffff5-fc5b-4a86-ab84-6f2d030ea620" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714292627308&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;/4/8&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:8,&quot;updated_at&quot;:&quot;2024-04-28T01:23:47.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-28T01:23:47.389Z&quot;}}" />
+              <option name="size" value="292" />
+              <option name="time" value="616" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714292731675" />
+          <option name="id" value="a6c3e0d4-9b7b-40cb-a392-8f29fbee2402" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0MjkyNzMxMTI5Iiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Ii80LzkiLCJsZXZlbCI6MSwiY2F0ZWdvcnlfdGh1bWIiOm51bGwsImNhdGVnb3J5X2lkIjo5LCJ1cGRhdGVkX2F0IjoiMjAyNC0wNC0yOFQwMToyNTozMS4wMDBaIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDQtMjhUMDE6MjU6MzEuMjA0WiJ9fQ==" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714292731129&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;/4/9&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 9,&#10;    &quot;updated_at&quot; : &quot;2024-04-28T01:25:31.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-28T01:25:31.204Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="292" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;124-xCpkEYM6+9tFsy8UQj1VCUmoQLU&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:25:31 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="a6c3e0d4-9b7b-40cb-a392-8f29fbee2402" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714292731129&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;/4/9&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:9,&quot;updated_at&quot;:&quot;2024-04-28T01:25:31.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-28T01:25:31.204Z&quot;}}" />
+              <option name="size" value="292" />
+              <option name="time" value="562" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714293372706" />
+          <option name="id" value="74cd8d4a-0750-4027-8081-ba6b6002f4fb" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="type" value="FORM_URL_ENCODED" />
+                  <option name="urlEncoded">
+                    <list>
+                      <urlEncodedParameterState>
+                        <option name="key" value="category_name" />
+                        <option name="value" value="Ca Tram" />
+                      </urlEncodedParameterState>
+                      <urlEncodedParameterState>
+                        <option name="key" value="parent_id" />
+                        <option name="value" value="4" />
+                      </urlEncodedParameterState>
+                    </list>
+                  </option>
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/x-www-form-urlencoded" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+              <option name="method" value="POST" />
+              <option name="name" value="create category" />
+              <option name="url" value="http://localhost:8082/private/category/create" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDEsIm1lc3NhZ2UiOiJDYXRlZ29yeSBjcmVhdGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsiY2F0ZWdvcnlfbmFtZSI6IkNhIFRyYW0iLCJjYXRlZ29yeV9zbHVnIjoiQ2EtVHJhbS0xNzE0MjkzMzcyMDU5Iiwic2hvcF9pZCI6bnVsbCwicGF0aCI6Ii80LzEwIiwibGV2ZWwiOjEsImNhdGVnb3J5X3RodW1iIjpudWxsLCJjYXRlZ29yeV9pZCI6MTAsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTI4VDAxOjM2OjEyLjAwMFoiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0yOFQwMTozNjoxMi4xNDNaIn19" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 201,&#10;  &quot;message&quot; : &quot;Category created successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;category_name&quot; : &quot;Ca Tram&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Tram-1714293372059&quot;,&#10;    &quot;shop_id&quot; : null,&#10;    &quot;path&quot; : &quot;/4/10&quot;,&#10;    &quot;level&quot; : 1,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;category_id&quot; : 10,&#10;    &quot;updated_at&quot; : &quot;2024-04-28T01:36:12.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-28T01:36:12.143Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="201" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="294" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;126-PNDSGsnJZBP5g+nt+Wd2tqBIKyY&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:36:12 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="74cd8d4a-0750-4027-8081-ba6b6002f4fb" />
+              <option name="message" value="Created" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:201,&quot;message&quot;:&quot;Category created successfully&quot;,&quot;data&quot;:{&quot;category_name&quot;:&quot;Ca Tram&quot;,&quot;category_slug&quot;:&quot;Ca-Tram-1714293372059&quot;,&quot;shop_id&quot;:null,&quot;path&quot;:&quot;/4/10&quot;,&quot;level&quot;:1,&quot;category_thumb&quot;:null,&quot;category_id&quot;:10,&quot;updated_at&quot;:&quot;2024-04-28T01:36:12.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-28T01:36:12.143Z&quot;}}" />
+              <option name="size" value="294" />
+              <option name="time" value="663" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714293815768" />
+          <option name="id" value="d12c0be1-94f0-4d2c-b7f9-481f5e507cda" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
+              <option name="method" value="DELETE" />
+              <option name="name" value="delete category" />
+              <option name="url" value="http://localhost:8082/private/category/1" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="RGVsZXRlIGNhdGVnb3J5" />
+              <option name="bodyString" value="Delete category" />
+              <option name="code" value="200" />
+              <option name="contentType" value="text/html; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="text/html; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="15" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;f-qCsPidwE2O8OAryav2uW9y73kXE&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:43:35 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="d12c0be1-94f0-4d2c-b7f9-481f5e507cda" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="HTML" />
+              <option name="previewType" value="HTML" />
+              <option name="rawBodyString" value="Delete category" />
+              <option name="size" value="15" />
+              <option name="time" value="17" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714293905902" />
+          <option name="id" value="cd376559-3e66-40ae-bbeb-bb5973273ee1" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
+              <option name="method" value="DELETE" />
+              <option name="name" value="delete category" />
+              <option name="url" value="http://localhost:8082/private/category/1" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJDYXRlZ29yeSBkZWxldGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsic2hvcF9pZCI6bnVsbCwiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI3ODY2NjI0MCIsInBhdGgiOm51bGwsImxldmVsIjpudWxsLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjQtMDQtMjdUMjE6MzE6MDYuNjU1WiIsImNyZWF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIxOjMxOjA2LjY1NVoifX0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;Category deleted successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;shop_id&quot; : null,&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714278666240&quot;,&#10;    &quot;path&quot; : null,&#10;    &quot;level&quot; : null,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T21:31:06.655Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T21:31:06.655Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="200" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="275" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;113-loUceWkmtANyY7rVyHiyNiaxcjY&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:45:05 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="cd376559-3e66-40ae-bbeb-bb5973273ee1" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;Category deleted successfully&quot;,&quot;data&quot;:{&quot;shop_id&quot;:null,&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714278666240&quot;,&quot;path&quot;:null,&quot;level&quot;:null,&quot;category_thumb&quot;:null,&quot;updated_at&quot;:&quot;2024-04-27T21:31:06.655Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T21:31:06.655Z&quot;}}" />
+              <option name="size" value="275" />
+              <option name="time" value="414" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714293927061" />
+          <option name="id" value="ede9f3d7-3ff3-4e6e-9951-1871ac6398dd" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
+              <option name="method" value="DELETE" />
+              <option name="name" value="delete category" />
+              <option name="url" value="http://localhost:8082/private/category/2" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJDYXRlZ29yeSBkZWxldGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsic2hvcF9pZCI6bnVsbCwiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI3ODY2NjkwNiIsInBhdGgiOm51bGwsImxldmVsIjpudWxsLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjQtMDQtMjdUMjE6MzE6MDcuMzU3WiIsImNyZWF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIxOjMxOjA3LjM1N1oifX0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;Category deleted successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;shop_id&quot; : null,&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714278666906&quot;,&#10;    &quot;path&quot; : null,&#10;    &quot;level&quot; : null,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T21:31:07.357Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T21:31:07.357Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="200" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="275" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;113-WQ+rq9kfdI6ygCcKwO3K6c/KmG8&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:45:27 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="ede9f3d7-3ff3-4e6e-9951-1871ac6398dd" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;Category deleted successfully&quot;,&quot;data&quot;:{&quot;shop_id&quot;:null,&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714278666906&quot;,&quot;path&quot;:null,&quot;level&quot;:null,&quot;category_thumb&quot;:null,&quot;updated_at&quot;:&quot;2024-04-27T21:31:07.357Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T21:31:07.357Z&quot;}}" />
+              <option name="size" value="275" />
+              <option name="time" value="361" />
+            </responseState>
+          </option>
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1714293947762" />
+          <option name="id" value="62f1bb47-7d26-4d95-bd25-ff49f03a4258" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
+              <option name="method" value="DELETE" />
+              <option name="name" value="delete category" />
+              <option name="url" value="http://localhost:8082/private/category/4" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJzdGF0dXNDb2RlIjoyMDAsIm1lc3NhZ2UiOiJDYXRlZ29yeSBkZWxldGVkIHN1Y2Nlc3NmdWxseSIsImRhdGEiOnsic2hvcF9pZCI6bnVsbCwiY2F0ZWdvcnlfbmFtZSI6IkNhIEtobyIsImNhdGVnb3J5X3NsdWciOiJDYS1LaG8tMTcxNDI4NDI5OTU0MyIsInBhdGgiOiIvNCIsImxldmVsIjowLCJjYXRlZ29yeV90aHVtYiI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjQtMDQtMjdUMjM6MDQ6NTkuMDAwWiIsImNyZWF0ZWRfYXQiOiIyMDI0LTA0LTI3VDIzOjA0OjU5LjYyNVoifX0=" />
+              <option name="bodyString" value="{&#10;  &quot;statusCode&quot; : 200,&#10;  &quot;message&quot; : &quot;Category deleted successfully&quot;,&#10;  &quot;data&quot; : {&#10;    &quot;shop_id&quot; : null,&#10;    &quot;category_name&quot; : &quot;Ca Kho&quot;,&#10;    &quot;category_slug&quot; : &quot;Ca-Kho-1714284299543&quot;,&#10;    &quot;path&quot; : &quot;/4&quot;,&#10;    &quot;level&quot; : 0,&#10;    &quot;category_thumb&quot; : null,&#10;    &quot;updated_at&quot; : &quot;2024-04-27T23:04:59.000Z&quot;,&#10;    &quot;created_at&quot; : &quot;2024-04-27T23:04:59.625Z&quot;&#10;  }&#10;}" />
+              <option name="code" value="200" />
+              <option name="contentType" value="application/json; charset=utf-8" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="X-Powered-By" />
+                    <option name="value" value="Express" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json; charset=utf-8" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="272" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="ETag" />
+                    <option name="value" value="W/&quot;110-q7nj7N0H+DbuKf5fEhtRSLMu/Wo&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Sun, 28 Apr 2024 08:45:47 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=5" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="62f1bb47-7d26-4d95-bd25-ff49f03a4258" />
+              <option name="message" value="OK" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;statusCode&quot;:200,&quot;message&quot;:&quot;Category deleted successfully&quot;,&quot;data&quot;:{&quot;shop_id&quot;:null,&quot;category_name&quot;:&quot;Ca Kho&quot;,&quot;category_slug&quot;:&quot;Ca-Kho-1714284299543&quot;,&quot;path&quot;:&quot;/4&quot;,&quot;level&quot;:0,&quot;category_thumb&quot;:null,&quot;updated_at&quot;:&quot;2024-04-27T23:04:59.000Z&quot;,&quot;created_at&quot;:&quot;2024-04-27T23:04:59.625Z&quot;}}" />
+              <option name="size" value="272" />
+              <option name="time" value="366" />
             </responseState>
           </option>
         </requestHistoryState>

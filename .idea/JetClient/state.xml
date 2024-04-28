@@ -17,6 +17,61 @@
     <option name="folders">
       <list>
         <folderState>
+          <option name="folders">
+            <list>
+              <folderState>
+                <option name="id" value="5da161ce-45de-4236-aa59-25fc5838d408" />
+                <option name="name" value="Category" />
+                <option name="requests">
+                  <list>
+                    <requestState>
+                      <option name="body">
+                        <bodyState>
+                          <option name="type" value="FORM_URL_ENCODED" />
+                          <option name="urlEncoded">
+                            <list>
+                              <urlEncodedParameterState>
+                                <option name="key" value="category_name" />
+                                <option name="value" value="Ca Tram" />
+                              </urlEncodedParameterState>
+                              <urlEncodedParameterState>
+                                <option name="key" value="parent_id" />
+                                <option name="value" value="4" />
+                              </urlEncodedParameterState>
+                            </list>
+                          </option>
+                        </bodyState>
+                      </option>
+                      <option name="headers">
+                        <list>
+                          <headerState>
+                            <option name="key" value="Content-Type" />
+                            <option name="value" value="application/x-www-form-urlencoded" />
+                          </headerState>
+                        </list>
+                      </option>
+                      <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
+                      <option name="method" value="POST" />
+                      <option name="name" value="create category" />
+                      <option name="url" value="http://localhost:8082/private/category/create" />
+                    </requestState>
+                    <requestState>
+                      <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
+                      <option name="method" value="DELETE" />
+                      <option name="name" value="delete category" />
+                      <option name="url" value="http://localhost:8082/private/category/4" />
+                    </requestState>
+                  </list>
+                </option>
+                <option name="sortWeight" value="1000000" />
+              </folderState>
+            </list>
+          </option>
+          <option name="id" value="8319ef58-37f7-4fc2-b312-866207117aa8" />
+          <option name="name" value="ProductService" />
+          <option name="sortWeight" value="500000" />
+        </folderState>
+        <folderState>
           <option name="id" value="76b11ab4-655f-4890-87ea-5dd4b68263dc" />
           <option name="name" value="UserService" />
           <option name="requests">

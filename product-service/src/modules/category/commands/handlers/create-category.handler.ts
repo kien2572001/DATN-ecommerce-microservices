@@ -21,15 +21,17 @@ export class CreateCategoryHandler implements ICommandHandler<CreateCategoryComm
       shop_id: shop_id,
     });
     await this.categoryRepository.save(newCategory);
-    await this.populateCategoryPathAndLevel(newCategory);
-    await this.categoryRepository.save(newCategory);
-    console.log(clc.green('CreateCategoryCommand...'));
+    await this.populateCategoryPathAndLevel(newCategory, category.parent_id);
+    const savedCategory = await this.categoryRepository.save(newCategory);
+
+    // Trả về category đã được lưu
+    return savedCategory;
   }
 
-  private async populateCategoryPathAndLevel(category: any) {
-    if (category.parent_id) {
+  private async populateCategoryPathAndLevel(category: any, parent_id?: number) {
+    if (parent_id) {
       const parent = await this.categoryRepository.findOneOrFail({
-        where: {category_id: category.parent_id}
+        where: {category_id: parent_id},
       });
       category.path = parent.path + '/' + category.category_id;
       category.level = parent.level + 1;
