@@ -10,6 +10,65 @@
               <option name="method" value="GET" />
               <option name="name" value="Draft" />
             </requestState>
+            <requestState>
+              <option name="auth">
+                <authState>
+                  <option name="bearer">
+                    <jU>
+                      <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTQzMjAxMzgsImV4cCI6MTcxNDMyMzczOH0.Vt14hmSHN_RoJzmrHdAj4NErp7AUiS5D1_UtEjw1Iy8" />
+                    </jU>
+                  </option>
+                  <option name="type" value="BEARER" />
+                </authState>
+              </option>
+              <option name="body">
+                <bodyState>
+                  <option name="formData">
+                    <list>
+                      <formDataParameterState>
+                        <option name="key" value="files" />
+                        <option name="type" value="FILE" />
+                        <option name="value" value="$USER_HOME$/Downloads/vendor-header-bg.png" />
+                      </formDataParameterState>
+                      <formDataParameterState>
+                        <option name="key" value="files" />
+                        <option name="type" value="FILE" />
+                        <option name="value" value="$USER_HOME$/Downloads/vendor-17.png" />
+                      </formDataParameterState>
+                      <formDataParameterState>
+                        <option name="key" value="category_id" />
+                        <option name="value" value="100" />
+                      </formDataParameterState>
+                      <formDataParameterState>
+                        <option name="key" value="product_name" />
+                        <option name="value" value="San pham so 1 Nhat Ban" />
+                      </formDataParameterState>
+                      <formDataParameterState>
+                        <option name="key" value="product_description" />
+                        <option name="value" value="HEHEHHEHEHE" />
+                      </formDataParameterState>
+                      <formDataParameterState>
+                        <option name="key" value="status" />
+                        <option name="value" value="draft" />
+                      </formDataParameterState>
+                    </list>
+                  </option>
+                  <option name="type" value="FORM_DATA" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="multipart/form-data" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="b172b713-b22b-4b92-9b5f-d87b9b8a24c4" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft 1" />
+              <option name="url" value="http://192.168.25.106:8000/product-service/private/product/create" />
+            </requestState>
           </list>
         </option>
       </draftsState>
@@ -25,6 +84,16 @@
                 <option name="requests">
                   <list>
                     <requestState>
+                      <option name="auth">
+                        <authState>
+                          <option name="bearer">
+                            <jU>
+                              <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTQyOTUyMzksImV4cCI6MTcxNDI5ODgzOX0.AyCP_3plIQWO8BkMqSbVGYe0di0VGtAXyBpArBineUI" />
+                            </jU>
+                          </option>
+                          <option name="type" value="BEARER" />
+                        </authState>
+                      </option>
                       <option name="body">
                         <bodyState>
                           <option name="type" value="FORM_URL_ENCODED" />
@@ -32,11 +101,11 @@
                             <list>
                               <urlEncodedParameterState>
                                 <option name="key" value="category_name" />
-                                <option name="value" value="Ca Tram" />
+                                <option name="value" value="Iphone 15" />
                               </urlEncodedParameterState>
                               <urlEncodedParameterState>
                                 <option name="key" value="parent_id" />
-                                <option name="value" value="4" />
+                                <option name="value" value="29" />
                               </urlEncodedParameterState>
                             </list>
                           </option>
@@ -53,13 +122,13 @@
                       <option name="id" value="9297e26a-8810-421a-b322-e2298be96ea7" />
                       <option name="method" value="POST" />
                       <option name="name" value="create category" />
-                      <option name="url" value="http://localhost:8082/private/category/create" />
+                      <option name="url" value="http://192.168.25.106:8000/product-service/private/category/create" />
                     </requestState>
                     <requestState>
                       <option name="id" value="969bb240-b3dd-42c9-9b99-e71f2829c799" />
                       <option name="method" value="DELETE" />
                       <option name="name" value="delete category" />
-                      <option name="url" value="http://localhost:8082/private/category/4" />
+                      <option name="url" value="http://localhost:8082/private/category/29" />
                     </requestState>
                   </list>
                 </option>
@@ -157,7 +226,7 @@
                   <authState>
                     <option name="bearer">
                       <jU>
-                        <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI1M2E2NGMxNTE0NGNkMGRmYTc4NjMiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTM5NTY5MzEsImV4cCI6MTcxMzk2MDUzMX0.uM4pzJnXC0yOWGnNiBZdA4dfOSKEow9ss3JRizlM-rk" />
+                        <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MDEyZGIwZGVmNjEwN2NmZjZiNTgiLCJlbWFpbCI6ImtpZW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwia2lkIjoiRjBmbnd0R0tITzdZbXBKdGZHOFdxeThERGdaYkptU1AiLCJpYXQiOjE3MTQyOTUyMzksImV4cCI6MTcxNDI5ODgzOX0.AyCP_3plIQWO8BkMqSbVGYe0di0VGtAXyBpArBineUI" />
                       </jU>
                     </option>
                     <option name="type" value="BEARER" />
@@ -175,7 +244,7 @@
                 <option name="id" value="46d43fdf-f594-4cd7-9de9-5de28ab9f17f" />
                 <option name="method" value="GET" />
                 <option name="name" value="get user by id" />
-                <option name="url" value="http://192.168.25.106:8000/user-service/user/66253a64c15144cd0dfa7863" />
+                <option name="url" value="http://192.168.25.106:8000/user-service/user/6629012db0def6107cff6b58" />
               </requestState>
               <requestState>
                 <option name="auth">

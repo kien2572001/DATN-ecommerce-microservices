@@ -1,12 +1,13 @@
 import {
   Column,
-  CreateDateColumn,
+  CreateDateColumn, DeepPartial,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
+import {ProductVariationEntity} from "./product-variation.entity";
 
 @Entity()
 export class OptionEntity {
@@ -17,7 +18,12 @@ export class OptionEntity {
   option_title: string;
 
   @Column()
-  product_variation_id: number;
+  @ManyToOne(() => ProductVariationEntity, productVariation => productVariation.options)
+  @JoinColumn({name: 'product_variation_id'})
+  product_variation: number;
+
+  @Column('json', {nullable: true})
+  images: Record<string, any>;
 
   @UpdateDateColumn()
   updated_at: Date;

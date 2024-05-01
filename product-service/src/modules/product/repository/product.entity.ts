@@ -16,12 +16,17 @@ export class ProductEntity {
   product_id: number;
 
   @Column()
+  shop_id: string;
+
+  @Column()
   product_name: string;
 
   @Column()
   product_slug: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   product_thumb: string;
 
   @Column({type: 'text'})

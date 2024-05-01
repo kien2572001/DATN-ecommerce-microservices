@@ -20,7 +20,9 @@ import {CqrsModule} from "@nestjs/cqrs";
     CategoryRepository,
     ...CategoryCommandHandlers,
   ],
-  exports: [],
+  exports: [
+    CategoryRepository,
+  ],
 })
 export class CategoryModule {
 }
