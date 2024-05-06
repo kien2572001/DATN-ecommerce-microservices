@@ -9,7 +9,10 @@ import {CategoryModule} from "./modules/category/category.module";
 import {ProductModule} from "./modules/product/product.module";
 import {ReviewModule} from "./modules/review/review.module";
 import {ReactionModule} from "./modules/reaction/reaction.module";
+import {InventoryModule} from "./modules/inventory/inventory.module";
 import {ProductVariationModule} from "./modules/product-variation/product-variation.module";
+import {CacheModule} from "@nestjs/cache-manager";
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
@@ -31,6 +34,15 @@ import {ProductVariationModule} from "./modules/product-variation/product-variat
       }),
       inject: [ConfigService],
     }),
+    CacheModule.registerAsync({
+      useFactory: (configService: ConfigService) => ({
+        store: redisStore,
+        host: configService.get('redis.host'),
+        port: configService.get('redis.port'),
+      }),
+      inject: [ConfigService],
+    }),
+    InventoryModule,
     CategoryModule,
     ProductModule,
     ReactionModule,
