@@ -16,7 +16,9 @@ import {AnyFilesInterceptor, FileInterceptor} from "@nestjs/platform-express";
 import {CreateProductDto} from "../dtos/product.create.dto";
 import {CommandBus, QueryBus} from '@nestjs/cqrs';
 import {ProductCommandHandlers} from "../commands/handlers";
+import {ProductQueryHandlers} from "../queries/handlers";
 import {CreateProductCommand} from "../commands/impl/create-product.command";
+import {GetProductBySlugQuery} from "../queries/impl/get-product-by-slug.query";
 
 @Controller({
   path: '/private/product',
@@ -29,6 +31,17 @@ export class ProductPrivateController {
     private readonly queryBus: QueryBus,
   ) {
     this.commandBus.register(ProductCommandHandlers);
+    this.queryBus.register(ProductQueryHandlers);
+  }
+
+  @Get(':product_slug')
+  async getProductBySlug(@Param('product_slug') product_slug: string) {
+    try {
+      const product = await this.queryBus.execute(new GetProductBySlugQuery(product_slug));
+      return this.responseHandler.createSuccessResponse(product, 'Product retrieved successfully', HttpStatus.OK);
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+    }
   }
 
   @Post('/create')

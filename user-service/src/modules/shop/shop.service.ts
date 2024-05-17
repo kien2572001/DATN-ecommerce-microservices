@@ -25,5 +25,4 @@ export class ShopService {
     const isShopExists = await this.shopRepository.existsByUserId(userId);
     return isShopExists;
   }
-
 }

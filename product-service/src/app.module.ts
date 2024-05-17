@@ -4,15 +4,13 @@ import {AppService} from './app.service';
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import configuration from "./configs/configuration";
 import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
+import {LoggingMiddleware} from "./middlewares/logging.middleware";
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {CategoryModule} from "./modules/category/category.module";
 import {ProductModule} from "./modules/product/product.module";
-import {ReviewModule} from "./modules/review/review.module";
-import {ReactionModule} from "./modules/reaction/reaction.module";
-import {InventoryModule} from "./modules/inventory/inventory.module";
-import {ProductVariationModule} from "./modules/product-variation/product-variation.module";
 import {CacheModule} from "@nestjs/cache-manager";
 import * as redisStore from 'cache-manager-redis-store';
+import {MongooseModule} from "@nestjs/mongoose";
 
 @Module({
   imports: [
@@ -20,20 +18,26 @@ import * as redisStore from 'cache-manager-redis-store';
       isGlobal: true,
       load: [configuration],
     }),
-    TypeOrmModule.forRootAsync({
+    MongooseModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.get('relational_db.host'),
-        port: configService.get('relational_db.port'),
-        username: configService.get('relational_db.username'),
-        password: configService.get('relational_db.password'),
-        database: configService.get('relational_db.database'),
-        entities: [],
-        synchronize: true,
-        autoLoadEntities: true,
+        uri: configService.get('no_sql_db_uri'),
       }),
       inject: [ConfigService],
     }),
+    // TypeOrmModule.forRootAsync({
+    //   useFactory: (configService: ConfigService) => ({
+    //     type: 'mysql',
+    //     host: configService.get('relational_db.host'),
+    //     port: configService.get('relational_db.port'),
+    //     username: configService.get('relational_db.username'),
+    //     password: configService.get('relational_db.password'),
+    //     database: configService.get('relational_db.database'),
+    //     entities: [],
+    //     synchronize: true,
+    //     autoLoadEntities: true,
+    //   }),
+    //   inject: [ConfigService],
+    // }),
     CacheModule.registerAsync({
       useFactory: (configService: ConfigService) => ({
         store: redisStore,
@@ -42,18 +46,15 @@ import * as redisStore from 'cache-manager-redis-store';
       }),
       inject: [ConfigService],
     }),
-    InventoryModule,
     CategoryModule,
     ProductModule,
-    ReactionModule,
-    ReviewModule,
-    ProductVariationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggingMiddleware).forRoutes('*');
     consumer.apply(JwtPayloadMiddleware).forRoutes('/private');
   }
 }

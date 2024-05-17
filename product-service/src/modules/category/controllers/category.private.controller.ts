@@ -33,7 +33,7 @@ export class CategoryPrivateController {
   }
 
   @Delete(':category_id')
-  async deleteCategory(@Param('category_id') category_id: number) {
+  async deleteCategory(@Param('category_id') category_id: string) {
     try {
       const result = await this.commandBus.execute(new DeleteCategoryCommand(category_id));
       return this.responseHandler.createSuccessResponse(result, 'Category deleted successfully', HttpStatus.OK);

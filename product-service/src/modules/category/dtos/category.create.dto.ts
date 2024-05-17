@@ -3,9 +3,9 @@ import {Type} from 'class-transformer';
 
 export class CreateCategoryDto {
   @IsOptional()
-  @IsInt()
-  @Type(() => Number)
-  parent_id: number;
+  @IsString()
+  @Type(() => String)
+  parent_id: string;
 
   @IsNotEmpty()
   @IsString()

@@ -1,11 +1,23 @@
-import {IsEnum, IsInt, IsJSON, IsNotEmpty, IsOptional, IsString, MaxLength} from 'class-validator';
+import {
+  IsArray,
+  IsEnum,
+  IsInt,
+  IsJSON,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+  ValidateNested
+} from 'class-validator';
 import {Type} from 'class-transformer';
 import {ProductStatusEnum} from "../../../enums/productStatus.enum";
+import {CreateClassificationDto} from "./classification.create.dto";
+import {CreateInventoryDto} from "../../inventory/dtos/inventory.create.dto";
 
 export class CreateProductDto {
-  @IsInt()
-  @Type(() => Number)
-  category_id: number;
+  @IsString()
+  @Type(() => String)
+  category_id: string;
 
   @IsNotEmpty()
   @IsString()
@@ -26,5 +38,17 @@ export class CreateProductDto {
 
   @IsOptional()
   @IsJSON()
-  product_variants: Record<string, any>;
+  product_variants: any;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({each: true})
+  @Type(() => CreateClassificationDto)
+  classifications: CreateClassificationDto[];
+
+  @IsOptional()
+  @IsArray()
+  @IsString({each: true})
+  @Type(() => String)
+  inventories: CreateInventoryDto[];
 }

@@ -1,24 +1,29 @@
 import {Module} from "@nestjs/common";
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {CategoryEntity} from './repository/category.entity';
 import {UtilitiesModule} from "../../utilities/utilities.module";
 import {CategoryPrivateController} from "./controllers/category.private.controller";
 import {CommandBus} from "@nestjs/cqrs";
 import {CategoryCommandHandlers} from './commands/handlers';
-import {CategoryRepository} from "./repository/category.repository";
 import {CqrsModule} from "@nestjs/cqrs";
+import {Category, CategorySchema} from "./repository/category.schema";
+import {MongooseModule} from "@nestjs/mongoose";
+import {CategoryRepository} from "./repository/category.repository";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([CategoryEntity]),
     UtilitiesModule,
     CqrsModule,
+    MongooseModule.forFeature([
+      {
+        name: Category.name,
+        schema: CategorySchema,
+      },
+    ]),
   ],
   controllers: [CategoryPrivateController],
   providers: [
     CommandBus,
-    CategoryRepository,
     ...CategoryCommandHandlers,
+    CategoryRepository,
   ],
   exports: [
     CategoryRepository,
