@@ -1,12 +1,13 @@
-import {MiddlewareConsumer, Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {MongooseModule} from "@nestjs/mongoose";
-import {ConfigModule, ConfigService} from "@nestjs/config";
-import {UserModule} from './modules/user/user.module';
-import {ShopModule} from "./modules/shop/shop.module";
-import configuration from "./configs/configuration";
-import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UserModule } from './modules/user/user.module';
+import { ShopModule } from './modules/shop/shop.module';
+import configuration from './configs/configuration';
+import { JwtPayloadMiddleware } from './middlewares/jwt-payload.middleware';
+import { LoggingMiddleware } from './middlewares/logging.middleware';
 
 @Module({
   imports: [
@@ -30,5 +31,6 @@ import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(JwtPayloadMiddleware).forRoutes('*');
+    consumer.apply(LoggingMiddleware).forRoutes('*');
   }
 }

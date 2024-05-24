@@ -8,18 +8,20 @@ import {
   HttpStatus,
   Delete,
   UploadedFile,
-  UseInterceptors, UploadedFiles
-} from "@nestjs/common";
-import {ResponseHandler} from "../../../utilities/response.handler";
-import {FileService} from "../../../utilities/file.service";
-import {AnyFilesInterceptor, FileInterceptor} from "@nestjs/platform-express";
-import {CreateProductDto} from "../dtos/product.create.dto";
-import {CommandBus, QueryBus} from '@nestjs/cqrs';
-import {ProductCommandHandlers} from "../commands/handlers";
-import {ProductQueryHandlers} from "../queries/handlers";
-import {CreateProductCommand} from "../commands/impl/create-product.command";
-import {GetProductBySlugQuery} from "../queries/impl/get-product-by-slug.query";
-
+  UseInterceptors,
+  UploadedFiles,
+} from '@nestjs/common';
+import { ResponseHandler } from '../../../utilities/response.handler';
+import { FileService } from '../../../utilities/file.service';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import { CreateProductDto } from '../dtos/product.create.dto';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { ProductCommandHandlers } from '../commands/handlers';
+import { ProductQueryHandlers } from '../queries/handlers';
+import { CreateProductCommand } from '../commands/impl/create-product.command';
+import { GetProductBySlugQuery } from '../queries/impl/get-product-by-slug.query';
+import { UpdateProductMediaCommand } from '../commands/impl/update-product-media.command';
+import { GetProductByIdQuery } from '../queries/impl/get-product-by-id.query';
 @Controller({
   path: '/private/product',
 })
@@ -37,49 +39,132 @@ export class ProductPrivateController {
   @Get(':product_slug')
   async getProductBySlug(@Param('product_slug') product_slug: string) {
     try {
-      const product = await this.queryBus.execute(new GetProductBySlugQuery(product_slug));
-      return this.responseHandler.createSuccessResponse(product, 'Product retrieved successfully', HttpStatus.OK);
+      const product = await this.queryBus.execute(
+        new GetProductBySlugQuery(product_slug),
+      );
+      return this.responseHandler.createSuccessResponse(
+        product,
+        'Product retrieved successfully',
+        HttpStatus.OK,
+      );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   @Post('/create')
-  @UseInterceptors(AnyFilesInterceptor())
+  //@UseInterceptors(AnyFilesInterceptor())
+  //@FormDataRequest()
   async createProduct(
     @Request() req: any,
     @Body() createProductDto: CreateProductDto,
-    @UploadedFiles() files: Array<Express.Multer.File>
+    @UploadedFiles() files: Array<Express.Multer.File>,
   ) {
     try {
       if (req.jwtPayload.shop_id) {
         const shop_id = req.jwtPayload.shop_id;
-        createProductDto.files = files;
-        const newProduct = await this.commandBus.execute(new CreateProductCommand(createProductDto, shop_id));
-        return this.responseHandler.createSuccessResponse(newProduct, 'Product created successfully', HttpStatus.CREATED)
-      } else throw this.responseHandler.createErrorResponse('You are not authorized to perform this action', HttpStatus.UNAUTHORIZED);
+        //createProductDto.files = files;
+        const newProduct = await this.commandBus.execute(
+          new CreateProductCommand(createProductDto, shop_id),
+        );
+        return this.responseHandler.createSuccessResponse(
+          newProduct,
+          'Product created successfully',
+          HttpStatus.CREATED,
+        );
+      } else
+        throw this.responseHandler.createErrorResponse(
+          'You are not authorized to perform this action',
+          HttpStatus.UNAUTHORIZED,
+        );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      console.log('error', e);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
+  @Get('/id/:product_id')
+  async getProductById(@Param('product_id') product_id: string) {
+    try {
+      const product = await this.queryBus.execute(
+        new GetProductByIdQuery(product_id),
+      );
+      return this.responseHandler.createSuccessResponse(
+        product,
+        'Product retrieved successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
+  @Post('/:product_id/media')
+  @UseInterceptors(AnyFilesInterceptor())
+  async updateProductMedia(
+    @Param('product_id') product_id: string,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    try {
+      const updatedProduct = await this.commandBus.execute(
+        new UpdateProductMediaCommand(product_id, files),
+      );
+      return this.responseHandler.createSuccessResponse(
+        updatedProduct,
+        'Product media updated successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   @Delete(':product_id')
   async deleteProduct(@Param('product_id') product_id: number) {
     try {
-      return this.responseHandler.createSuccessResponse({}, 'Product deleted successfully', HttpStatus.OK);
+      return this.responseHandler.createSuccessResponse(
+        {},
+        'Product deleted successfully',
+        HttpStatus.OK,
+      );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   @Post('/upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadProductImage(@Request() req: any, @UploadedFile() file: Express.Multer.File) {
+  async uploadProductImage(
+    @Request() req: any,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     try {
       const response = await this.fileService.uploadFile(file);
-      return this.responseHandler.createSuccessResponse(response, 'Product image uploaded successfully', HttpStatus.OK)
+      return this.responseHandler.createSuccessResponse(
+        response,
+        'Product image uploaded successfully',
+        HttpStatus.OK,
+      );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

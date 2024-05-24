@@ -1,17 +1,16 @@
-import {MiddlewareConsumer, Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {ConfigModule, ConfigService} from "@nestjs/config";
-import configuration from "./configs/configuration";
-import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
-import {LoggingMiddleware} from "./middlewares/logging.middleware";
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {CategoryModule} from "./modules/category/category.module";
-import {ProductModule} from "./modules/product/product.module";
-import {CacheModule} from "@nestjs/cache-manager";
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import configuration from './configs/configuration';
+import { JwtPayloadMiddleware } from './middlewares/jwt-payload.middleware';
+import { LoggingMiddleware } from './middlewares/logging.middleware';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoryModule } from './modules/category/category.module';
+import { ProductModule } from './modules/product/product.module';
+import { CacheModule } from '@nestjs/cache-manager';
 import * as redisStore from 'cache-manager-redis-store';
-import {MongooseModule} from "@nestjs/mongoose";
-
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     ConfigModule.forRoot({

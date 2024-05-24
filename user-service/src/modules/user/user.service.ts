@@ -1,21 +1,19 @@
-import {Injectable} from "@nestjs/common";
-import {UserRepository} from "./repository/user.repository";
-import {UserCreateByEmailDto} from "./dtos/user.by-email.create.dto";
+import { Injectable } from '@nestjs/common';
+import { UserRepository } from './repository/user.repository';
+import { UserCreateByEmailDto } from './dtos/user.by-email.create.dto';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import * as process from "node:process";
-import {ShopService} from "../shop/shop.service";
-import {RolesEnum} from "../../enums/roles.enum";
-
+import * as process from 'node:process';
+import { ShopService } from '../shop/shop.service';
+import { RolesEnum } from '../../enums/roles.enum';
 
 @Injectable()
 export class UserService {
-
   private static shopService: ShopService;
 
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly shopService: ShopService
+    private readonly shopService: ShopService,
   ) {
     UserService.shopService = shopService;
   }
@@ -52,6 +50,8 @@ export class UserService {
         payload.shop_id = shop._id;
       }
     }
-    return await jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'});
+    return await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: '12h',
+    });
   }
 }

@@ -1,11 +1,21 @@
-import {Controller, Post, Get, Param, Request, Body, HttpStatus, Delete} from "@nestjs/common";
-import {CreateCategoryDto} from "../dtos/category.create.dto";
-import {ResponseHandler} from "../../../utilities/response.handler";
-import {CommandBus, QueryBus} from '@nestjs/cqrs';
-import {CreateCategoryCommand} from "../commands/impl/create-category.command";
-import {CategoryCommandHandlers} from "../commands/handlers";
-import {DeleteCategoryCommand} from "../commands/impl/delete-category.command";
-
+import {
+  Controller,
+  Post,
+  Get,
+  Param,
+  Request,
+  Body,
+  HttpStatus,
+  Delete,
+} from '@nestjs/common';
+import { CreateCategoryDto } from '../dtos/category.create.dto';
+import { ResponseHandler } from '../../../utilities/response.handler';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CreateCategoryCommand } from '../commands/impl/create-category.command';
+import { CategoryCommandHandlers } from '../commands/handlers';
+import { DeleteCategoryCommand } from '../commands/impl/delete-category.command';
+import { CategoryQueryHandlers } from '../queries/handlers';
+import { GetAllCategoriesQuery } from '../queries/impl/get-all-categories.query';
 @Controller({
   path: '/private/category',
 })
@@ -16,6 +26,26 @@ export class CategoryPrivateController {
     private readonly queryBus: QueryBus,
   ) {
     this.commandBus.register(CategoryCommandHandlers);
+    this.queryBus.register(CategoryQueryHandlers);
+  }
+
+  @Get('/list')
+  async getCategories() {
+    try {
+      const categories = await this.queryBus.execute(
+        new GetAllCategoriesQuery(),
+      );
+      return this.responseHandler.createSuccessResponse(
+        categories,
+        'Categories fetched successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Post('/create')
@@ -25,23 +55,40 @@ export class CategoryPrivateController {
       if (req.jwtPayload && req.jwtPayload.shop_id) {
         shop_id = req.jwtPayload.shop_id;
       }
-      const newCategory = await this.commandBus.execute(new CreateCategoryCommand(body, shop_id));
-      return this.responseHandler.createSuccessResponse(newCategory, 'Category created successfully', HttpStatus.CREATED)
+      const newCategory = await this.commandBus.execute(
+        new CreateCategoryCommand(body, shop_id),
+      );
+      return this.responseHandler.createSuccessResponse(
+        newCategory,
+        'Category created successfully',
+        HttpStatus.CREATED,
+      );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   @Delete(':category_id')
   async deleteCategory(@Param('category_id') category_id: string) {
     try {
-      const result = await this.commandBus.execute(new DeleteCategoryCommand(category_id));
-      return this.responseHandler.createSuccessResponse(result, 'Category deleted successfully', HttpStatus.OK);
+      const result = await this.commandBus.execute(
+        new DeleteCategoryCommand(category_id),
+      );
+      return this.responseHandler.createSuccessResponse(
+        result,
+        'Category deleted successfully',
+        HttpStatus.OK,
+      );
     } catch (e) {
-      return this.responseHandler.createErrorResponse(e.message, HttpStatus.BAD_REQUEST);
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
-
 
   @Get('list')
   async listCategory() {

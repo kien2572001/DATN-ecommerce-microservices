@@ -1,9 +1,9 @@
-import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose"
-import {HydratedDocument, Types} from 'mongoose';
-import {BaseEntity} from "../../../base/base.entity";
-import {ProductStatusEnum} from "../../../enums/productStatus.enum";
-import {Category} from "../../category/repository/category.schema";
-import {Classification} from "./classification.schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
+import { BaseEntity } from '../../../base/base.entity';
+import { ProductStatusEnum } from '../../../enums/productStatus.enum';
+import { Category } from '../../category/repository/category.schema';
+import { Classification } from './classification.schema';
 
 export type ProductDocument = HydratedDocument<Product>;
 
@@ -13,7 +13,6 @@ export type ProductDocument = HydratedDocument<Product>;
     updatedAt: 'updated_at',
   },
 })
-
 export class Product extends BaseEntity {
   @Prop({
     index: true,
@@ -29,7 +28,7 @@ export class Product extends BaseEntity {
   product_slug: string;
 
   @Prop({
-    nullable: true
+    nullable: true,
   })
   product_thumb: string;
 
@@ -39,8 +38,15 @@ export class Product extends BaseEntity {
   @Prop()
   product_variants: Array<any>;
 
-  @Prop()
-  multimedia_content: Array<any>;
+  @Prop({
+    default: [],
+  })
+  images: Array<any>;
+
+  @Prop({
+    default: [],
+  })
+  videos: Array<any>;
 
   @Prop({
     default: 0,
@@ -50,6 +56,7 @@ export class Product extends BaseEntity {
   @Prop({
     default: 'DRAFT',
     enum: ProductStatusEnum,
+    index: true,
   })
   status: string;
 
@@ -63,7 +70,12 @@ export class Product extends BaseEntity {
     type: [Types.ObjectId],
     ref: 'Classification',
   })
-  classifications: Array<Types.ObjectId>
+  classifications: Array<Types.ObjectId>;
+
+  @Prop({
+    type: Object,
+  })
+  shipping_information: object;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

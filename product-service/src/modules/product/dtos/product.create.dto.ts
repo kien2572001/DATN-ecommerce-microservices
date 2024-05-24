@@ -4,15 +4,16 @@ import {
   IsInt,
   IsJSON,
   IsNotEmpty,
+  IsObject,
   IsOptional,
   IsString,
   MaxLength,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
-import {Type} from 'class-transformer';
-import {ProductStatusEnum} from "../../../enums/productStatus.enum";
-import {CreateClassificationDto} from "./classification.create.dto";
-import {CreateInventoryDto} from "../../inventory/dtos/inventory.create.dto";
+import { Type } from 'class-transformer';
+import { ProductStatusEnum } from '../../../enums/productStatus.enum';
+import { CreateClassificationDto } from './classification.create.dto';
+import { CreateInventoryDto } from '../../inventory/dtos/inventory.create.dto';
 
 export class CreateProductDto {
   @IsString()
@@ -29,7 +30,7 @@ export class CreateProductDto {
   @MaxLength(5000)
   product_description: string;
 
-  files: Express.Multer.File[];
+  //files: Express.Multer.File[];
 
   @IsOptional()
   @IsString()
@@ -37,18 +38,22 @@ export class CreateProductDto {
   status: string;
 
   @IsOptional()
-  @IsJSON()
+  @IsObject()
+  shipping_information: any;
+
+  @IsOptional()
+  @IsArray()
   product_variants: any;
 
   @IsOptional()
   @IsArray()
-  @ValidateNested({each: true})
+  @ValidateNested({ each: true })
   @Type(() => CreateClassificationDto)
   classifications: CreateClassificationDto[];
 
   @IsOptional()
   @IsArray()
-  @IsString({each: true})
+  @IsString({ each: true })
   @Type(() => String)
   inventories: CreateInventoryDto[];
 }
