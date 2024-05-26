@@ -1,14 +1,12 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateProductCommand } from '../impl/create-product.command';
 import { ProductRepository } from '../../repository/product.repository';
-import { FileService } from '../../../../utilities/file.service';
 import { CategoryRepository } from '../../../category/repository/category.repository';
-import { ClassificationRepository } from '../../repository/classification.repository';
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { Types } from 'mongoose';
 import { InventoryService } from '../../../inventory/inventory.service';
 import { CreateInventoryDto } from '../../../inventory/dtos/inventory.create.dto';
 import slugify from 'slugify';
+import { v4 as uuidv4 } from 'uuid';
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductHandler
@@ -16,18 +14,12 @@ export class CreateProductHandler
 {
   constructor(
     private readonly productRepository: ProductRepository,
-    private readonly fileService: FileService,
     private readonly categoryRepository: CategoryRepository,
-    private readonly classificationRepository: ClassificationRepository,
     private readonly inventoryService: InventoryService,
   ) {}
 
   async execute(command: CreateProductCommand) {
     const { product, shop_id } = command;
-    // const productImages = product.files
-    //   ? await this.fileService.uploadFiles(product.files)
-    //   : [];
-
     const category = await this.categoryRepository.findOneById(
       product.category_id,
     );
@@ -35,6 +27,7 @@ export class CreateProductHandler
       throw new HttpException('Category not found', HttpStatus.NOT_FOUND);
     }
     const timestamp = new Date().getTime();
+    //create product
     let newProduct = await this.productRepository.create({
       product_name: product.product_name,
       product_slug: slugify(product.product_name + '-' + timestamp),
@@ -44,51 +37,56 @@ export class CreateProductHandler
       category: category,
       shop_id: shop_id,
       shipping_information: product.shipping_information,
+      is_has_many_classifications: product.is_has_many_classifications,
     });
 
-    for (const classification of product.classifications) {
-      const classificationItems = [];
-      for (const item of classification.items) {
-        const newItem = {
-          _id: new Types.ObjectId(),
-          item_name: item,
-        };
-        classificationItems.push(newItem);
-      }
-      const newClassification = await this.classificationRepository.create({
-        classification_name: classification.classification_name,
-        items: classificationItems,
-        product: newProduct._id,
+    if (product.is_has_many_classifications) {
+      //await this.productRepository.update(newProduct._id, newProduct);
+      const classifications = product.classifications;
+      let inventories = product.inventories;
+      inventories = inventories.map((inventory) => {
+        inventory.product_id = newProduct._id;
+        inventory.classification_main_id = this.searchItemNameToId(
+          classifications,
+          // @ts-ignore
+          inventory.classification_main_id.item_name,
+        );
+        inventory.classification_sub_id = this.searchItemNameToId(
+          classifications,
+          // @ts-ignore
+          inventory.classification_sub_id.item_name,
+        );
+        return inventory;
       });
-      newProduct.classifications.push(
-        new Types.ObjectId(newClassification._id),
+      let createdInventories =
+        await this.inventoryService.createManyInventories(inventories);
+
+      let minPrice = await this.findMinPriceOfInventories(
+        createdInventories as any,
       );
+
+      await this.productRepository.update(newProduct._id, {
+        price: minPrice,
+        classifications: classifications,
+      });
+    } else {
+      let inventory = await this.inventoryService.createInventory({
+        product_id: newProduct._id,
+        quantity: product.inventory.quantity,
+        price: product.inventory.price,
+        discount: 0,
+        discount_price: 0,
+      } as CreateInventoryDto);
+
+      await this.productRepository.update(newProduct._id, {
+        // @ts-ignore
+        inventory_id: inventory.inventory_id,
+        // @ts-ignore
+        price: inventory.price,
+      });
     }
 
-    await this.productRepository.update(newProduct._id, newProduct);
-    let returnProduct = await this.productRepository.findOneByIdWithPopulate(
-      newProduct._id,
-      ['category', 'classifications'],
-    );
-    let classifications = returnProduct.classifications;
-    let inventories = product.inventories;
-    inventories = inventories.map((inventory) => {
-      inventory.product_id = returnProduct._id;
-      inventory.classification_main_id = this.searchItemNameToId(
-        classifications,
-        inventory.classification_main_id,
-      );
-      inventory.classification_sub_id = this.searchItemNameToId(
-        classifications,
-        inventory.classification_sub_id,
-      );
-      return inventory;
-    });
-    let createdInventories =
-      await this.inventoryService.createManyInventories(inventories);
-    // @ts-ignore
-    returnProduct.inventories = createdInventories;
-    return returnProduct;
+    return newProduct._id;
   }
 
   private searchItemNameToId(classifications: any[], name: string) {
@@ -100,5 +98,15 @@ export class CreateProductHandler
       }
     }
     return null;
+  }
+
+  private async findMinPriceOfInventories(inventories: any[]) {
+    let minPrice = Number.MAX_SAFE_INTEGER;
+    for (const inventory of inventories) {
+      if (inventory.price < minPrice) {
+        minPrice = inventory.price;
+      }
+    }
+    return minPrice;
   }
 }

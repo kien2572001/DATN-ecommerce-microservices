@@ -3,24 +3,26 @@ import {
   IsEnum,
   IsInt,
   IsJSON,
-  IsNotEmpty, IsNumber,
+  IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   MaxLength,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
-import {Type} from 'class-transformer';
+import { Type } from 'class-transformer';
 
 export class CreateInventoryDto {
-  @IsOptional()
   @IsString()
   @Type(() => String)
   product_id: string;
 
+  @IsOptional()
   @IsString()
   @Type(() => String)
   classification_main_id: string;
 
+  @IsOptional()
   @IsString()
   @Type(() => String)
   classification_sub_id: string;

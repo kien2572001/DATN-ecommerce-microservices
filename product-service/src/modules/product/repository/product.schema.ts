@@ -3,7 +3,7 @@ import { HydratedDocument, Types } from 'mongoose';
 import { BaseEntity } from '../../../base/base.entity';
 import { ProductStatusEnum } from '../../../enums/productStatus.enum';
 import { Category } from '../../category/repository/category.schema';
-import { Classification } from './classification.schema';
+import * as paginate from 'mongoose-paginate-v2';
 
 export type ProductDocument = HydratedDocument<Product>;
 
@@ -54,6 +54,11 @@ export class Product extends BaseEntity {
   sold_quantity: number;
 
   @Prop({
+    default: 0,
+  })
+  price: number;
+
+  @Prop({
     default: 'DRAFT',
     enum: ProductStatusEnum,
     index: true,
@@ -67,10 +72,19 @@ export class Product extends BaseEntity {
   category: Category;
 
   @Prop({
-    type: [Types.ObjectId],
-    ref: 'Classification',
+    type: Boolean,
+    default: false,
   })
-  classifications: Array<Types.ObjectId>;
+  is_has_many_classifications: boolean;
+  @Prop({
+    nullable: true,
+  })
+  inventory_id: number;
+
+  @Prop({
+    default: [],
+  })
+  classifications: Array<any>;
 
   @Prop({
     type: Object,
@@ -79,3 +93,4 @@ export class Product extends BaseEntity {
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
+ProductSchema.plugin(paginate);

@@ -1,15 +1,15 @@
-import {MiddlewareConsumer, Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {ConfigModule, ConfigService} from "@nestjs/config";
-import configuration from "./configs/configuration";
-import {JwtPayloadMiddleware} from "./middlewares/jwt-payload.middleware";
-import {LoggingMiddleware} from "./middlewares/logging.middleware";
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {InventoryEntity} from "./modules/inventory/repository/inventory.entity";
-import {InventoryModule} from "./modules/inventory/inventory.module";
-import {RedisModule} from '@nestjs-modules/ioredis';
-import {CartModule} from "./modules/cart/cart.module";
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import configuration from './configs/configuration';
+import { JwtPayloadMiddleware } from './middlewares/jwt-payload.middleware';
+import { LoggingMiddleware } from './middlewares/logging.middleware';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { InventoryEntity } from './modules/inventory/repository/inventory.entity';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import { RedisModule } from '@nestjs-modules/ioredis';
+import { CartModule } from './modules/cart/cart.module';
 
 @Module({
   imports: [

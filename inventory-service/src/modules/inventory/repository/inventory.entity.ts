@@ -5,9 +5,8 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm";
-
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class InventoryEntity {
@@ -17,13 +16,17 @@ export class InventoryEntity {
   @Column()
   product_id: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   classification_main_id: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   classification_sub_id: string;
 
-  @Column('json', {nullable: true})
+  @Column('json', { nullable: true })
   thumbnail: Record<string, any>;
 
   @CreateDateColumn()

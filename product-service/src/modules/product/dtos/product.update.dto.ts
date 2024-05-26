@@ -16,7 +16,11 @@ import { ProductStatusEnum } from '../../../enums/productStatus.enum';
 import { CreateClassificationDto } from './classification.create.dto';
 import { CreateInventoryDto } from '../../inventory/dtos/inventory.create.dto';
 
-export class CreateProductDto {
+export class UpdateProductDto {
+  @IsString()
+  @Type(() => String)
+  _id: string;
+
   @IsString()
   @Type(() => String)
   category_id: string;
