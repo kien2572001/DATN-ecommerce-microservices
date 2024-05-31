@@ -1,35 +1,18 @@
-import {Prop, SchemaFactory, Schema} from "@nestjs/mongoose";
-import {HydratedDocument, Schema as MongooseSchema, Types} from "mongoose";
-
+import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
+import { Factory } from 'nestjs-seeder';
+import { RolesEnum } from 'src/enums/roles.enum';
 
 export type UserDocument = HydratedDocument<UserEntity>;
 
 @Schema({
   timestamps: true,
 })
-export class AddressEntity {
-  @Prop()
-  customer_name: string;
-
-  @Prop()
-  type: string;
-
-  @Prop()
-  location: string;
-
-  @Prop({
-    default: false,
-  })
-  is_default: boolean;
-
-  @Prop()
-  phone_number: string;
-}
-
 @Schema({
   timestamps: true,
 })
 export class UserEntity {
+  @Factory((faker) => faker.internet.userName())
   @Prop({
     //required: true,
     //unique: true,
@@ -37,6 +20,7 @@ export class UserEntity {
   })
   username: string;
 
+  @Factory((faker) => faker.internet.email())
   @Prop({
     unique: true,
     index: true,
@@ -44,6 +28,7 @@ export class UserEntity {
   })
   email: string;
 
+  @Factory((faker) => faker.phone.number())
   @Prop({
     //required: true,
     index: true,
@@ -51,26 +36,37 @@ export class UserEntity {
   })
   phone_number: string;
 
+  @Factory('$2b$10$hIPrwi8ItujKhULFuJOeiuekKzgyuSIhQZDcUpAhoYFqr1fsS3qR2')
   @Prop({
     required: true,
   })
   password: string;
 
+  @Factory((faker) => faker.internet.displayName())
   @Prop({
     //required: true,
   })
   display_name: string;
 
+  @Factory((faker) => faker.person.gender())
   @Prop({
     nullable: true,
   })
   gender: string;
 
+  @Factory((faker) => faker.date.past())
   @Prop({
     nullable: true,
   })
   birthdate: Date;
 
+  @Factory((faker) =>
+    faker.helpers.arrayElement([
+      RolesEnum.ADMIN,
+      RolesEnum.BUYER,
+      RolesEnum.SELLER,
+    ]),
+  )
   @Prop({
     index: true,
     required: true,
@@ -80,14 +76,9 @@ export class UserEntity {
   @Prop({
     default: [],
   })
-  address: AddressEntity[];
+  address: any[];
 
-  @Prop({
-    type: MongooseSchema.Types.ObjectId, ref: 'AddressEntity',
-    nullable: true,
-  })
-  default_address_id: Types.ObjectId;
-
+  @Factory((faker) => faker.image.avatar())
   @Prop({
     nullable: true,
   })
@@ -100,4 +91,3 @@ export class UserEntity {
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserEntity);
-export const AddressSchema = SchemaFactory.createForClass(AddressEntity);

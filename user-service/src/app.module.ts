@@ -8,7 +8,7 @@ import { ShopModule } from './modules/shop/shop.module';
 import configuration from './configs/configuration';
 import { JwtPayloadMiddleware } from './middlewares/jwt-payload.middleware';
 import { LoggingMiddleware } from './middlewares/logging.middleware';
-
+import { AddressModule } from './modules/address/address.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +24,7 @@ import { LoggingMiddleware } from './middlewares/logging.middleware';
     }),
     UserModule,
     ShopModule,
+    AddressModule,
   ],
   controllers: [AppController],
   providers: [AppService],

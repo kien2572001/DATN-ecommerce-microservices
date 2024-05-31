@@ -53,7 +53,8 @@ export class CreateProductDto {
   @IsOptional()
   @IsObject()
   @Type(() => Object)
-  inventory: CreateInventoryDto;
+  //inventory: CreateInventoryDto;
+  inventory: any;
 
   @IsOptional()
   @IsArray()

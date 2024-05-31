@@ -11,6 +11,7 @@ import { ProductModule } from './modules/product/product.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import * as redisStore from 'cache-manager-redis-store';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ReviewModule } from './modules/review/review.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -47,6 +48,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     }),
     CategoryModule,
     ProductModule,
+    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService],

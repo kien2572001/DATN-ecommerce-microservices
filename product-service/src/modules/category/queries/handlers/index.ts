@@ -1,3 +1,6 @@
 import { GetAllCategoriesHandler } from './get-all-categories.handler';
-
-export const CategoryQueryHandlers = [GetAllCategoriesHandler];
+import { GetCategoriesRootHandler } from './get-categories-root.handler';
+export const CategoryQueryHandlers = [
+  GetAllCategoriesHandler,
+  GetCategoriesRootHandler,
+];

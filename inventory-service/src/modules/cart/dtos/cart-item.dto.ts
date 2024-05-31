@@ -3,18 +3,22 @@ import {
   IsEnum,
   IsInt,
   IsJSON,
-  IsNotEmpty, IsNumber,
+  IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   MaxLength,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
-import {Transform, Type} from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 
 export class CartItemDto {
   @IsString()
   @Type(() => String)
   product_id: string;
+
+  @Type(() => Number || String)
+  inventory_id: number | string;
 
   @IsString()
   @Type(() => String)

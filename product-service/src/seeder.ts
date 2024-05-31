@@ -4,7 +4,17 @@ import {
   Category,
   CategorySchema,
 } from './modules/category/repository/category.schema';
-import { CategorySeeder } from './db/seeds/categories.seeder';
+import { ProductSeeder } from './db/seeds/product.seeder';
+import {
+  Product,
+  ProductSchema,
+} from './modules/product/repository/product.schema';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import {
+  Review,
+  ReviewSchema,
+} from './modules/review/repository/review.schema';
+import { ReviewSeeder } from './db/seeds/reaction.seeder';
 
 seeder({
   imports: [
@@ -16,6 +26,15 @@ seeder({
         name: Category.name,
         schema: CategorySchema,
       },
+      {
+        name: Product.name,
+        schema: ProductSchema,
+      },
+      {
+        name: Review.name,
+        schema: ReviewSchema,
+      },
     ]),
+    InventoryModule,
   ],
-}).run([CategorySeeder]);
+}).run([ProductSeeder, ReviewSeeder]);

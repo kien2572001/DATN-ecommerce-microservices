@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryRepository } from './repository/category.repository';
 import { CategorySeeder } from '../../db/seeds/categories.seeder';
 import { CategoryQueryHandlers } from './queries/handlers';
+import { CategoryPublicController } from './controllers/category.public.controller';
 @Module({
   imports: [
     UtilitiesModule,
@@ -20,7 +21,7 @@ import { CategoryQueryHandlers } from './queries/handlers';
       },
     ]),
   ],
-  controllers: [CategoryPrivateController],
+  controllers: [CategoryPrivateController, CategoryPublicController],
   providers: [
     CommandBus,
     ...CategoryCommandHandlers,

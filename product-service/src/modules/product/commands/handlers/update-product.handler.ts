@@ -52,7 +52,7 @@ export class UpdateProductHandler
     updateProduct.status = product.status;
     updateProduct.product_variants = product.product_variants;
     updateProduct.category = category;
-    updateProduct.shop_id = shop_id;
+    //updateProduct.shop_id = shop_id;
     updateProduct.shipping_information = product.shipping_information;
     updateProduct.is_has_many_classifications =
       product.is_has_many_classifications;

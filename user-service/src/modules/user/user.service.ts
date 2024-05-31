@@ -22,9 +22,17 @@ export class UserService {
     return await this.userRepository.findById(id);
   }
 
+  async getUserByListIds(ids: string[], includes: string[] = []) {
+    return await this.userRepository.getUserByListIds(ids, includes);
+  }
+
   async createByEmail(body: UserCreateByEmailDto) {
     body.password = await bcrypt.hash(body.password, 10);
     return this.userRepository.createByEmail(body);
+  }
+
+  async getListUserIds(role: string) {
+    return await this.userRepository.getListUserIds(role);
   }
 
   async checkExistingEmail(email: string) {

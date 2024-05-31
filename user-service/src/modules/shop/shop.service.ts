@@ -1,12 +1,20 @@
-import {Injectable} from "@nestjs/common";
-import {ShopRepository} from "./repository/shop.repository";
+import { Injectable } from '@nestjs/common';
+import { ShopRepository } from './repository/shop.repository';
 
 @Injectable()
 export class ShopService {
-  constructor(
-    private readonly shopRepository: ShopRepository
-  ) {
+  constructor(private readonly shopRepository: ShopRepository) {}
 
+  async getShopByListIds(
+    shopIds: string[],
+    populate: string[] = [],
+    includes: string[] = [],
+  ) {
+    return await this.shopRepository.findByListIds(shopIds, populate, includes);
+  }
+
+  async getListShopIds() {
+    return await this.shopRepository.findAll({});
   }
 
   async getShopById(id: string) {

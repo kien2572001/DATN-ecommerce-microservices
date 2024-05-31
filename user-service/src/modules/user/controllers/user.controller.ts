@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Get, Param, Request } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Param,
+  Request,
+  Query,
+} from '@nestjs/common';
 import { UserService } from '../user.service';
 import { UserCreateByEmailDto } from '../dtos/user.by-email.create.dto';
 import { UserLoginDto } from '../dtos/user.login.dto';
@@ -13,6 +21,30 @@ export class UserController {
     private readonly userService: UserService,
     private readonly responseHandler: ResponseHandler,
   ) {}
+
+  @Get('/list-user-ids')
+  async getListUserIds(@Query('role') role: string) {
+    let users: any = await this.userService.getListUserIds(role);
+    users = users.map((user) => user._id);
+    return this.responseHandler.createSuccessResponse(
+      users,
+      'List of user ids',
+      HttpStatus.OK,
+    );
+  }
+
+  @Post('/by-list-ids')
+  async getUserByListIds(
+    @Body('ids') ids: string[],
+    @Body('includes') includes: string[] = [],
+  ) {
+    const users = await this.userService.getUserByListIds(ids, includes);
+    return this.responseHandler.createSuccessResponse(
+      users,
+      'List of users',
+      HttpStatus.OK,
+    );
+  }
 
   @Get('/my-profile')
   async getMyProfile(@Request() req: any) {

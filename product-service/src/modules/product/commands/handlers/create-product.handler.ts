@@ -44,20 +44,33 @@ export class CreateProductHandler
       //await this.productRepository.update(newProduct._id, newProduct);
       const classifications = product.classifications;
       let inventories = product.inventories;
-      inventories = inventories.map((inventory) => {
-        inventory.product_id = newProduct._id;
-        inventory.classification_main_id = this.searchItemNameToId(
-          classifications,
-          // @ts-ignore
-          inventory.classification_main_id.item_name,
-        );
-        inventory.classification_sub_id = this.searchItemNameToId(
-          classifications,
-          // @ts-ignore
-          inventory.classification_sub_id.item_name,
-        );
-        return inventory;
-      });
+      if (classifications.length === 2) {
+        inventories = inventories.map((inventory) => {
+          inventory.product_id = newProduct._id;
+          inventory.classification_main_id = this.searchItemNameToId(
+            classifications[0],
+            // @ts-ignore
+            inventory.classification_main_id.item_name,
+          );
+          inventory.classification_sub_id = this.searchItemNameToId(
+            classifications[1],
+            // @ts-ignore
+            inventory.classification_sub_id.item_name,
+          );
+          return inventory;
+        });
+      } else if (classifications.length === 1) {
+        inventories = inventories.map((inventory) => {
+          inventory.product_id = newProduct._id;
+          inventory.classification_main_id = this.searchItemNameToId(
+            classifications[0],
+            // @ts-ignore
+            inventory.classification_main_id.item_name,
+          );
+          inventory.classification_sub_id = null;
+          return inventory;
+        });
+      }
       let createdInventories =
         await this.inventoryService.createManyInventories(inventories);
 
@@ -89,12 +102,10 @@ export class CreateProductHandler
     return newProduct._id;
   }
 
-  private searchItemNameToId(classifications: any[], name: string) {
-    for (const classification of classifications) {
-      for (const item of classification.items) {
-        if (item.item_name === name) {
-          return item._id;
-        }
+  private searchItemNameToId(classification: any, name: string) {
+    for (const item of classification.items) {
+      if (item.item_name === name) {
+        return item._id;
       }
     }
     return null;

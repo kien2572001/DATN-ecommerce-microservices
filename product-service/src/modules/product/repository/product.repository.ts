@@ -13,6 +13,17 @@ export class ProductRepository extends BaseAbstractRepository<Product> {
     super(productModel);
   }
 
+  async findProductByListIds(
+    ids: string[],
+    populate: string[] = [],
+    includes: string[] = [],
+  ) {
+    return this.productModel
+      .find({ _id: { $in: ids } })
+      .select(includes.join(' '))
+      .lean();
+  }
+
   async findOneByIdWithPopulate(
     id: string,
     populate: string[] = [],

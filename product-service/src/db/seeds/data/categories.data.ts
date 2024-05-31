@@ -145,20 +145,6 @@ export const categoriesSeedData: Category[] = [
       {
         category_name: 'Áo sơ mi',
         level: 1,
-        children: [
-          {
-            category_name: 'Áo sơ mi trắng',
-            level: 2,
-          },
-          {
-            category_name: 'Áo sơ mi đen',
-            level: 2,
-          },
-          {
-            category_name: 'Áo sơ mi xanh',
-            level: 2,
-          },
-        ],
       },
       {
         category_name: 'Quần jeans',
@@ -192,7 +178,6 @@ export const categoriesSeedData: Category[] = [
     children: [
       {
         category_name: 'Đầm dạ hội',
-        path: '/4/41',
         level: 1,
         children: [
           {
@@ -241,6 +226,288 @@ export const categoriesSeedData: Category[] = [
           },
           {
             category_name: 'Túi xách cầm tay',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Sắc đẹp',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/sac-dep.png',
+    children: [
+      {
+        category_name: 'Trang điểm',
+        level: 1,
+        children: [
+          {
+            category_name: 'Son môi',
+            level: 2,
+          },
+          {
+            category_name: 'Phấn nền',
+            level: 2,
+          },
+          {
+            category_name: 'Mascara',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Chăm sóc da',
+        level: 1,
+        children: [
+          {
+            category_name: 'Kem dưỡng da',
+            level: 2,
+          },
+          {
+            category_name: 'Sữa rửa mặt',
+            level: 2,
+          },
+          {
+            category_name: 'Mặt nạ',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Thể thao du lịch',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/the-thao-du-lich.png',
+    children: [
+      {
+        category_name: 'Dụng cụ thể thao',
+        level: 1,
+        children: [
+          {
+            category_name: 'Bóng đá',
+            level: 2,
+          },
+          {
+            category_name: 'Bóng chuyền',
+            level: 2,
+          },
+          {
+            category_name: 'Cầu lông',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Thiết bị du lịch',
+        level: 1,
+        children: [
+          {
+            category_name: 'Ba lô',
+            level: 2,
+          },
+          {
+            category_name: 'Lều trại',
+            level: 2,
+          },
+          {
+            category_name: 'Đèn pin',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Đồ chơi',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/do-choi.png',
+    children: [
+      {
+        category_name: 'Đồ chơi trẻ em',
+        level: 1,
+        children: [
+          {
+            category_name: 'Đồ chơi giáo dục',
+            level: 2,
+          },
+          {
+            category_name: 'Đồ chơi xếp hình',
+            level: 2,
+          },
+          {
+            category_name: 'Đồ chơi búp bê',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Đồ chơi ngoài trời',
+        level: 1,
+        children: [
+          {
+            category_name: 'Xe đạp trẻ em',
+            level: 2,
+          },
+          {
+            category_name: 'Cầu trượt',
+            level: 2,
+          },
+          {
+            category_name: 'Nhà bóng',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Đồng hồ',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/dong-ho.png',
+    children: [
+      {
+        category_name: 'Đồng hồ nam',
+        level: 1,
+        children: [
+          {
+            category_name: 'Đồng hồ cơ',
+            level: 2,
+          },
+          {
+            category_name: 'Đồng hồ điện tử',
+            level: 2,
+          },
+          {
+            category_name: 'Đồng hồ thể thao',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Đồng hồ nữ',
+        level: 1,
+        children: [
+          {
+            category_name: 'Đồng hồ thời trang',
+            level: 2,
+          },
+          {
+            category_name: 'Đồng hồ đính đá',
+            level: 2,
+          },
+          {
+            category_name: 'Đồng hồ dây da',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Sức khỏe',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/suc-khoe.png',
+    children: [
+      {
+        category_name: 'Thực phẩm chức năng',
+        level: 1,
+        children: [
+          {
+            category_name: 'Vitamin',
+            level: 2,
+          },
+          {
+            category_name: 'Khoáng chất',
+            level: 2,
+          },
+          {
+            category_name: 'Thảo dược',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Thiết bị y tế',
+        level: 1,
+        children: [
+          {
+            category_name: 'Máy đo huyết áp',
+            level: 2,
+          },
+          {
+            category_name: 'Máy đo đường huyết',
+            level: 2,
+          },
+          {
+            category_name: 'Nhiệt kế',
+            level: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category_name: 'Nhà Sách online',
+    level: 0,
+    category_thumb:
+      'https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/categories/nha-sach-online.png',
+    children: [
+      {
+        category_name: 'Sách giáo khoa',
+        level: 1,
+        children: [
+          {
+            category_name: 'Tiểu học',
+            level: 2,
+          },
+          {
+            category_name: 'Trung học cơ sở',
+            level: 2,
+          },
+          {
+            category_name: 'Trung học phổ thông',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Sách văn học',
+        level: 1,
+        children: [
+          {
+            category_name: 'Tiểu thuyết',
+            level: 2,
+          },
+          {
+            category_name: 'Truyện ngắn',
+            level: 2,
+          },
+          {
+            category_name: 'Thơ',
+            level: 2,
+          },
+        ],
+      },
+      {
+        category_name: 'Sách kỹ năng',
+        level: 1,
+        children: [
+          {
+            category_name: 'Kỹ năng sống',
+            level: 2,
+          },
+          {
+            category_name: 'Kỹ năng làm việc',
+            level: 2,
+          },
+          {
+            category_name: 'Kỹ năng giao tiếp',
             level: 2,
           },
         ],

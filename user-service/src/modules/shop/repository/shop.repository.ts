@@ -1,11 +1,27 @@
-import {Injectable} from "@nestjs/common";
-import {InjectModel} from "@nestjs/mongoose";
-import {Model} from "mongoose";
-import {ShopEntity, ShopSchema} from "./shop.entity";
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { ShopEntity, ShopSchema } from './shop.entity';
 
 @Injectable()
 export class ShopRepository {
-  constructor(@InjectModel(ShopEntity.name) private shopModel: Model<ShopEntity>) {
+  constructor(
+    @InjectModel(ShopEntity.name) private shopModel: Model<ShopEntity>,
+  ) {}
+
+  async findAll(filter: any) {
+    return this.shopModel.find(filter).lean();
+  }
+
+  async findByListIds(ids: string[], populate = [], includes = []) {
+    let query = this.shopModel.find({ _id: { $in: ids } });
+    if (populate.length) {
+      query = query.populate(populate.join(' '));
+    }
+    if (includes.length) {
+      query = query.select(includes.join(' '));
+    }
+    return query.lean();
   }
 
   async findById(id: string, populateUser = false) {
@@ -17,7 +33,7 @@ export class ShopRepository {
   }
 
   async findByUserId(userId: string) {
-    return this.shopModel.findOne({user_id: userId}).lean();
+    return this.shopModel.findOne({ user_id: userId }).lean();
   }
 
   async create(body: any) {
@@ -25,6 +41,6 @@ export class ShopRepository {
   }
 
   async existsByUserId(userId: string) {
-    return this.shopModel.exists({user_id: userId});
+    return this.shopModel.exists({ user_id: userId });
   }
 }

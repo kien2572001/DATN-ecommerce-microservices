@@ -21,6 +21,40 @@ export class InventoryPublicController {
     private readonly responseHandler: ResponseHandler,
   ) {}
 
+  @Post('/purchase')
+  async purchaseInventories(@Body() body: any) {
+    try {
+      const res = await this.inventoryService.purchaseInventories(body);
+      return this.responseHandler.createSuccessResponse(
+        res,
+        'Inventory purchased successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
+  @Post('/return')
+  async returnInventories(@Body() body: any) {
+    try {
+      const res = await this.inventoryService.returnInventories(body);
+      return this.responseHandler.createSuccessResponse(
+        res,
+        'Inventory returned successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
   @Post('create')
   async createInventory(@Body() body: CreateInventoryDto) {
     try {

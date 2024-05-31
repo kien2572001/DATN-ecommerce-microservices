@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InventoryRepository } from './repository/inventory.repository';
 import { InjectRedis } from '@nestjs-modules/ioredis';
 import Redis from 'ioredis';
+import { In } from 'typeorm';
 
 export interface CacheInventory {
   quantity: number;
@@ -21,9 +22,116 @@ export class InventoryService {
     this.redisClient = client;
   }
 
+  async purchaseInventories(inventories: any[]) {
+    return true;
+    const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
+    const args = [inventories.length];
+    for (let i = 0; i < inventories.length; i++) {
+      args.push(inventories[i].inventory_id, inventories[i].quantity);
+    }
+    const luaScript = `
+      local numInventories = tonumber(ARGV[1])
+      local inventories = {}
+      
+      for i = 1, numInventories do
+          local inventory_id = ARGV[(i - 1) * 2 + 2]
+          local quantity = tonumber(ARGV[(i - 1) * 2 + 3])
+          table.insert(inventories, { inventory_id = inventory_id, quantity = quantity })
+      end
+      
+      for i = 1, #inventories do
+          local quantity = redis.call("HGET", KEYS[i], "quantity")
+          if not quantity then
+              return 0
+          end
+          quantity = tonumber(quantity)
+          if quantity < inventories[i].quantity then
+              return 0
+          end
+      end
+      
+      for i = 1, #inventories do
+          local quantity = redis.call("HGET", KEYS[i], "quantity")
+          quantity = tonumber(quantity)
+          quantity = quantity - inventories[i].quantity
+          redis.call("HSET", KEYS[i], "quantity", tostring(quantity))
+      end
+      
+      return 1
+    `;
+
+    // Gọi Lua script trên Redis
+    const result = await this.redisClient.eval(
+      luaScript,
+      keys.length,
+      ...keys,
+      ...args,
+    );
+    console.log('Result:', result);
+    if (result === 1) {
+      return true;
+    } else {
+      throw new Error('Failed to purchase inventories');
+    }
+  }
+
+  async returnInventories(inventories: any[]) {
+    const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
+    const args = [inventories.length];
+    for (let i = 0; i < inventories.length; i++) {
+      args.push(inventories[i].inventory_id, inventories[i].quantity);
+    }
+
+    const luaScript = `
+      local numInventories = tonumber(ARGV[1])
+      local inventories = {}
+      
+      for i = 1, numInventories do
+          local inventory_id = ARGV[(i - 1) * 2 + 2]
+          local quantity = tonumber(ARGV[(i - 1) * 2 + 3])
+          table.insert(inventories, { inventory_id = inventory_id, quantity = quantity })
+      end
+
+      for i = 1, #inventories do
+          local quantity = redis.call("HGET", KEYS[i], "quantity")
+          quantity = tonumber(quantity)
+          quantity = quantity + inventories[i].quantity
+          redis.call("HSET", KEYS[i], "quantity", tostring(quantity))
+      end
+      
+      return 1
+    `;
+
+    // Gọi Lua script trên Redis
+    const result = await this.redisClient.eval(
+      luaScript,
+      keys.length,
+      ...keys,
+      ...args,
+    );
+    console.log('Result:', result);
+    if (result === 1) {
+      return true;
+    } else {
+      throw new Error('Failed to return inventories');
+    }
+  }
+
   async getInventory() {
     const inventories: Array<any> = await this.inventoryRepository.find();
 
+    for (let i = 0; i < inventories.length; i++) {
+      inventories[i] = await this.getInventoryFromCache(inventories[i]);
+    }
+    return inventories;
+  }
+
+  async getInventoryByListIds(ids: number[]) {
+    const inventories = await this.inventoryRepository.find({
+      where: {
+        inventory_id: In(ids),
+      },
+    });
     for (let i = 0; i < inventories.length; i++) {
       inventories[i] = await this.getInventoryFromCache(inventories[i]);
     }
@@ -58,16 +166,36 @@ export class InventoryService {
       classification_sub_id: inventory.classification_sub_id,
       thumbnail: inventory.thumbnail,
     };
+
+    // Lưu thông tin của inventory vào cơ sở dữ liệu
     const createdInventory =
       await this.inventoryRepository.save(databaseInventory);
-    const cacheData: CacheInventory = {
-      quantity: inventory.quantity,
-      price: inventory.price,
-      discount: inventory.discount,
-      discount_price: inventory.discount_price,
-    };
-    const cacheKey = `inventory_${createdInventory.inventory_id}`;
-    await this.redisClient.set(cacheKey, JSON.stringify(cacheData));
+
+    // Lưu thông tin của inventory vào Redis dưới dạng hash set
+    const cacheKey = `inventory:${createdInventory.inventory_id}`;
+    await this.redisClient.hset(
+      cacheKey,
+      'price',
+      inventory.price?.toString() || '0',
+    );
+    await this.redisClient.hset(
+      cacheKey,
+      'quantity',
+      inventory.quantity?.toString() || '0',
+    );
+    await this.redisClient.hset(cacheKey, 'price', inventory.price.toString());
+    await this.redisClient.hset(
+      cacheKey,
+      'discount',
+      inventory.discount?.toString() || '0',
+    );
+    await this.redisClient.hset(
+      cacheKey,
+      'discount_price',
+      inventory.discount_price?.toString() || '0',
+    );
+
+    // Trả về thông tin của inventory từ Redis
     return await this.getInventoryFromCache(createdInventory);
   }
 
@@ -76,12 +204,13 @@ export class InventoryService {
   }
 
   async deleteInventory(id: number) {
-    const cacheKey = `inventory_${id}`;
+    const cacheKey = `inventory:${id}`;
     await this.redisClient.del(cacheKey);
     return await this.inventoryRepository.delete(id);
   }
 
   async createManyInventories(inventories: any[]) {
+    console.log('Creating many inventories');
     let newInventories = [];
     for (let inventory of inventories) {
       let databaseInventory = {
@@ -96,32 +225,67 @@ export class InventoryService {
     const createdInventories =
       await this.inventoryRepository.save(newInventories);
     const endTime = process.hrtime(startTime); // End time measurement
+    console.log(
+      'Time to save inventories to database: %ds %dms',
+      endTime[0],
+      endTime[1] / 1000000,
+    );
     for (let i = 0; i < createdInventories.length; i++) {
-      const cacheData: CacheInventory = {
-        quantity: inventories[i].quantity,
-        price: inventories[i].price,
-        discount: inventories[i].discount,
-        discount_price: inventories[i].discount_price,
-      };
-      const cacheKey = `inventory_${createdInventories[i].inventory_id}`;
-      const rs = await this.redisClient.set(
-        cacheKey,
-        JSON.stringify(cacheData),
+      const inventory = createdInventories[i];
+
+      // Chuyển đổi số thành chuỗi trước khi lưu vào Redis
+      const quantityString = inventories[i].quantity?.toString() || '0';
+      const priceString = inventories[i].price?.toString() || '0';
+      const discountString = inventories[i].discount?.toString() || '0';
+      const discountPriceString =
+        inventories[i].discount_price?.toString() || '0';
+
+      // Lưu từng trường của inventory vào Redis với cấu trúc hash set
+      await this.redisClient.hset(
+        `inventory:${inventory.inventory_id}`,
+        'quantity',
+        quantityString,
       );
-      createdInventories[i] = await this.getInventoryFromCache(
-        createdInventories[i],
+      await this.redisClient.hset(
+        `inventory:${inventory.inventory_id}`,
+        'price',
+        priceString,
       );
+      await this.redisClient.hset(
+        `inventory:${inventory.inventory_id}`,
+        'discount',
+        discountString,
+      );
+      await this.redisClient.hset(
+        `inventory:${inventory.inventory_id}`,
+        'discount_price',
+        discountPriceString,
+      );
+
+      // Truy xuất dữ liệu từ Redis và cập nhật lại createdInventories
+      createdInventories[i] = await this.getInventoryFromCache(inventory);
     }
     return createdInventories;
   }
 
   private async getInventoryFromCache(inventory: any) {
-    const cacheKey = `inventory_${inventory.inventory_id}`;
-    const cacheData: any = JSON.parse(await this.redisClient.get(cacheKey));
-    inventory.quantity = Number(cacheData?.quantity) || 0;
-    inventory.price = Number(cacheData?.price) || 0;
-    inventory.discount = Number(cacheData?.discount) || 0;
-    inventory.discount_price = Number(cacheData?.discount_price) || 0;
+    const cacheKey = `inventory:${inventory.inventory_id}`;
+    console.log('Getting inventory from cache:', cacheKey);
+    const cacheData: any = await this.redisClient.hgetall(cacheKey);
+    console.log('Cache data:', cacheData);
+    if (cacheData) {
+      // Cập nhật các trường của inventory từ cacheData nếu có
+      inventory.quantity = Number(cacheData['quantity']) || 0;
+      inventory.price = Number(cacheData['price']) || 0;
+      inventory.discount = Number(cacheData['discount']) || 0;
+      inventory.discount_price = Number(cacheData['discount_price']) || 0;
+    } else {
+      // Nếu không tìm thấy dữ liệu trong Redis, set các trường về giá trị mặc định
+      inventory.quantity = 0;
+      inventory.price = 0;
+      inventory.discount = 0;
+      inventory.discount_price = 0;
+    }
     return inventory;
   }
 
@@ -132,7 +296,7 @@ export class InventoryService {
       },
     });
     for (let i = 0; i < inventories.length; i++) {
-      const cacheKey = `inventory_${inventories[i].inventory_id}`;
+      const cacheKey = `inventory:${inventories[i].inventory_id}`;
       await this.redisClient.del(cacheKey);
     }
     return await this.inventoryRepository.delete({
@@ -145,16 +309,14 @@ export class InventoryService {
     price: number,
     quantity: number,
   ) {
-    const inventory = await this.inventoryRepository.findOne({
-      where: {
-        inventory_id: inventoryId,
-      },
-    });
-    const cacheKey = `inventory_${inventoryId}`;
-    const data = JSON.parse(await this.redisClient.get(cacheKey));
-    data.price = Number(price);
-    data.quantity = Number(quantity);
-    await this.redisClient.set(cacheKey, JSON.stringify(data));
+    // const inventory = await this.inventoryRepository.findOne({
+    //   where: {
+    //     inventory_id: inventoryId,
+    //   },
+    // });
+    const cacheKey = `inventory:${inventoryId}`;
+    await this.redisClient.hset(cacheKey, 'price', price.toString());
+    await this.redisClient.hset(cacheKey, 'quantity', quantity.toString());
   }
 
   async updateInventoryByProductId(
@@ -163,11 +325,11 @@ export class InventoryService {
     old_classifications = [],
     new_classifications = [],
   ) {
-    console.log('Updating inventories by product id');
-    console.log('Product id:', productId);
-    console.log('Inventories:', inventories);
-    console.log('Old classifications:', old_classifications);
-    console.log('New classifications:', new_classifications);
+    // console.log('Updating inventories by product id');
+    // console.log('Product id:', productId);
+    // console.log('Inventories:', inventories);
+    // console.log('Old classifications:', old_classifications);
+    // console.log('New classifications:', new_classifications);
 
     const deleteOldAndCreateNewInventories = async (productId, inventories) => {
       await this.deleteInventoriesByProductId(productId);
@@ -175,8 +337,18 @@ export class InventoryService {
       return newInventories;
     };
 
+    //case 0: if new classification and old classification are empty
+    if (new_classifications.length === 0 && old_classifications.length === 0) {
+      let oldInventory = await this.getInventoriesByProductId(productId);
+      await this.updatePriceAndQuantity(
+        oldInventory[0].inventory_id,
+        inventories.price,
+        inventories.quantity,
+      );
+    }
+
     // Case 1: if new classification is empty, inventories = inventory
-    if (new_classifications.length === 0) {
+    if (new_classifications.length === 0 && old_classifications.length !== 0) {
       await this.deleteInventoriesByProductId(productId);
       let newInventory = await this.createInventory(inventories);
       return newInventory;
@@ -247,7 +419,7 @@ export class InventoryService {
         }
       }
       // Case 3.2: if new classification's length = 2
-      else {
+      else if (new_classifications.length === 2) {
         for (let i = 0; i < new_classifications.length; i++) {
           if (new_classifications[i]._id !== old_classifications[i]._id) {
             return await deleteOldAndCreateNewInventories(
@@ -310,7 +482,7 @@ export class InventoryService {
         }
         await this.createManyInventories(toCreate);
 
-        return { updated: toUpdate, deleted: toDelete, created: toCreate };
+        return true;
       }
     }
   }
