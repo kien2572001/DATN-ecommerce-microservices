@@ -1,6 +1,7 @@
 export enum OrderStatusEnum {
-  NEW = 'new',
-  PENDING = 'pending',
+  PLACED = 'placed',
+  PAYMENT_PENDING = 'payment_pending',
+  PAID = 'paid',
   CONFIRMED = 'confirmed',
   PROCESSING = 'processing',
   PACKED = 'packed',

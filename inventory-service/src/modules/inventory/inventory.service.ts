@@ -23,20 +23,18 @@ export class InventoryService {
   }
 
   async purchaseInventories(inventories: any[]) {
-    return true;
     const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
     const args = [inventories.length];
     for (let i = 0; i < inventories.length; i++) {
-      args.push(inventories[i].inventory_id, inventories[i].quantity);
+      args.push(inventories[i].quantity);
     }
     const luaScript = `
       local numInventories = tonumber(ARGV[1])
       local inventories = {}
       
       for i = 1, numInventories do
-          local inventory_id = ARGV[(i - 1) * 2 + 2]
-          local quantity = tonumber(ARGV[(i - 1) * 2 + 3])
-          table.insert(inventories, { inventory_id = inventory_id, quantity = quantity })
+          local quantity = tonumber(ARGV[(i - 1) * 2 + 1])
+          table.insert(inventories, { quantity = quantity })
       end
       
       for i = 1, #inventories do
@@ -67,7 +65,6 @@ export class InventoryService {
       ...keys,
       ...args,
     );
-    console.log('Result:', result);
     if (result === 1) {
       return true;
     } else {
@@ -109,7 +106,6 @@ export class InventoryService {
       ...keys,
       ...args,
     );
-    console.log('Result:', result);
     if (result === 1) {
       return true;
     } else {

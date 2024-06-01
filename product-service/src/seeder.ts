@@ -15,12 +15,11 @@ import {
   ReviewSchema,
 } from './modules/review/repository/review.schema';
 import { ReviewSeeder } from './db/seeds/reaction.seeder';
+import { CategorySeeder } from './db/seeds/categories.seeder';
 
 seeder({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://kien2572001:hdvKgpGI5vnpcIZJ@ecommerce-microservices.jazgfcn.mongodb.net/product-service?retryWrites=true&w=majority&appName=ecommerce-microservices-mongodb',
-    ),
+    MongooseModule.forRoot('mongodb://localhost:27017/product-service'),
     MongooseModule.forFeature([
       {
         name: Category.name,
@@ -37,4 +36,4 @@ seeder({
     ]),
     InventoryModule,
   ],
-}).run([ProductSeeder, ReviewSeeder]);
+}).run([CategorySeeder, ProductSeeder, ReviewSeeder]);

@@ -26,12 +26,21 @@ export class OrderEntity {
   shipping_address: Record<string, any>;
 
   @Column()
+  shipping_fee: number;
+
+  @Column()
+  payment_method: string;
+
+  @Column()
   status: string;
 
   @Column()
   total: number;
 
-  @OneToMany(() => OrderItemEntity, (orderItem) => orderItem.order_id)
+  @OneToMany(() => OrderItemEntity, (orderItem) => orderItem.order, {
+    cascade: true,
+  })
+  @JoinColumn()
   order_items: OrderItemEntity[];
 
   @CreateDateColumn()

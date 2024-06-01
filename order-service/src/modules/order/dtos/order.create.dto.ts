@@ -5,6 +5,7 @@ import {
   IsJSON,
   IsNotEmpty,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   MaxLength,
@@ -22,7 +23,15 @@ export class CreateOrderDto {
   @Type(() => String)
   shop_id: string;
 
-  @IsJSON()
+  @IsNumber()
+  @Type(() => Number)
+  shipping_fee: number;
+
+  @IsString()
+  @Type(() => String)
+  payment_method: string;
+
+  @IsObject()
   @Type(() => Object)
   shipping_address: object;
 

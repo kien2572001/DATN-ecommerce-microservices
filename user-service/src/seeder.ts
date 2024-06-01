@@ -12,9 +12,7 @@ import {
 
 seeder({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://kien2572001:hdvKgpGI5vnpcIZJ@ecommerce-microservices.jazgfcn.mongodb.net/user-service?retryWrites=true&w=majority&appName=ecommerce-microservices-mongodb',
-    ),
+    MongooseModule.forRoot('mongodb://localhost:27017/user-service'),
     MongooseModule.forFeature([
       { name: UserEntity.name, schema: UserSchema },
       { name: ShopEntity.name, schema: ShopSchema },

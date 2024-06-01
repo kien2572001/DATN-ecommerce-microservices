@@ -7,6 +7,7 @@ import { JwtPayloadMiddleware } from './middlewares/jwt-payload.middleware';
 import { LoggingMiddleware } from './middlewares/logging.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from '@nestjs-modules/ioredis';
+import { OrderModule } from './modules/order/order.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -41,13 +42,14 @@ import { RedisModule } from '@nestjs-modules/ioredis';
       }),
       inject: [ConfigService],
     }),
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggingMiddleware).forRoutes('*');
-    consumer.apply(JwtPayloadMiddleware).forRoutes('/private');
+    // consumer.apply(LoggingMiddleware).forRoutes('*');
+    // consumer.apply(JwtPayloadMiddleware).forRoutes('/private');
   }
 }

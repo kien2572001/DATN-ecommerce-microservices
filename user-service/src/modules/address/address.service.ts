@@ -12,70 +12,70 @@ export class AddressService {
   ) {}
 
   async getCities() {
-    // return this.httpService
-    //   .axiosRef({
-    //     method: 'get',
-    //     url: 'http://sandbox.goship.io/api/v2/cities',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     return res.data.data;
-    //   })
-    //   .catch((err) => {
-    //     console.log('err', err);
-    //   });
-    return await this.addressModel
-      .find({ type: 'city' })
-      .select('-createdAt -updatedAt -__v');
+    return this.httpService
+      .axiosRef({
+        method: 'get',
+        url: 'http://sandbox.goship.io/api/v2/cities',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
+        },
+      })
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+    // return await this.addressModel
+    //   .find({ type: 'city' })
+    //   .select('-createdAt -updatedAt -__v');
   }
 
   async getDistricts(cityId: string) {
-    // return this.httpService
-    //   .axiosRef({
-    //     method: 'get',
-    //     url: `http://sandbox.goship.io/api/v2/cities/${cityId}/districts`,
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     return res.data.data;
-    //   })
-    //   .catch((err) => {
-    //     console.log('err', err);
-    //   });
-    return await this.addressModel
-      .find({ type: 'district', city_id: cityId })
-      .select('-createdAt -updatedAt -__v');
+    return this.httpService
+      .axiosRef({
+        method: 'get',
+        url: `http://sandbox.goship.io/api/v2/cities/${cityId}/districts`,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
+        },
+      })
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+    // return await this.addressModel
+    //   .find({ type: 'district', city_id: cityId })
+    //   .select('-createdAt -updatedAt -__v');
   }
 
   async getWards(districtId: string) {
-    // return this.httpService
-    //   .axiosRef({
-    //     method: 'get',
-    //     url: `http://sandbox.goship.io/api/v2/districts/${districtId}/wards`,
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     return res.data.data;
-    //   })
-    //   .catch((err) => {
-    //     console.log('err', err);
-    //   });
-    return await this.addressModel
-      .find({ type: 'ward', district_id: districtId })
-      .select('-createdAt -updatedAt -__v');
+    return this.httpService
+      .axiosRef({
+        method: 'get',
+        url: `http://sandbox.goship.io/api/v2/districts/${districtId}/wards`,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + process.env.GOSHIP_API_TOKEN,
+        },
+      })
+      .then((res) => {
+        return res.data.data;
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+    // return await this.addressModel
+    //   .find({ type: 'ward', district_id: districtId })
+    //   .select('-createdAt -updatedAt -__v');
   }
 
   async crawAddressData() {
-    console.log('crawAddressData');
+    await this.addressModel.deleteMany({});
     const cities = await this.getCities();
     let willSaveData = [];
     for (const city of cities) {

@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { OrderEntity } from './order.entity';
 
 @Entity()
 export class OrderItemEntity {
@@ -27,6 +28,10 @@ export class OrderItemEntity {
 
   @Column()
   price: number;
+
+  @ManyToOne(() => OrderEntity, (order) => order.order_items)
+  @JoinColumn({ name: 'order_id' })
+  order: OrderEntity;
 
   @CreateDateColumn()
   created_at: Date;
