@@ -16,10 +16,21 @@ import {
 } from './modules/review/repository/review.schema';
 import { ReviewSeeder } from './db/seeds/reaction.seeder';
 import { CategorySeeder } from './db/seeds/categories.seeder';
-
+import { ConfigModule } from '@nestjs/config';
+import configuration from './configs/configuration';
+import { ConfigService } from '@nestjs/config';
 seeder({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/product-service'),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get('no_sql_db_uri'),
+      }),
+      inject: [ConfigService],
+    }),
     MongooseModule.forFeature([
       {
         name: Category.name,

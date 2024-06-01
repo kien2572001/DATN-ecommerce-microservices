@@ -9,25 +9,28 @@ import { Redis } from 'ioredis';
 import { InjectRedis } from '@nestjs-modules/ioredis';
 import { v4 as uuidv4 } from 'uuid';
 import { OrderStatusEnum } from 'src/enums/orderStatus.enum';
-
+import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class OrderService {
   private readonly redisClient: Redis;
+  private readonly inventoryServiceUrl: string;
 
   constructor(
     private readonly orderRepository: OrderRepository,
     private readonly orderItemRepository: OrderItemRepository,
     private httpService: HttpService,
     @InjectRedis() private readonly client: Redis,
+    private readonly configService: ConfigService,
   ) {
     this.redisClient = client;
+    this.inventoryServiceUrl = this.configService.get('inventory_service_url');
   }
 
   private async checkInventoryAvailabilityAndDeduct(orderItems) {
     try {
       const response = await this.httpService.axiosRef({
         method: 'post',
-        url: 'http://localhost:8083/public/inventory/purchase',
+        url: this.inventoryServiceUrl + 'public/inventory/purchase',
         data: orderItems,
       });
 
@@ -46,7 +49,7 @@ export class OrderService {
     try {
       const response = await this.httpService.axiosRef({
         method: 'post',
-        url: 'http://localhost:8083/public/inventory/return',
+        url: this.inventoryServiceUrl + '/public/inventory/return',
         data: orderItems,
       });
 

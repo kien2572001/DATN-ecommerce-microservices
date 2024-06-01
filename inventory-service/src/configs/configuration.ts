@@ -17,5 +17,18 @@ export default () => ({
   redis: {
     host: process.env.REDIS_HOST,
     port: parseInt(process.env.REDIS_PORT, 10) || 6379,
-  }
+  },
+  user_service_url: process.env.USER_SERVICE_URL,
+  product_service_url: process.env.PRODUCT_SERVICE_URL,
+  inventory_service_url: process.env.INVENTORY_SERVICE_URL,
+  order_service_url: process.env.ORDER_SERVICE_URL,
+
+  broker: process.env.KAFKA_BROKER || 'localhost:9092',
+  services: {
+    inventory: {
+      clientId: 'inventory',
+      groupId: 'inventory',
+      name: 'inventory-kafka-client',
+    },
+  },
 });

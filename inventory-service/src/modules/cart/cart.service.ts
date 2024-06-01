@@ -4,14 +4,22 @@ import { CartRepository } from './repository/cart.repository';
 import { CartDto } from './dtos/cart.dto';
 import { CartItemDto } from './dtos/cart-item.dto';
 import { HttpService } from '@nestjs/axios';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class CartService {
+  private readonly productServiceUrl: string;
+  private readonly userServiceUrl: string;
+
   constructor(
     private readonly cartRepository: CartRepository,
     private httpService: HttpService,
     private inventoryService: InventoryService,
-  ) {}
+    private readonly configService: ConfigService,
+  ) {
+    this.productServiceUrl = this.configService.get('PRODUCT_SERVICE_URL');
+    this.userServiceUrl = this.configService.get('USER_SERVICE_URL');
+  }
 
   async getOrCreateCart(userId: string) {
     const cart: any = await this.cartRepository.getOrCreateCart(userId);
@@ -126,7 +134,7 @@ export class CartService {
   async getProductByListIds(ids: string[]) {
     try {
       const response = await this.httpService.axiosRef({
-        url: 'http://localhost:8082/public/product/by-list-ids',
+        url: this.productServiceUrl + '/public/product/by-list-ids',
         method: 'post',
         data: {
           ids,
@@ -152,7 +160,7 @@ export class CartService {
   async getShopByListIds(ids: string[]) {
     try {
       const response = await this.httpService.axiosRef({
-        url: 'http://localhost:8081/public/shop/by-list-ids',
+        url: this.userServiceUrl + '/public/shop/by-list-ids',
         method: 'post',
         data: {
           ids,
