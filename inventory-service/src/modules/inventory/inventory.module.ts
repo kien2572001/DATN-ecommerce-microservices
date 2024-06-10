@@ -5,9 +5,28 @@ import { InventoryRepository } from './repository/inventory.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { InventoryEntity } from './repository/inventory.entity';
 import { UtilitiesModule } from '../../utilities/utilities.module';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import configuration from 'src/configs/configuration';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([InventoryEntity]), UtilitiesModule],
+  imports: [
+    TypeOrmModule.forFeature([InventoryEntity]),
+    UtilitiesModule,
+    ClientsModule.register([
+      {
+        name: 'INVENTORY_SERVICE',
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            brokers: [configuration().broker],
+          },
+          consumer: {
+            groupId: 'inventory-consumer',
+          },
+        },
+      },
+    ]),
+  ],
   controllers: [InventoryPublicController],
   providers: [InventoryService, InventoryRepository],
   exports: [InventoryService, InventoryRepository],

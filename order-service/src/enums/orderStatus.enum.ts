@@ -1,19 +1,9 @@
 export enum OrderStatusEnum {
-  PLACED = 'placed',
-  PAYMENT_PENDING = 'payment_pending',
-  PAID = 'paid',
-  CONFIRMED = 'confirmed',
-  PROCESSING = 'processing',
-  PACKED = 'packed',
-  SHIPPED = 'shipped',
-  OUT_FOR_DELIVERY = 'out_for_delivery',
-  DELIVERED = 'delivered',
-  RETURN_REQUESTED = 'return_requested',
-  RETURNED = 'returned',
-  CANCELLED = 'cancelled',
-  FAILED = 'failed',
-  COMPLETED = 'completed',
-  REFUNDED = 'refunded',
-  ON_HOLD = 'on_hold',
-  COD_COLLECTED = 'cod_collected', // Thêm trạng thái "thu hộ thành công"
+  PENDING = 'pending', //waiting for save order
+  PLACED = 'placed', // saved order to DB successfully
+  PAID = 'paid', // paid order successfully with payment method (MOMO)
+  CONFIRMED = 'confirmed', // shop confirmed
+  SHIPPING = 'shipping', // shop shipping
+  DELIVERED = 'delivered', // order delivered
+  CANCELLED = 'cancelled', // order cancelled
 }

@@ -7,11 +7,14 @@ import {
   Body,
   HttpStatus,
   Delete,
+  Res,
+  Query,
 } from '@nestjs/common';
 
 import { CreateOrderDto } from './dtos/order.create.dto';
 import { OrderService } from './order.service';
 import { ResponseHandler } from '../../utilities/response.handler';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller({
   path: '/public/order',
@@ -39,13 +42,41 @@ export class OrderPublicController {
     }
   }
 
-  @Get('/:id')
-  async getOrder(@Param('id') id: number) {
+  @Post('/payment/momo-ipn')
+  async momoWebhook(@Body() body: any, @Res() res) {
     try {
-      const res = await this.orderService.getOrderById(id);
+      console.log('Momo webhook received', body.message);
+      await this.orderService.handleMomoIPN(body);
+      return res.status(HttpStatus.NO_CONTENT).send();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  // @Post('/payment')
+  // async payment(@Body() body: any) {
+  //   try {
+  //     const res = await this.orderService.createPaymentIntent(body);
+  //     return this.responseHandler.createSuccessResponse(
+  //       res,
+  //       'Payment successful',
+  //       HttpStatus.OK,
+  //     );
+  //   } catch (e) {
+  //     return this.responseHandler.createErrorResponse(
+  //       e.message,
+  //       HttpStatus.BAD_REQUEST,
+  //     );
+  //   }
+  // }
+
+  @Get('/:code')
+  async getOrder(@Param('code') code: string) {
+    try {
+      const res = await this.orderService.findOrderByCode(code);
       return this.responseHandler.createSuccessResponse(
         res,
-        'Order retrieved successfully',
+        'Order found',
         HttpStatus.OK,
       );
     } catch (e) {
@@ -56,13 +87,25 @@ export class OrderPublicController {
     }
   }
 
-  @Delete('/:id')
-  async deleteOrder(@Param('id') id: number) {
+  @Get('/shop/:shop_id')
+  async getOrdersByShopId(
+    @Param('shop_id') shop_id: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+    @Query('status') status: string = 'all',
+    @Query('code') code: string = '',
+  ) {
     try {
-      const res = await this.orderService.deleteOrder(id);
+      const res = await this.orderService.findOrdersByShopId(
+        shop_id,
+        page,
+        limit,
+        status,
+        code,
+      );
       return this.responseHandler.createSuccessResponse(
         res,
-        'Order deleted successfully',
+        'Orders found',
         HttpStatus.OK,
       );
     } catch (e) {
@@ -72,4 +115,11 @@ export class OrderPublicController {
       );
     }
   }
+
+  // @MessagePattern('order.created')
+  // async orderCreated(@Payload() message) {
+  //   console.log('Order created event received');
+  //   console.log(message);
+  //   return 'Order created event received';
+  // }
 }

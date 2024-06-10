@@ -6,7 +6,6 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./data:/data
       - redis-data:/var/lib/redis
     command: redis-server --appendonly yes
 
@@ -15,7 +14,6 @@ services:
     ports:
       - "6380:6379" # Sử dụng cổng 6380 thay vì 6379
     volumes:
-      - ./data:/data
       - redis-queue-data:/var/lib/redis
     command: redis-server --appendonly yes # Bạn có thể thêm các tùy chọn cấu hình khác nếu cần
 

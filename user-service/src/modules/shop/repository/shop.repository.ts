@@ -32,6 +32,10 @@ export class ShopRepository {
     return query.lean();
   }
 
+  async findAddressById(id: string) {
+    return this.shopModel.findById(id).select('address').lean();
+  }
+
   async findByUserId(userId: string) {
     return this.shopModel.findOne({ user_id: userId }).lean();
   }

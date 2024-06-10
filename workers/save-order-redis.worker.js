@@ -1,6 +1,7 @@
 const { parentPort } = require("worker_threads");
 const { MongoClient } = require("mongodb");
 const Redis = require("ioredis");
+const { Kafka } = require("kafkajs");
 const { promisify } = require("util");
 
 (async () => {
@@ -19,7 +20,7 @@ const { promisify } = require("util");
 
   // Kết nối Redis
   const redisClient = new Redis({
-    port: 6379,
+    port: 6380,
     host: "localhost",
   });
 
@@ -64,7 +65,7 @@ const { promisify } = require("util");
         };
 
         // Đặt interval để xử lý đơn hàng mỗi 0.2 giây
-        setInterval(processOrders, 300);
+        setInterval(processOrders, 200);
       }
     });
   });

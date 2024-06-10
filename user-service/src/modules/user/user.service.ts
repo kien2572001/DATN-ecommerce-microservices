@@ -62,4 +62,8 @@ export class UserService {
       expiresIn: '12h',
     });
   }
+
+  async getAddressByUserId(userId: string) {
+    return await this.userRepository.getAddressByUserId(userId);
+  }
 }

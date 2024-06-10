@@ -46,6 +46,24 @@ export class InventoryService {
       });
   }
 
+  async getInventoriesByProductIds(
+    productIds: string[],
+  ): Promise<Observable<AxiosResponse<any>>> {
+    return this.httpService.axiosRef
+      .post(
+        this.inventoryServiceUrl + '/public/inventory/product/by-list-ids',
+        { ids: productIds },
+      )
+      .then((response) => {
+        return response.data.data;
+      })
+      .catch((error) => {
+        throw new Error(
+          error.message + ': ' + error.response.data.data.message,
+        );
+      });
+  }
+
   async createManyInventories(
     inventories: CreateInventoryDto[],
   ): Promise<Observable<AxiosResponse<any>>> {

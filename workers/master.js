@@ -3,11 +3,11 @@
 const { Worker } = require("worker_threads");
 
 // Số lượng worker
-const numWorkers = 1;
+const numWorkers = 2;
 
 // Tạo và quản lý các worker
 for (let i = 0; i < numWorkers; i++) {
-  const worker = new Worker("./save-order.worker.js");
+  const worker = new Worker("./save-order-redis.worker.js");
 
   // Khi worker sẵn sàng, gửi message "start"
   worker.on("online", () => {

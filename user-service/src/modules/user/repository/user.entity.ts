@@ -74,9 +74,10 @@ export class UserEntity {
   role: string;
 
   @Prop({
-    default: [],
+    nullable: true,
+    type: Object,
   })
-  address: any[];
+  address: object;
 
   @Factory((faker) => faker.image.avatar())
   @Prop({

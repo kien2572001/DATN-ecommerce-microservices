@@ -12,11 +12,11 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        clientId: configuration().services.inventory.clientId,
+        clientId: 'flash-sale',
         brokers: [configuration().broker],
       },
       consumer: {
-        groupId: configuration().services.inventory.groupId,
+        groupId: 'flash-sale-consumer',
       },
     },
   });

@@ -11,7 +11,7 @@ import {
 import { CreateInventoryDto } from '../dtos/inventory.create.dto';
 import { InventoryService } from '../inventory.service';
 import { ResponseHandler } from '../../../utilities/response.handler';
-
+import { MessagePattern, Payload } from '@nestjs/microservices';
 @Controller({
   path: '/public/inventory',
 })
@@ -20,6 +20,25 @@ export class InventoryPublicController {
     private readonly inventoryService: InventoryService,
     private readonly responseHandler: ResponseHandler,
   ) {}
+
+  @MessagePattern('flashsale.update-inventory')
+  async updateInventory(@Payload() message) {
+    const res =
+      await this.inventoryService.updateFlashSalePriceAndQuantityAndTime(
+        message.inventory_id,
+        message.discount_price,
+        message.discount_quantity,
+        message.time_start,
+        message.time_end,
+      );
+    console.log('Inventory updated event received');
+  }
+
+  @MessagePattern('flashsale.end-flash-sale')
+  async endFlashSale(@Payload() message) {
+    console.log('message', message);
+    console.log('Flash sale ended event received');
+  }
 
   @Post('/purchase')
   async purchaseInventories(@Body() body: any) {
@@ -63,6 +82,24 @@ export class InventoryPublicController {
         newInventory,
         'Inventory created successfully',
         HttpStatus.CREATED,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
+  @Post('product/by-list-ids')
+  async getInventoriesByProductIds(@Body() body: any) {
+    try {
+      const inventories =
+        await this.inventoryService.getInventoriesByProductIds(body.ids);
+      return this.responseHandler.createSuccessResponse(
+        inventories,
+        'Inventories retrieved successfully',
+        HttpStatus.OK,
       );
     } catch (e) {
       return this.responseHandler.createErrorResponse(

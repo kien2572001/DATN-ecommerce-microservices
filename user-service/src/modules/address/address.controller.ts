@@ -19,6 +19,32 @@ export class AddressController {
     private readonly responseHandler: ResponseHandler,
   ) {}
 
+  @Post('/rates')
+  async getShippingRates(@Body() addressData) {
+    const rates = await this.addressService.getAddressRates(
+      addressData.addressTo,
+      addressData.shopId,
+    );
+    return this.responseHandler.createSuccessResponse(
+      rates,
+      'Shipping rates fetched successfully',
+    );
+  }
+
+  @Post('/parse')
+  async parseAddressToString(@Body() addressData) {
+    const address = await this.addressService.parseAddressToString(
+      addressData.cityId,
+      addressData.districtId,
+      addressData.wardId,
+    );
+    console.log('address', address);
+    return this.responseHandler.createSuccessResponse(
+      address,
+      'Address parsed successfully',
+    );
+  }
+
   @Get('/crawl')
   async crawlAddress() {
     const res = await this.addressService.crawAddressData();

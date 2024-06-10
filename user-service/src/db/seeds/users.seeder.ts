@@ -10,21 +10,28 @@ import {
   ShopEntity,
   ShopSchema,
 } from './../../modules/shop/repository/shop.entity';
+import { AddressService } from 'src/modules/address/address.service';
+import { faker } from '@faker-js/faker';
 
 @Injectable()
 export class UserSeeder implements Seeder {
   constructor(
     @InjectModel(UserEntity.name) private readonly userModel: Model<UserEntity>,
     @InjectModel(ShopEntity.name) private readonly shopModel: Model<ShopEntity>,
+    private readonly addressService: AddressService,
   ) {}
 
   async seed(): Promise<any> {
     // Generate users
+
+    const address = await this.seedRandomAddress(30);
+    console.log(address);
     const users = DataFactory.createForClass(UserEntity)
       .generate(500)
       .map((user) => ({
         ...user,
         role: 'buyer',
+        address: address[Math.floor(Math.random() * address.length)],
       }));
 
     // Generate admin and sellers
@@ -54,6 +61,7 @@ export class UserSeeder implements Seeder {
         .map((shop, index) => ({
           ...shop,
           user_id: sellers[index]._id,
+          address: address[Math.floor(Math.random() * address.length)],
         }));
 
       await this.shopModel.insertMany(shops);
@@ -63,5 +71,34 @@ export class UserSeeder implements Seeder {
   async drop(): Promise<any> {
     await this.userModel.deleteMany({});
     await this.shopModel.deleteMany({});
+  }
+
+  private async seedRandomAddress(numberOfAddresses: number) {
+    const addresses = [];
+    const cities = await this.addressService.getCities();
+    for (let i = 0; i < numberOfAddresses; i++) {
+      const cityId = cities[Math.floor(Math.random() * cities.length)].id;
+      const cityName = cities.find((city) => city.id === cityId).name;
+      const districts = await this.addressService.getDistricts(cityId);
+      const districtId =
+        districts[Math.floor(Math.random() * districts.length)].id;
+      const districtName = districts.find(
+        (district) => district.id === districtId,
+      ).name;
+      const wards = await this.addressService.getWards(districtId);
+      const wardId = wards[Math.floor(Math.random() * wards.length)].id;
+      const wardName = wards.find((ward) => ward.id === wardId).name;
+      const street = faker.location.streetAddress();
+      addresses.push({
+        city: cityId,
+        district: districtId,
+        ward: wardId,
+        street: street,
+        full_address: `${street}, ${wardName}, ${districtName}, ${cityName}`,
+        phone: faker.phone.number(),
+        name: faker.person.fullName(),
+      });
+    }
+    return addresses;
   }
 }

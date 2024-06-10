@@ -5,6 +5,7 @@ import { HttpModule } from '@nestjs/axios';
 import { UtilitiesModule } from 'src/utilities/utilities.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AddressEntity, AddressSchema } from './address.entity';
+import { ShopRepositoryModule } from '../shop/repository/shop.repository.module';
 @Module({
   imports: [
     HttpModule,
@@ -12,6 +13,7 @@ import { AddressEntity, AddressSchema } from './address.entity';
     MongooseModule.forFeature([
       { name: AddressEntity.name, schema: AddressSchema },
     ]),
+    ShopRepositoryModule,
   ],
   controllers: [AddressController],
   providers: [AddressService],

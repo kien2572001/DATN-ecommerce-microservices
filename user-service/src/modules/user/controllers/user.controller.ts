@@ -66,6 +66,7 @@ export class UserController {
 
   @Get('/:id')
   async getUserById(@Param('id') id: string) {
+    console.log('id', id);
     const user = await this.userService.getUserById(id);
     if (!user) {
       throw this.responseHandler.createErrorResponse(

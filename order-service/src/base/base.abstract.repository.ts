@@ -1,8 +1,10 @@
-import {FilterQuery, Model, QueryOptions, UpdateQuery} from "mongoose";
-import {BaseInterfaceRepository} from "./base.interface.repository";
-import {BaseEntity} from "./base.entity";
+import { FilterQuery, Model, QueryOptions, UpdateQuery } from 'mongoose';
+import { BaseInterfaceRepository } from './base.interface.repository';
+import { BaseEntity } from './base.entity';
 
-export abstract class BaseAbstractRepository<T extends BaseEntity> implements BaseInterfaceRepository<T> {
+export abstract class BaseAbstractRepository<T extends BaseEntity>
+  implements BaseInterfaceRepository<T>
+{
   protected constructor(protected readonly model: Model<T>) {
     this.model = model;
   }
@@ -10,6 +12,10 @@ export abstract class BaseAbstractRepository<T extends BaseEntity> implements Ba
   async create(dto: T | any): Promise<T> {
     const created_data = await this.model.create(dto);
     return created_data;
+  }
+
+  async createMany(dtos: T[] | any[]): Promise<T[]> {
+    return this.model.insertMany(dtos);
   }
 
   async findOneById(id: string): Promise<T> {
@@ -31,8 +37,12 @@ export abstract class BaseAbstractRepository<T extends BaseEntity> implements Ba
     options?: QueryOptions<T>,
   ): Promise<{ count: number; items: T[] }> {
     const [count, items] = await Promise.all([
-      this.model.countDocuments({...condition, deleted_at: null}),
-      this.model.find({...condition, deleted_at: null}, options?.projection, options),
+      this.model.countDocuments({ ...condition, deleted_at: null }),
+      this.model.find(
+        { ...condition, deleted_at: null },
+        options?.projection,
+        options,
+      ),
     ]);
     return {
       count,
@@ -41,11 +51,9 @@ export abstract class BaseAbstractRepository<T extends BaseEntity> implements Ba
   }
 
   async update(id: string, dto: Partial<T>): Promise<T> {
-    return this.model.findOneAndUpdate(
-      {_id: id, deleted_at: null},
-      dto,
-      {new: true},
-    );
+    return this.model.findOneAndUpdate({ _id: id, deleted_at: null }, dto, {
+      new: true,
+    });
   }
 
   async softDelete(id: string): Promise<boolean> {
@@ -55,7 +63,7 @@ export abstract class BaseAbstractRepository<T extends BaseEntity> implements Ba
     }
 
     return !!(await this.model
-      .findByIdAndUpdate<T>(id, {deleted_at: new Date()})
+      .findByIdAndUpdate<T>(id, { deleted_at: new Date() })
       .exec());
   }
 

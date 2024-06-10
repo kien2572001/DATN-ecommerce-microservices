@@ -72,7 +72,7 @@ export class ReviewSeeder implements Seeder {
   private async getListUserIds() {
     const httpService = new HttpService();
     return httpService.axiosRef
-      .get('http://localhost:8081/user/list-user-ids?role=buyer')
+      .get('http://localhost:8011/user/list-user-ids?role=buyer')
       .then((res) => res.data.data)
       .catch((err) => {
         console.log(err);

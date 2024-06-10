@@ -22,9 +22,10 @@ export class ShopEntity {
   @Prop()
   description: string;
 
-  @Factory((faker) => faker.location.streetAddress())
-  @Prop()
-  address: string;
+  @Prop({
+    type: Object,
+  })
+  address: object;
 
   @Factory((faker) => faker.phone.number())
   @Prop()

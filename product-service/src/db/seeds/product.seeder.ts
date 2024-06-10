@@ -153,7 +153,7 @@ export class ProductSeeder implements Seeder {
   private async getListShopIds() {
     const httpService = new HttpService();
     return httpService.axiosRef
-      .get('http://localhost:8081/public/shop/list-shop-ids')
+      .get('http://localhost:8011/public/shop/list-shop-ids')
       .then((response) => {
         return response.data.data;
       })

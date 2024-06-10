@@ -43,4 +43,8 @@ export class UserRepository {
       })
       .lean();
   }
+
+  async getAddressByUserId(userId: string) {
+    return this.userModel.findById(userId).select('address').lean();
+  }
 }

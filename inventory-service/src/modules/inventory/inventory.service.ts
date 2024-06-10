@@ -23,6 +23,7 @@ export class InventoryService {
   }
 
   async purchaseInventories(inventories: any[]) {
+    console.log('Purchasing inventories:', inventories);
     const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
     const args = [inventories.length];
     for (let i = 0; i < inventories.length; i++) {
@@ -30,10 +31,13 @@ export class InventoryService {
     }
     const luaScript = `
       local numInventories = tonumber(ARGV[1])
+      redis.log(redis.LOG_NOTICE, "Number of inventories: " .. numInventories)
+
       local inventories = {}
       
       for i = 1, numInventories do
-          local quantity = tonumber(ARGV[(i - 1) * 2 + 1])
+          local quantity = tonumber(ARGV[i + 1])
+          redis.log(redis.LOG_NOTICE, "Quantity: " .. quantity)
           table.insert(inventories, { quantity = quantity })
       end
       
@@ -155,6 +159,18 @@ export class InventoryService {
     return inventories;
   }
 
+  async getInventoriesByProductIds(productIds: string[]) {
+    let inventories = await this.inventoryRepository.find({
+      where: {
+        product_id: In(productIds),
+      },
+    });
+    for (let i = 0; i < inventories.length; i++) {
+      inventories[i] = await this.getInventoryFromCache(inventories[i]);
+    }
+    return inventories;
+  }
+
   async createInventory(inventory: any) {
     const databaseInventory = {
       product_id: inventory.product_id,
@@ -206,7 +222,6 @@ export class InventoryService {
   }
 
   async createManyInventories(inventories: any[]) {
-    console.log('Creating many inventories');
     let newInventories = [];
     for (let inventory of inventories) {
       let databaseInventory = {
@@ -217,15 +232,8 @@ export class InventoryService {
       };
       newInventories.push(databaseInventory);
     }
-    const startTime = process.hrtime();
     const createdInventories =
       await this.inventoryRepository.save(newInventories);
-    const endTime = process.hrtime(startTime); // End time measurement
-    console.log(
-      'Time to save inventories to database: %ds %dms',
-      endTime[0],
-      endTime[1] / 1000000,
-    );
     for (let i = 0; i < createdInventories.length; i++) {
       const inventory = createdInventories[i];
 
@@ -266,23 +274,62 @@ export class InventoryService {
 
   private async getInventoryFromCache(inventory: any) {
     const cacheKey = `inventory:${inventory.inventory_id}`;
-    console.log('Getting inventory from cache:', cacheKey);
+    //console.log('Getting inventory from cache:', cacheKey);
     const cacheData: any = await this.redisClient.hgetall(cacheKey);
-    console.log('Cache data:', cacheData);
+    //console.log('Cache data:', cacheData);
     if (cacheData) {
       // Cập nhật các trường của inventory từ cacheData nếu có
       inventory.quantity = Number(cacheData['quantity']) || 0;
       inventory.price = Number(cacheData['price']) || 0;
       inventory.discount = Number(cacheData['discount']) || 0;
       inventory.discount_price = Number(cacheData['discount_price']) || 0;
+      inventory.flash_sale_price = Number(cacheData['flash_sale_price']) || 0;
+      inventory.flash_sale_quantity =
+        Number(cacheData['flash_sale_quantity']) || 0;
+      inventory.flash_sale_start_time = cacheData['flash_sale_start_time'];
+      inventory.flash_sale_end_time = cacheData['flash_sale_end_time'];
     } else {
       // Nếu không tìm thấy dữ liệu trong Redis, set các trường về giá trị mặc định
       inventory.quantity = 0;
       inventory.price = 0;
       inventory.discount = 0;
       inventory.discount_price = 0;
+      inventory.flash_sale_price = 0;
+      inventory.flash_sale_quantity = 0;
+      inventory.flash_sale_start_time = '';
+      inventory.flash_sale_end_time = '';
     }
     return inventory;
+  }
+
+  async updateFlashSalePriceAndQuantityAndTime(
+    inventoryId: number,
+    flash_sale_price: number,
+    flash_sale_quantity: number,
+    flash_sale_start_time: string,
+    flash_sale_end_time: string,
+  ) {
+    const cacheKey = `inventory:${inventoryId}`;
+    await this.redisClient.hset(
+      cacheKey,
+      'flash_sale_price',
+      flash_sale_price.toString(),
+    );
+    await this.redisClient.hset(
+      cacheKey,
+      'flash_sale_quantity',
+      flash_sale_quantity.toString(),
+    );
+    await this.redisClient.hset(
+      cacheKey,
+      'flash_sale_start_time',
+      flash_sale_start_time,
+    );
+    await this.redisClient.hset(
+      cacheKey,
+      'flash_sale_end_time',
+      flash_sale_end_time,
+    );
   }
 
   async deleteInventoriesByProductId(productId: string) {

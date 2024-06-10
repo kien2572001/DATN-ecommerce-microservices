@@ -9,7 +9,7 @@ import {
   ShopEntity,
   ShopSchema,
 } from 'src/modules/shop/repository/shop.entity';
-
+import { AddressModule } from './modules/address/address.module';
 seeder({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/user-service'),
@@ -17,5 +17,6 @@ seeder({
       { name: UserEntity.name, schema: UserSchema },
       { name: ShopEntity.name, schema: ShopSchema },
     ]),
+    AddressModule,
   ],
 }).run([UserSeeder]);
