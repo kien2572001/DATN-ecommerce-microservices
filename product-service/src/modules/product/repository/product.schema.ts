@@ -51,11 +51,6 @@ export class Product extends BaseEntity {
   @Prop({
     default: 0,
   })
-  sold_quantity: number;
-
-  @Prop({
-    default: 0,
-  })
   price: number;
 
   @Prop({
@@ -68,6 +63,7 @@ export class Product extends BaseEntity {
   @Prop({
     type: Types.ObjectId,
     ref: 'Category',
+    index: true,
   })
   category: Category;
 
@@ -90,6 +86,38 @@ export class Product extends BaseEntity {
     type: Object,
   })
   shipping_information: object;
+
+  @Prop({
+    default: 0,
+  })
+  sold_quantity: number;
+
+  @Prop({
+    default: 0,
+  })
+  rating: number;
+
+  @Prop({
+    default: 0,
+  })
+  total_reviews: number;
+
+  @Prop({
+    default: 0,
+  })
+  total_views: number;
+
+  @Prop({
+    default: 0,
+    index: true,
+  })
+  trending_score: number;
+
+  @Prop({
+    default: 0,
+    index: true,
+  })
+  popular_score: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

@@ -46,6 +46,12 @@ export class Order extends BaseEntity {
   })
   payment_method: string;
 
+  @Prop({
+    type: Object,
+    default: {},
+  })
+  payment_info: object;
+
   @Prop()
   total: number;
 

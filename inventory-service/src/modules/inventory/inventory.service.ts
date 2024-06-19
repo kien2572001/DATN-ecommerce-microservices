@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InventoryRepository } from './repository/inventory.repository';
 import { InjectRedis } from '@nestjs-modules/ioredis';
 import Redis from 'ioredis';
 import { In } from 'typeorm';
-
+import { ClientKafka } from '@nestjs/microservices';
 export interface CacheInventory {
   quantity: number;
   price: number;
@@ -18,49 +18,168 @@ export class InventoryService {
   constructor(
     private readonly inventoryRepository: InventoryRepository,
     @InjectRedis() private readonly client: Redis,
+    @Inject('INVENTORY_SERVICE') private readonly kafkaClient: ClientKafka,
   ) {
     this.redisClient = client;
   }
 
+  async initFlashSaleInventory(
+    inventories: any[],
+    startTime: string,
+    endTime: string,
+  ) {
+    const pipeline = this.redisClient.pipeline();
+    const oldValuesArray = [];
+
+    const startTimeNumber = new Date(startTime).getTime();
+    const endTimeNumber = new Date(endTime).getTime();
+
+    // Thêm các lệnh hgetall vào pipeline để lấy giá trị cũ
+    for (let i = 0; i < inventories.length; i++) {
+      const inventory = inventories[i];
+      const cacheKey = `inventory:${inventory.inventory_id}`;
+      pipeline.hgetall(cacheKey);
+    }
+
+    // Thực thi pipeline để lấy kết quả cho tất cả các lệnh hgetall
+    const results = await pipeline.exec();
+
+    // Thực hiện cập nhật và tạo mảng giá trị cũ trong một vòng lặp
+    for (let i = 0; i < inventories.length; i++) {
+      const inventory = inventories[i];
+      const cacheKey = `inventory:${inventory.inventory_id}`;
+      const oldValues = results[i][1]; // Lấy giá trị trả về từ lệnh hgetall
+
+      // Tạo đối tượng giá trị cũ
+      const oldValue = {
+        inventory_id: inventory.inventory_id,
+        flash_sale_price: oldValues['flash_sale_price'],
+        flash_sale_percentage: oldValues['flash_sale_percentage'],
+        flash_sale_quantity: oldValues['flash_sale_quantity'],
+        flash_sale_start_time: oldValues['flash_sale_start_time'],
+        flash_sale_end_time: oldValues['flash_sale_end_time'],
+      };
+      oldValuesArray.push(oldValue);
+
+      // Thêm các lệnh hset vào pipeline để cập nhật giá trị mới
+      pipeline.hset(cacheKey, 'flash_sale_price', inventory.flash_sale_price);
+      pipeline.hset(
+        cacheKey,
+        'flash_sale_percentage',
+        inventory.flash_sale_percentage,
+      );
+      pipeline.hset(
+        cacheKey,
+        'flash_sale_quantity',
+        inventory.flash_sale_quantity,
+      );
+      pipeline.hset(cacheKey, 'flash_sale_start_time', startTimeNumber);
+      pipeline.hset(cacheKey, 'flash_sale_end_time', endTimeNumber);
+    }
+
+    // Thực thi pipeline để cập nhật các giá trị mới
+    const result = await pipeline.exec();
+
+    // In ra mảng các giá trị cũ
+    console.log('oldValuesArray:', oldValuesArray);
+
+    // Gửi sự kiện khi số lượng flash sale inventory lớn hơn 0
+    // for (const oldValue of oldValuesArray) {
+    //   if (oldValue.flash_sale_quantity > 0) {
+    //     this.kafkaClient.emit('inventory.flash_sale.end', oldValue);
+    //   }
+    // }
+
+    return result;
+  }
+
   async purchaseInventories(inventories: any[]) {
-    console.log('Purchasing inventories:', inventories);
+    //console.log('Purchasing inventories:', inventories);
     const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
     const args = [inventories.length];
     for (let i = 0; i < inventories.length; i++) {
-      args.push(inventories[i].quantity);
+      args.push(inventories[i].quantity.toString());
+      args.push(inventories[i].price.toString());
     }
     const luaScript = `
       local numInventories = tonumber(ARGV[1])
       redis.log(redis.LOG_NOTICE, "Number of inventories: " .. numInventories)
-
+      local t = redis.call("TIME")
+      local t1 = tonumber(t[1])
+      local t2 = tonumber(t[2])
+      local current_time_ms = (t1 * 1000) + (t2 / 1000)
+      redis.log(redis.LOG_NOTICE, "Time: " .. current_time_ms)
       local inventories = {}
-      
+
       for i = 1, numInventories do
-          local quantity = tonumber(ARGV[i + 1])
+          local quantity = tonumber(ARGV[2 * i])
           redis.log(redis.LOG_NOTICE, "Quantity: " .. quantity)
-          table.insert(inventories, { quantity = quantity })
+          local price = tonumber(ARGV[2 * i + 1])
+          redis.log(redis.LOG_NOTICE, "Price: " .. price)
+          table.insert(inventories, { quantity = quantity, price = price })
       end
-      
+
       for i = 1, #inventories do
-          local quantity = redis.call("HGET", KEYS[i], "quantity")
-          if not quantity then
-              return 0
-          end
-          quantity = tonumber(quantity)
-          if quantity < inventories[i].quantity then
-              return 0
+          local start_time = redis.call("HGET", KEYS[i], "flash_sale_start_time")
+          local end_time = redis.call("HGET", KEYS[i], "flash_sale_end_time")
+          local flash_sale_quantity = redis.call("HGET", KEYS[i], "flash_sale_quantity")
+          local price
+          local quantity
+          if start_time and end_time and flash_sale_quantity then
+              start_time = tonumber(start_time)
+              end_time = tonumber(end_time)
+              flash_sale_quantity = tonumber(flash_sale_quantity)
+              local now = current_time_ms
+              if now >= start_time and now <= end_time and flash_sale_quantity > 0 then        
+                  price = redis.call("HGET", KEYS[i], "flash_sale_price")
+                  if not price then
+                      return 0
+                  end
+                  price = tonumber(price)
+
+                  quantity = flash_sale_quantity
+                  redis.call("SET", "check_flash_sale_ongoing:" .. KEYS[i], "1")
+              else
+                  price = redis.call("HGET", KEYS[i], "price")
+                  if not price then
+                      return 0
+                  end
+                  price = tonumber(price)
+
+                  quantity = redis.call("HGET", KEYS[i], "quantity")
+                  if not quantity then
+                      return 0
+                  end
+                  quantity = tonumber(quantity)
+                  redis.call("SET", "check_flash_sale_ongoing:" .. KEYS[i], "0")
+              end
+
+              if inventories[i].price < price then
+                  return 0
+              end
+
+              if quantity < inventories[i].quantity then
+                  return 0
+              end
           end
       end
-      
+
       for i = 1, #inventories do
-          local quantity = redis.call("HGET", KEYS[i], "quantity")
-          quantity = tonumber(quantity)
-          quantity = quantity - inventories[i].quantity
-          redis.call("HSET", KEYS[i], "quantity", tostring(quantity))
+          local check_flash_sale_ongoing = redis.call("GET", "check_flash_sale_ongoing:" .. KEYS[i])
+          if check_flash_sale_ongoing == "1" then
+              local quantity = redis.call("HGET", KEYS[i], "flash_sale_quantity")
+              quantity = tonumber(quantity)
+              quantity = quantity - inventories[i].quantity
+              redis.call("HSET", KEYS[i], "flash_sale_quantity", tostring(quantity))
+          elseif check_flash_sale_ongoing == "0" then
+              local quantity = redis.call("HGET", KEYS[i], "quantity")
+              quantity = tonumber(quantity)
+              quantity = quantity - inventories[i].quantity
+              redis.call("HSET", KEYS[i], "quantity", tostring(quantity))
+          end
       end
-      
-      return 1
-    `;
+
+      return 1`;
 
     // Gọi Lua script trên Redis
     const result = await this.redisClient.eval(
@@ -77,10 +196,11 @@ export class InventoryService {
   }
 
   async returnInventories(inventories: any[]) {
+    console.log('Returning inventories:', inventories);
     const keys = inventories.map((i) => `inventory:${i.inventory_id}`);
     const args = [inventories.length];
     for (let i = 0; i < inventories.length; i++) {
-      args.push(inventories[i].inventory_id, inventories[i].quantity);
+      args.push(inventories[i].quantity); // Thêm quantity vào args
     }
 
     const luaScript = `
@@ -88,8 +208,8 @@ export class InventoryService {
       local inventories = {}
       
       for i = 1, numInventories do
-          local inventory_id = ARGV[(i - 1) * 2 + 2]
-          local quantity = tonumber(ARGV[(i - 1) * 2 + 3])
+          local inventory_id = KEYS[i]
+          local quantity = tonumber(ARGV[i + 1]) -- Thay đổi vị trí của ARGV
           table.insert(inventories, { inventory_id = inventory_id, quantity = quantity })
       end
 
@@ -286,8 +406,9 @@ export class InventoryService {
       inventory.flash_sale_price = Number(cacheData['flash_sale_price']) || 0;
       inventory.flash_sale_quantity =
         Number(cacheData['flash_sale_quantity']) || 0;
-      inventory.flash_sale_start_time = cacheData['flash_sale_start_time'];
-      inventory.flash_sale_end_time = cacheData['flash_sale_end_time'];
+      inventory.flash_sale_start_time =
+        cacheData['flash_sale_start_time'] || '';
+      inventory.flash_sale_end_time = cacheData['flash_sale_end_time'] || '';
     } else {
       // Nếu không tìm thấy dữ liệu trong Redis, set các trường về giá trị mặc định
       inventory.quantity = 0;
@@ -309,6 +430,10 @@ export class InventoryService {
     flash_sale_start_time: string,
     flash_sale_end_time: string,
   ) {
+    const starTime = new Date(flash_sale_start_time).getTime();
+    const endTime = new Date(flash_sale_end_time).getTime();
+    console.log('Start time:', starTime);
+    console.log('End time:', endTime);
     const cacheKey = `inventory:${inventoryId}`;
     await this.redisClient.hset(
       cacheKey,
@@ -323,12 +448,12 @@ export class InventoryService {
     await this.redisClient.hset(
       cacheKey,
       'flash_sale_start_time',
-      flash_sale_start_time,
+      starTime.toString(),
     );
     await this.redisClient.hset(
       cacheKey,
       'flash_sale_end_time',
-      flash_sale_end_time,
+      endTime.toString(),
     );
   }
 

@@ -28,15 +28,31 @@ export class ProductSeeder implements Seeder {
     private readonly inventoryService: InventoryService,
   ) {}
 
+  async randomImagesArray() {
+    const count = faker.number.int({ min: 4, max: 8 });
+    const images = [];
+    for (let i = 0; i < count; i++) {
+      const randomInt = faker.number.int({ min: 1, max: 41 });
+      images.push({
+        _id: uuidv4(),
+        url: `https://ecomerce-microservices-bk.s3.ap-southeast-1.amazonaws.com/product-service/sample/${randomInt}.jpeg`,
+      });
+    }
+    return images;
+  }
+
   async seed() {
     //get categories level 0
-    const categories = await this.categoryModel.find({ level: 0 });
+    const categories = await this.categoryModel.find({});
     let shopIds = await this.getListShopIds();
     shopIds = shopIds.map((shopId) => shopId._id);
-    for (let i = 0; i < categories.length; i++) {
-      for (let j = 0; j < 20; j++) {
-        await this.createProduct(shopIds[i], categories[i]._id.toString());
-      }
+    // console.log('shopIds', shopIds);
+
+    const PRODUCT_COUNT = 50000;
+    for (let i = 0; i < PRODUCT_COUNT; i++) {
+      const shopId: string = faker.helpers.arrayElement(shopIds);
+      const category_id = faker.helpers.arrayElement(categories)._id.toString();
+      await this.createProduct(shopId, category_id);
     }
 
     console.log('Seeding products...');
@@ -109,17 +125,41 @@ export class ProductSeeder implements Seeder {
           value: 'Black, Blue, Red, Pink, Green, Orange',
         },
       ],
-      images: await this.randomImages(),
+      images: await this.randomImagesArray(),
       is_has_many_classifications: false,
-      inventory: {
-        price: Number(faker.commerce.price()),
-        quantity: faker.number.int({
-          min: 1,
-          max: 100,
-        }),
-      },
+      // inventory: {
+      //   price: Number(faker.commerce.price()),
+      //   quantity: faker.number.int({
+      //     min: 1,
+      //     max: 100,
+      //   }),
+      // },
       classifications: [],
-      inventories: [],
+      // inventories: [],
+      sold_quantity: faker.number.int({
+        min: 0,
+        max: 20000,
+      }),
+      rating: faker.number.int({
+        min: 1,
+        max: 5,
+      }),
+      total_reviews: faker.number.int({
+        min: 0,
+        max: 1000,
+      }),
+      total_views: faker.number.int({
+        min: 1000,
+        max: 10000,
+      }),
+      trending_score: faker.number.int({
+        min: 0,
+        max: 100,
+      }),
+      popular_score: faker.number.int({
+        min: 0,
+        max: 100,
+      }),
     };
 
     const createdProduct = await this.productModel.create(product);
@@ -136,18 +176,6 @@ export class ProductSeeder implements Seeder {
     createdProduct.inventory_id = createdInventory.inventory_id;
     createdProduct.price = createdInventory.price;
     await createdProduct.save();
-  }
-
-  private async randomImages() {
-    const images = [];
-    const size = faker.number.int({ min: 3, max: 8 });
-    for (let i = 0; i < size; i++) {
-      images.push({
-        _id: uuidv4(),
-        url: faker.image.url({ width: 480, height: 480 }),
-      });
-    }
-    return images;
   }
 
   private async getListShopIds() {

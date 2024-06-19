@@ -18,6 +18,7 @@ import configuration from 'src/configs/configuration';
         transport: Transport.KAFKA,
         options: {
           client: {
+            clientId: 'inventory-service',
             brokers: [configuration().broker],
           },
           consumer: {

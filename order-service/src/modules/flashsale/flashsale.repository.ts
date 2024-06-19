@@ -31,4 +31,10 @@ export class FlashSaleRepository extends BaseAbstractRepository<FlashSale> {
     });
     return flashSales;
   }
+
+  async getListActiveFlashSaleByStartTime(time_start: Date): Promise<any> {
+    return await this.flashSaleModel
+      .find({ time_start, is_active: true })
+      .lean();
+  }
 }

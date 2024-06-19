@@ -10,6 +10,7 @@ import {
   UploadedFile,
   UseInterceptors,
   UploadedFiles,
+  Query,
 } from '@nestjs/common';
 
 import { ResponseHandler } from '../../../utilities/response.handler';
@@ -19,6 +20,7 @@ import { ProductCommandHandlers } from '../commands/handlers';
 import { ProductQueryHandlers } from '../queries/handlers';
 import { GetProductBySlugQuery } from '../queries/impl/get-product-by-slug.query';
 import { GetProductByListIdsQuery } from '../queries/impl/get-product-by-list-ids.query';
+import { GetProductsHomepageQuery } from '../queries/impl/get-products-in-homepage.query';
 @Controller({
   path: '/public/product',
 })
@@ -31,6 +33,42 @@ export class ProductPublicController {
   ) {
     this.commandBus.register(ProductCommandHandlers);
     this.queryBus.register(ProductQueryHandlers);
+  }
+
+  @Get('/homepage')
+  async getProductsHomePage(
+    @Request() req,
+    @Query('page') page: number,
+    @Query('limit') limit: number,
+    @Query('keyword') keyword: string,
+    @Query('category_slug') category_slug: string,
+    @Query('trending') trending: string,
+    @Query('popular') popular: string,
+    @Query('newArrival') newArrival: string,
+  ) {
+    try {
+      const products = await this.queryBus.execute(
+        new GetProductsHomepageQuery(
+          page,
+          limit,
+          keyword,
+          category_slug,
+          trending,
+          popular,
+          newArrival,
+        ),
+      );
+      return this.responseHandler.createSuccessResponse(
+        products,
+        'Products retrieved successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Post('/by-list-ids')

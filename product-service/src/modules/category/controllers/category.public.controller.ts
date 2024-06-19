@@ -17,6 +17,7 @@ import { DeleteCategoryCommand } from '../commands/impl/delete-category.command'
 import { CategoryQueryHandlers } from '../queries/handlers';
 import { GetAllCategoriesQuery } from '../queries/impl/get-all-categories.query';
 import { GetCategoriesRootQuery } from '../queries/impl/get-categories-root.query';
+import { GetCategoryBySlugQuery } from '../queries/impl/get-category-by-slug.query';
 @Controller({
   path: '/public/category',
 })
@@ -28,6 +29,25 @@ export class CategoryPublicController {
   ) {
     this.commandBus.register(CategoryCommandHandlers);
     this.queryBus.register(CategoryQueryHandlers);
+  }
+
+  @Get('/slug/:slug')
+  async getCategoryBySlug(@Param('slug') slug: string) {
+    try {
+      const category = await this.queryBus.execute(
+        new GetCategoryBySlugQuery(slug),
+      );
+      return this.responseHandler.createSuccessResponse(
+        category,
+        'Category fetched successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Get('/root-list')

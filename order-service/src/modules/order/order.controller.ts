@@ -87,6 +87,33 @@ export class OrderPublicController {
     }
   }
 
+  @Get('/user/:user_id')
+  async getOrdersByUserId(
+    @Param('user_id') user_id: string,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    try {
+      console.log('Getting orders by user id');
+      console.log(user_id);
+      const res = await this.orderService.findOrdersByUserId(
+        user_id,
+        page,
+        limit,
+      );
+      return this.responseHandler.createSuccessResponse(
+        res,
+        'Orders found',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
   @Get('/shop/:shop_id')
   async getOrdersByShopId(
     @Param('shop_id') shop_id: string,

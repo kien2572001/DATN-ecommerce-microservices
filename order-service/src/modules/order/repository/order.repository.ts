@@ -46,8 +46,23 @@ export class OrderRepository extends BaseAbstractRepository<Order> {
     return this.orderModel.findOne({ code }).lean();
   }
 
-  async findByUserId(user_id: string): Promise<Order[]> {
-    return this.orderModel.find({ user_id }).exec();
+  async findOrdersByUserIdWithPagination(
+    userId: string,
+    page: number,
+    limit: number,
+  ) {
+    const orders = await this.orderPaginateModel.paginate(
+      {
+        user_id: userId,
+      },
+      {
+        page,
+        limit,
+        sort: { created_at: -1 },
+        lean: true,
+      },
+    );
+    return orders;
   }
 
   async updateByCode(code: string, dto: Partial<Order>): Promise<Order> {

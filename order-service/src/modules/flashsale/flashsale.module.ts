@@ -6,6 +6,15 @@ import { FlashSaleRepository } from './flashsale.repository';
 import { FlashSaleService } from './flashsale.service';
 import { HttpModule } from '@nestjs/axios';
 import { FlashSalePublicController } from './flashsale.controller';
+import { FlashSaleProductPublicController } from './flashsale-product.controller';
+import {
+  FlashSaleProduct,
+  FlashSaleProductSchema,
+} from './flashsale-product.entity';
+import { FlashSaleProductRepository } from './flashsale-product.repository';
+import { FlashSaleProductService } from './flashsale-product.service';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import configuration from 'src/configs/configuration';
 @Module({
   imports: [
     UtilitiesModule,
@@ -14,11 +23,40 @@ import { FlashSalePublicController } from './flashsale.controller';
         name: FlashSale.name,
         schema: FlashSaleSchema,
       },
+      {
+        name: FlashSaleProduct.name,
+        schema: FlashSaleProductSchema,
+      },
     ]),
     HttpModule,
+    ClientsModule.register([
+      {
+        name: 'FLASH_SALE_SERVICE',
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            clientId: 'flash-sale-service',
+            brokers: [configuration().broker],
+          },
+          consumer: {
+            groupId: 'order-consumer',
+          },
+        },
+      },
+    ]),
   ],
-  controllers: [FlashSalePublicController],
-  providers: [FlashSaleRepository, FlashSaleService],
-  exports: [FlashSaleRepository, FlashSaleService],
+  controllers: [FlashSalePublicController, FlashSaleProductPublicController],
+  providers: [
+    FlashSaleRepository,
+    FlashSaleService,
+    FlashSaleProductRepository,
+    FlashSaleProductService,
+  ],
+  exports: [
+    FlashSaleRepository,
+    FlashSaleService,
+    FlashSaleProductRepository,
+    FlashSaleProductService,
+  ],
 })
 export class FlashSaleModule {}

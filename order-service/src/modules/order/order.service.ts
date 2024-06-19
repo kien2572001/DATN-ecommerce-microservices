@@ -8,7 +8,7 @@ import { OrderStatusEnum } from 'src/enums/orderStatus.enum';
 import { ConfigService } from '@nestjs/config';
 import { ClientKafka } from '@nestjs/microservices';
 import { OrderRepository } from './repository/order.repository';
-import crypto from 'crypto';
+
 @Injectable()
 export class OrderService {
   private readonly inventoryServiceUrl: string;
@@ -76,6 +76,7 @@ export class OrderService {
       createOrderDto.order_items.map((item) => ({
         inventory_id: item.inventory_id,
         quantity: item.quantity,
+        price: item.price,
       })),
     );
     if (!isInventoryAvailable) {
@@ -137,7 +138,7 @@ export class OrderService {
   }
 
   async createOrder(createOrderDto: CreateOrderDto) {
-    const code = uuidv4();
+    const code = createOrderDto.code || uuidv4();
     const order: any = {};
     order.code = code;
     order.user_id = createOrderDto.user_id;
@@ -207,6 +208,14 @@ export class OrderService {
     });
 
     return order;
+  }
+
+  async findOrdersByUserId(userId: string, page: number, limit: number) {
+    return await this.orderRepository.findOrdersByUserIdWithPagination(
+      userId,
+      page,
+      limit,
+    );
   }
 
   async findOrdersByShopId(

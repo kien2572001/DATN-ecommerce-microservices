@@ -17,6 +17,7 @@ import {
 } from './repository/classification.schema';
 import { ClassificationRepository } from './repository/classification.repository';
 import { InventoryModule } from '../inventory/inventory.module';
+import { HttpModule } from '@nestjs/axios';
 import { NestjsFormDataModule } from 'nestjs-form-data';
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { NestjsFormDataModule } from 'nestjs-form-data';
     ]),
     InventoryModule,
     NestjsFormDataModule,
+    HttpModule,
   ],
   controllers: [ProductPrivateController, ProductPublicController],
   providers: [

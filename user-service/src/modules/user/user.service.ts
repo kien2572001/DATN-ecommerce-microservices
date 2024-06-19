@@ -66,4 +66,8 @@ export class UserService {
   async getAddressByUserId(userId: string) {
     return await this.userRepository.getAddressByUserId(userId);
   }
+
+  async updateAddressByUserId(userId: string, body: any) {
+    return await this.userRepository.updateAddress(userId, body);
+  }
 }

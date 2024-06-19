@@ -47,4 +47,8 @@ export class UserRepository {
   async getAddressByUserId(userId: string) {
     return this.userModel.findById(userId).select('address').lean();
   }
+
+  async updateAddress(userId: string, address: any) {
+    return this.userModel.findByIdAndUpdate(userId, { address });
+  }
 }

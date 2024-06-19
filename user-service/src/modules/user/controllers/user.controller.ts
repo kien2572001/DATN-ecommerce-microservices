@@ -64,6 +64,34 @@ export class UserController {
     );
   }
 
+  @Post('/:id/address')
+  async editAddress(@Param('id') id: string, @Body() body: any) {
+    try {
+      const user = await this.userService.getUserById(id);
+      if (!user) {
+        throw this.responseHandler.createErrorResponse(
+          'User not found',
+          HttpStatus.NOT_FOUND,
+        );
+      }
+      const updatedUser = await this.userService.updateAddressByUserId(
+        id,
+        body,
+      );
+      return this.responseHandler.createSuccessResponse(
+        updatedUser,
+        'Address updated successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      console.log(e);
+      return this.responseHandler.createErrorResponse(
+        'Error updating address',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
   @Get('/:id')
   async getUserById(@Param('id') id: string) {
     console.log('id', id);

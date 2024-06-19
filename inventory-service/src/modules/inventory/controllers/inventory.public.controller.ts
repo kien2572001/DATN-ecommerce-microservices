@@ -34,10 +34,40 @@ export class InventoryPublicController {
     console.log('Inventory updated event received');
   }
 
-  @MessagePattern('flashsale.end-flash-sale')
+  @MessagePattern('inventory.flash_sale.end')
   async endFlashSale(@Payload() message) {
     console.log('message', message);
-    console.log('Flash sale ended event received');
+    console.log('Return remain quantity to inventory');
+    await this.inventoryService.returnInventories([
+      {
+        inventory_id: message.inventory_id,
+        quantity: Number.parseInt(message.flash_sale_quantity),
+      },
+    ]);
+  }
+
+  @Post('/init-flash-sale')
+  async initFlashSale(@Body() body: any) {
+    try {
+      const inventories = body.inventories;
+      const startTime = body.startTime;
+      const endTime = body.endTime;
+      const res = await this.inventoryService.initFlashSaleInventory(
+        inventories,
+        startTime,
+        endTime,
+      );
+      return this.responseHandler.createSuccessResponse(
+        res,
+        'Flash sale initialized successfully',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Post('/purchase')
@@ -50,6 +80,7 @@ export class InventoryPublicController {
         HttpStatus.OK,
       );
     } catch (e) {
+      console.log(e);
       return this.responseHandler.createErrorResponse(
         e.message,
         HttpStatus.BAD_REQUEST,

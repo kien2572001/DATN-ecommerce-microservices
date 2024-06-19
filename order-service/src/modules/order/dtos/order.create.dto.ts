@@ -17,6 +17,10 @@ import { CreateOrderItemDto } from './order-item.create.dto';
 export class CreateOrderDto {
   @IsString()
   @Type(() => String)
+  code: string;
+
+  @IsString()
+  @Type(() => String)
   user_id: string;
 
   @IsString()

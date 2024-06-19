@@ -143,6 +143,7 @@ export class CartService {
             '_id',
             'shop_id',
             'product_name',
+            'product_slug',
             'is_has_many_classifications',
             'classifications',
             'images',
