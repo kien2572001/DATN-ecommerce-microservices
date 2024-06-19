@@ -4,8 +4,8 @@ import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export let options = {
   stages: [
-    { duration: "1s", target: 100 }, // ramp up to 100 users over 30 seconds
-    { duration: "5s", target: 100 }, // stay at 100 users for 1 minute
+    { duration: "2s", target: 1000 }, // ramp up to 100 users over 30 seconds
+    { duration: "5s", target: 1000 }, // stay at 100 users for 1 minute
     // { duration: "30s", target: 0 }, // ramp down to 0 users over 30 seconds
   ],
 };
@@ -13,12 +13,14 @@ export let options = {
 export default function () {
   const payload = JSON.stringify([
     {
-      inventory_id: "1",
-      quantity: 2,
+      inventory_id: "66538",
+      price: 782000,
+      quantity: 1,
     },
     {
-      inventory_id: "2",
-      quantity: 3,
+      inventory_id: "66539",
+      price: 782000,
+      quantity: 1,
     },
   ]);
 
@@ -28,7 +30,7 @@ export default function () {
     },
   };
 
-  const loadBalancerPort = 8083;
+  const loadBalancerPort = 8031;
 
   const res = http.post(
     `http://localhost:${loadBalancerPort}/public/inventory/purchase`,
@@ -37,7 +39,7 @@ export default function () {
   );
 
   //console.log("Response time: " + res.timings.duration + " ms");
-  console.log("Response body: " + res.body);
+  //console.log("Response body: " + res.body);
 
   check(res, {
     "success buy": (r) => JSON.parse(r.body).data == true,

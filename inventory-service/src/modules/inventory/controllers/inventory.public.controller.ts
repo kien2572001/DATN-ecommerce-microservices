@@ -12,6 +12,8 @@ import { CreateInventoryDto } from '../dtos/inventory.create.dto';
 import { InventoryService } from '../inventory.service';
 import { ResponseHandler } from '../../../utilities/response.handler';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+import { GrpcMethod } from '@nestjs/microservices';
+
 @Controller({
   path: '/public/inventory',
 })
@@ -20,6 +22,11 @@ export class InventoryPublicController {
     private readonly inventoryService: InventoryService,
     private readonly responseHandler: ResponseHandler,
   ) {}
+
+  @GrpcMethod('HelloService', 'SayHello')
+  sayHello(data: any): { message: string } {
+    return { message: 'Hello, World!' };
+  }
 
   @MessagePattern('flashsale.update-inventory')
   async updateInventory(@Payload() message) {
@@ -80,7 +87,7 @@ export class InventoryPublicController {
         HttpStatus.OK,
       );
     } catch (e) {
-      console.log(e);
+      //console.log(e);
       return this.responseHandler.createErrorResponse(
         e.message,
         HttpStatus.BAD_REQUEST,

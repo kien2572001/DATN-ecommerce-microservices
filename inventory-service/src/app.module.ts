@@ -10,7 +10,8 @@ import { InventoryEntity } from './modules/inventory/repository/inventory.entity
 import { InventoryModule } from './modules/inventory/inventory.module';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { CartModule } from './modules/cart/cart.module';
-
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { join } from 'path';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,6 +26,17 @@ import { CartModule } from './modules/cart/cart.module';
       }),
       inject: [ConfigService],
     }),
+    ClientsModule.register([
+      {
+        name: 'HELLO_PACKAGE',
+        transport: Transport.GRPC,
+        options: {
+          url: 'localhost:5000',
+          package: 'hello',
+          protoPath: join(process.cwd(), 'src/hello.proto'),
+        },
+      },
+    ]),
     // MongooseModule.forRootAsync({
     //   useFactory: (configService: ConfigService) => ({
     //     uri: configService.get('no_sql_db_uri'),

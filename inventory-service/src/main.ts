@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import configuration from './configs/configuration';
-
+import { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   console.log(configuration().broker);
@@ -18,6 +18,15 @@ async function bootstrap() {
       consumer: {
         groupId: 'flash-sale-consumer',
       },
+    },
+  });
+
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.GRPC,
+    options: {
+      url: 'localhost:5000',
+      package: 'hello',
+      protoPath: join(process.cwd(), 'src/hello.proto'),
     },
   });
 
