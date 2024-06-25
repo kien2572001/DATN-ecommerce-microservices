@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.564.0",
+    "@grpc/grpc-js": "^1.10.9",
     "@nestjs-modules/ioredis": "^2.0.2",
     "@nestjs/axios": "^3.0.2",
     "@nestjs/cache-manager": "^2.2.2",
@@ -48,6 +49,7 @@
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "slugify": "^1.6.6",
+    "stripe": "^15.12.0",
     "typeorm": "^0.3.20",
     "uuid": "^9.0.1"
   },

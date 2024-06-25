@@ -47,4 +47,4 @@ seeder({
     ]),
     InventoryModule,
   ],
-}).run([CategorySeeder, ProductSeeder, ReviewSeeder]);
+}).run([ProductSeeder]);

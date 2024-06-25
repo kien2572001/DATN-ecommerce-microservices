@@ -86,6 +86,7 @@ export class FlashSalePublicController {
         HttpStatus.OK,
       );
     } catch (e) {
+      console.log(e);
       return this.responseHandler.createErrorResponse(
         e.message,
         HttpStatus.BAD_REQUEST,

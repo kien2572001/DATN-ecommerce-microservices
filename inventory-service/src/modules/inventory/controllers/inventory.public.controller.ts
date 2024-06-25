@@ -23,9 +23,26 @@ export class InventoryPublicController {
     private readonly responseHandler: ResponseHandler,
   ) {}
 
-  @GrpcMethod('HelloService', 'SayHello')
-  sayHello(data: any): { message: string } {
-    return { message: 'Hello, World!' };
+  @GrpcMethod('InventoryService', 'PurchaseInventories')
+  async purchaseInventoriesGrpc(data: any): Promise<any> {
+    try {
+      //console.log('data.inventories', data.inventories);
+      const inventories = data.inventories.map((inventory) => {
+        return {
+          inventory_id: inventory.inventory_id || inventory.inventoryId,
+          quantity: inventory.quantity,
+          price: inventory.price,
+        };
+      });
+      const res = await this.inventoryService.purchaseInventories(inventories);
+      return {
+        success: res,
+      };
+    } catch (e) {
+      return {
+        success: false,
+      };
+    }
   }
 
   @MessagePattern('flashsale.update-inventory')

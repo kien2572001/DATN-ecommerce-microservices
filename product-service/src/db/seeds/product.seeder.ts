@@ -48,8 +48,10 @@ export class ProductSeeder implements Seeder {
     shopIds = shopIds.map((shopId) => shopId._id);
     // console.log('shopIds', shopIds);
 
-    const PRODUCT_COUNT = 50000;
+    const PRODUCT_COUNT = 100000;
+    console.log('Seed product count:', PRODUCT_COUNT);
     for (let i = 0; i < PRODUCT_COUNT; i++) {
+      console.log('Creating product', i);
       const shopId: string = faker.helpers.arrayElement(shopIds);
       const category_id = faker.helpers.arrayElement(categories)._id.toString();
       await this.createProduct(shopId, category_id);
@@ -59,7 +61,7 @@ export class ProductSeeder implements Seeder {
   }
 
   async drop() {
-    await this.productModel.deleteMany({});
+    // await this.productModel.deleteMany({});
     console.log('Dropping products...');
   }
 

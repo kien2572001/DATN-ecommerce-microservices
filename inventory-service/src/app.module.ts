@@ -26,17 +26,17 @@ import { join } from 'path';
       }),
       inject: [ConfigService],
     }),
-    ClientsModule.register([
-      {
-        name: 'HELLO_PACKAGE',
-        transport: Transport.GRPC,
-        options: {
-          url: 'localhost:5000',
-          package: 'hello',
-          protoPath: join(process.cwd(), 'src/hello.proto'),
-        },
-      },
-    ]),
+    // ClientsModule.register([
+    //   {
+    //     name: 'HELLO_PACKAGE',
+    //     transport: Transport.GRPC,
+    //     options: {
+    //       url: 'localhost:5000',
+    //       package: 'hello',
+    //       protoPath: join(process.cwd(), 'src/hello.proto'),
+    //     },
+    //   },
+    // ]),
     // MongooseModule.forRootAsync({
     //   useFactory: (configService: ConfigService) => ({
     //     uri: configService.get('no_sql_db_uri'),

@@ -59,7 +59,10 @@ const { promisify } = require("util");
           const listOrderIds = orders.map((o) => o.code);
 
           const result = await collection.insertMany(
-            orders.map((o) => ({ ...o, status: "placed" }))
+            orders.map((o) => ({
+              ...o,
+              status: o.payment_method === "COD" ? "placed" : "payment_pending",
+            }))
           );
           Object.entries(result.insertedIds).forEach(async ([key, value]) => {
             console.log(`Key: ${key}, Value: ${value}`);

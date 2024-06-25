@@ -4,8 +4,8 @@ import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 
 export let options = {
   stages: [
-    { duration: "2s", target: 1000 }, // ramp up to 100 users over 30 seconds
-    { duration: "5s", target: 1000 }, // stay at 100 users for 1 minute
+    { duration: "2s", target: 500 }, // ramp up to 100 users over 30 seconds
+    { duration: "3s", target: 500 }, // stay at 100 users for 1 minute
     // { duration: "30s", target: 0 }, // ramp down to 0 users over 30 seconds
   ],
 };
@@ -13,14 +13,16 @@ export let options = {
 export default function () {
   const payload = JSON.stringify([
     {
-      inventory_id: "66538",
-      price: 782000,
+      inventory_id: "117913",
+      product_id: "6676956824e72db3d922683b",
       quantity: 1,
+      price: 543000,
     },
     {
-      inventory_id: "66539",
-      price: 782000,
+      inventory_id: "117915",
+      product_id: "666ba5cd172267ff8fa25a41",
       quantity: 1,
+      price: 333000,
     },
   ]);
 
@@ -39,7 +41,7 @@ export default function () {
   );
 
   //console.log("Response time: " + res.timings.duration + " ms");
-  //console.log("Response body: " + res.body);
+  console.log("Response body: " + res.body);
 
   check(res, {
     "success buy": (r) => JSON.parse(r.body).data == true,

@@ -25,10 +25,9 @@ export class ReviewSeeder implements Seeder {
     const listProductIds = await this.productModel.find({}, '_id');
     const listBuyerIds = await this.getListUserIds();
 
-    const listReviews = [];
-
     // Tạo review ngẫu nhiên cho mỗi sản phẩm
-    listProductIds.forEach((product) => {
+    for (const product of listProductIds) {
+      const listReviews = [];
       // Random số lượng review từ 10 đến 20
       const reviewCount = Math.floor(Math.random() * 11) + 10;
 
@@ -56,10 +55,10 @@ export class ReviewSeeder implements Seeder {
           reactions: reactions,
         });
       }
-    });
 
-    // Chèn các review vào database
-    await this.reviewModel.insertMany(listReviews);
+      // Chèn các review vào database
+      await this.reviewModel.insertMany(listReviews);
+    }
 
     console.log('Seeding reviews...');
   }

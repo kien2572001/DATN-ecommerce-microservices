@@ -109,9 +109,11 @@ export class FlashSaleService {
     for (let i = 0; i < createFlashSaleDto.products.length; i++) {
       const items = createFlashSaleDto.products[i].items;
       for (let j = 0; j < items.length; j++) {
+        //console.log('items[j]', items[j]);
         listInventories.push({
           inventory_id: items[j].inventory_id,
           quantity: items[j].flash_sale_quantity,
+          price: items[j].price,
         });
       }
     }

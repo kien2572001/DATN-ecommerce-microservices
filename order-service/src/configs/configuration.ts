@@ -26,6 +26,12 @@ export default () => ({
 
   broker: process.env.KAFKA_BROKER || 'localhost:9092',
 
+  inventory_grpc_url: process.env.INVENTORY_GRPC_URL,
+
   ecommerce_fe_url: process.env.ECOMMERCE_FE_URL,
   dashboard_fe_url: process.env.DASHBOARD_FE_URL,
+
+  stripe: {
+    secretKey: process.env.STRIPE_SECRET_KEY,
+  },
 });

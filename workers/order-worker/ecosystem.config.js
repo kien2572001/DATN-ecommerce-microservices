@@ -9,5 +9,15 @@ module.exports = {
         QUEUE_PREFIX: "order_queue_", // Biến môi trường chung
       },
     },
+    {
+      name: "check-payment-worker", // Tên của worker
+      script: "./check-payment.worker.js", // Đường dẫn đến file worker
+      instances: 1, // Số lượng instance
+      exec_mode: "fork", // Chế độ fork
+      // env: {
+      //   CHECK_INTERVAL: 60 * 1000, // Biến môi trường chung
+      //   PAYMENT_PENDING_TIME: 10 * 60 * 1000, // Biến môi trường chung
+      // },
+    },
   ],
 };

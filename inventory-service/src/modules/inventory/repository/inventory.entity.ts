@@ -6,6 +6,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  Index,
 } from 'typeorm';
 
 @Entity()
@@ -13,6 +14,7 @@ export class InventoryEntity {
   @PrimaryGeneratedColumn()
   inventory_id: number;
 
+  @Index()
   @Column()
   product_id: string;
 

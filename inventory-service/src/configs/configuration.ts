@@ -31,4 +31,5 @@ export default () => ({
       name: 'inventory-kafka-client',
     },
   },
+  inventory_grpc_url: process.env.INVENTORY_GRPC_URL,
 });

@@ -21,12 +21,21 @@ async function bootstrap() {
     },
   });
 
+  // app.connectMicroservice<MicroserviceOptions>({
+  //   transport: Transport.GRPC,
+  //   options: {
+  //     url: 'localhost:5000',
+  //     package: 'hello',
+  //     protoPath: join(process.cwd(), 'src/hello.proto'),
+  //   },
+  // });
+
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.GRPC,
     options: {
-      url: 'localhost:5000',
-      package: 'hello',
-      protoPath: join(process.cwd(), 'src/hello.proto'),
+      url: process.env.INVENTORY_GRPC_URL,
+      package: 'inventory',
+      protoPath: join(process.cwd(), 'src/modules/inventory/inventory.proto'),
     },
   });
 

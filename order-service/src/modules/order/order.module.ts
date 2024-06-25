@@ -8,6 +8,8 @@ import configuration from 'src/configs/configuration';
 import { Order, OrderSchema } from './repository/order.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { OrderRepository } from './repository/order.repository';
+import { join } from 'path';
+import { OrderEventController } from './order-event.controller';
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -18,23 +20,34 @@ import { OrderRepository } from './repository/order.repository';
     ]),
     UtilitiesModule,
     HttpModule,
-    // ClientsModule.register([
-    //   {
-    //     name: 'ORDER_SERVICE',
-    //     transport: Transport.KAFKA,
-    //     options: {
-    //       client: {
-    //         clientId: 'order-service',
-    //         brokers: [configuration().broker],
-    //       },
-    //       consumer: {
-    //         groupId: 'order-consumer',
-    //       },
-    //     },
-    //   },
-    // ]),
+    ClientsModule.register([
+      {
+        name: 'ORDER_SERVICE',
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            clientId: 'order-service',
+            brokers: [configuration().broker],
+          },
+          consumer: {
+            groupId: 'order-consumer',
+          },
+        },
+      },
+    ]),
+    ClientsModule.register([
+      {
+        name: 'INVENTORY_SERVICE_GRPC',
+        transport: Transport.GRPC,
+        options: {
+          url: configuration().inventory_grpc_url,
+          package: 'inventory',
+          protoPath: join(process.cwd(), 'src/modules/order/inventory.proto'),
+        },
+      },
+    ]),
   ],
-  controllers: [OrderPublicController],
+  controllers: [OrderPublicController, OrderEventController],
   providers: [OrderService, OrderRepository],
   exports: [OrderService, OrderRepository],
 })

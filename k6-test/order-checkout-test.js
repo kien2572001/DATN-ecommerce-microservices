@@ -1,19 +1,22 @@
 import http from "k6/http";
 import { check } from "k6";
 import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
+import { uuidv4 } from "https://jslib.k6.io/k6-utils/1.4.0/index.js";
+import { sleep } from "k6";
 
 export let options = {
   stages: [
-    { duration: "1s", target: 300 }, // ramp up to 100 users over 30 seconds
-    { duration: "5s", target: 300 }, // stay at 100 users for 1 minute
-    // { duration: "1s", target: 0 }, // ramp down to 0 users over 30 seconds
+    { duration: "2s", target: 5000 }, // ramp up to 100 users over 30 seconds
+    { duration: "6s", target: 5000 }, // stay at 100 users for 1 minute
+    { duration: "2s", target: 0 }, // ramp down to 0 users over 30 seconds
   ],
 };
 
 export default function () {
   const payload = JSON.stringify({
+    code: uuidv4(),
     user_id: "665da3604a49ed69a5c82284",
-    shop_id: "665da3604a49ed69a5c82485",
+    shop_id: "665da3604a49ed69a5c8248c",
     shipping_fee: 15000,
     payment_method: "COD",
     shipping_address: {
@@ -25,16 +28,16 @@ export default function () {
     },
     order_items: [
       {
-        inventory_id: "401",
-        product_id: "665da3a42ed7b53f9f205538",
+        inventory_id: "1",
+        product_id: "66799728caf84e619ec519be",
         quantity: 1,
-        price: 620000,
+        price: 457000,
       },
       {
-        inventory_id: "402",
-        product_id: "665da3a42ed7b53f9f20553b",
-        quantity: 2,
-        price: 876000,
+        inventory_id: "2",
+        product_id: "66799728caf84e619ec519c1",
+        quantity: 1,
+        price: 955000,
       },
     ],
   });
@@ -53,11 +56,13 @@ export default function () {
     params
   );
   //console.log("Response time: " + res.timings.duration + " ms");
-  console.log("Response body: " + res.body);
+  //console.log("Response body: " + res.body);
 
   check(res, {
-    "success buy": (r) => JSON.parse(r.body).data == true,
-    "fail buy": (r) => JSON.parse(r.body).data != true,
+    "success buy": (r) =>
+      JSON.parse(r.body).message === "Order created successfully",
+    "fail buy": (r) =>
+      JSON.parse(r.body).message !== "Order created successfully",
     "is status 201": (r) => r.status === 201,
     "is status 400": (r) => r.status === 400,
   });

@@ -7,7 +7,7 @@ import { InventoryEntity } from './repository/inventory.entity';
 import { UtilitiesModule } from '../../utilities/utilities.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import configuration from 'src/configs/configuration';
-
+import { join } from 'path';
 @Module({
   imports: [
     TypeOrmModule.forFeature([InventoryEntity]),
@@ -24,6 +24,20 @@ import configuration from 'src/configs/configuration';
           consumer: {
             groupId: 'inventory-consumer',
           },
+        },
+      },
+    ]),
+    ClientsModule.register([
+      {
+        name: 'INVENTORY_GRPC_PACKAGE',
+        transport: Transport.GRPC,
+        options: {
+          url: configuration().inventory_grpc_url,
+          package: 'inventory',
+          protoPath: join(
+            process.cwd(),
+            'src/modules/inventory/inventory.proto',
+          ),
         },
       },
     ]),

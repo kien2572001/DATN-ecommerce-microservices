@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package inventory;
+
+service InventoryService {
+  rpc PurchaseInventories(PurchaseInventoriesRequest) returns (PurchaseInventoriesResponse);
+}
+
+message InventoryItem {
+  string inventoryId = 1;  
+  int32 quantity = 2;
+  int32 price = 3;
+}
+
+message PurchaseInventoriesRequest {
+  repeated InventoryItem inventories = 1;
+}
+
+message PurchaseInventoriesResponse {
+  bool success = 1;
+}

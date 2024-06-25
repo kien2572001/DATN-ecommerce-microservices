@@ -377,16 +377,16 @@ export class InventoryService {
         'price',
         priceString,
       );
-      await this.redisClient.hset(
-        `inventory:${inventory.inventory_id}`,
-        'discount',
-        discountString,
-      );
-      await this.redisClient.hset(
-        `inventory:${inventory.inventory_id}`,
-        'discount_price',
-        discountPriceString,
-      );
+      // await this.redisClient.hset(
+      //   `inventory:${inventory.inventory_id}`,
+      //   'discount',
+      //   discountString,
+      // );
+      // await this.redisClient.hset(
+      //   `inventory:${inventory.inventory_id}`,
+      //   'discount_price',
+      //   discountPriceString,
+      // );
 
       // Truy xuất dữ liệu từ Redis và cập nhật lại createdInventories
       createdInventories[i] = await this.getInventoryFromCache(inventory);

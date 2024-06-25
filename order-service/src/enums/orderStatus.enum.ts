@@ -1,9 +1,11 @@
 export enum OrderStatusEnum {
   PENDING = 'pending', //waiting for save order
   PLACED = 'placed', // saved order to DB successfully
-  PAID = 'paid', // paid order successfully with payment method (MOMO)
+  PAYMENT_PENDING = 'payment_pending', // waiting for payment
+  PAID = 'paid', // paid order successfully with payment method (MOMO,STRIPE)
   CONFIRMED = 'confirmed', // shop confirmed
-  SHIPPING = 'shipping', // shop shipping
+  SHIPPING_CREATED = 'shipping_created', // shipping created
   DELIVERED = 'delivered', // order delivered
   CANCELLED = 'cancelled', // order cancelled
+  DONE = 'done', // order done
 }

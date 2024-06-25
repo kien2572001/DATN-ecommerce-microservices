@@ -28,6 +28,7 @@ export class OrderPublicController {
   @Post('/checkout')
   async createOrder(@Body() body: CreateOrderDto) {
     try {
+      //console.log('Creating order');
       const res = await this.orderService.placeOrder(body);
       return this.responseHandler.createSuccessResponse(
         res,
@@ -53,6 +54,33 @@ export class OrderPublicController {
     }
   }
 
+  @Post('/payment/stripe/webhook')
+  async stripeWebhook(@Body() body: any, @Res() res) {
+    try {
+      await this.orderService.handleStripeWebhook(body);
+      return res.status(HttpStatus.NO_CONTENT).send();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  @Post('/payment/stripe/create-payment-intent')
+  async createPaymentIntent(@Body() body: any) {
+    // try {
+    //   //const res = await this.orderService.createPaymentIntent(body);
+    //   return this.responseHandler.createSuccessResponse(
+    //     res,
+    //     'Payment successful',
+    //     HttpStatus.OK,
+    //   );
+    // } catch (e) {
+    //   return this.responseHandler.createErrorResponse(
+    //     e.message,
+    //     HttpStatus.BAD_REQUEST,
+    //   );
+    // }
+  }
+
   // @Post('/payment')
   // async payment(@Body() body: any) {
   //   try {
@@ -69,6 +97,23 @@ export class OrderPublicController {
   //     );
   //   }
   // }
+
+  @Post('/:code/confirm')
+  async confirmOrder(@Param('code') code: string) {
+    try {
+      const res = await this.orderService.changeOrderStatus(code, 'confirmed');
+      return this.responseHandler.createSuccessResponse(
+        res,
+        'Order confirmed',
+        HttpStatus.OK,
+      );
+    } catch (e) {
+      return this.responseHandler.createErrorResponse(
+        e.message,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 
   @Get('/:code')
   async getOrder(@Param('code') code: string) {
@@ -94,8 +139,6 @@ export class OrderPublicController {
     @Query('limit') limit: number = 10,
   ) {
     try {
-      console.log('Getting orders by user id');
-      console.log(user_id);
       const res = await this.orderService.findOrdersByUserId(
         user_id,
         page,
