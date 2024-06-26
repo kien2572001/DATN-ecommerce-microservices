@@ -10,6 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { OrderRepository } from './repository/order.repository';
 import { join } from 'path';
 import { OrderEventController } from './order-event.controller';
+import { RedisService } from 'src/utilities/redis.service';
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -48,7 +49,7 @@ import { OrderEventController } from './order-event.controller';
     ]),
   ],
   controllers: [OrderPublicController, OrderEventController],
-  providers: [OrderService, OrderRepository],
+  providers: [OrderService, OrderRepository, RedisService],
   exports: [OrderService, OrderRepository],
 })
 export class OrderModule {}

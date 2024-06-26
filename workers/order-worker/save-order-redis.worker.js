@@ -65,9 +65,9 @@ const { promisify } = require("util");
             }))
           );
           Object.entries(result.insertedIds).forEach(async ([key, value]) => {
-            console.log(`Key: ${key}, Value: ${value}`);
+            //console.log(`Key: ${key}, Value: ${value}`);
             const room = `order:${listOrderIds[key]}`;
-            console.log(`Room: ${room}`);
+            //console.log(`Room: ${room}`);
             redisClient.publish(
               "socket_queue",
               JSON.stringify({ orderId: listOrderIds[key], status: "placed" })
