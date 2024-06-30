@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fastify-cors": "3.0",
+    "mysql2": "^3.10.1"
+  }
+}

@@ -19,16 +19,6 @@ const now = new Date();
 const TIME_START = new Date(now.getTime() + 30 * 60 * 1000); // 30 minutes later
 const TIME_END = new Date(TIME_START.getTime() + 60 * 60 * 1000); // 60 minutes later
 
-// Function to log memory and CPU usage
-function logResourceUsage() {
-  const memoryUsage = process.memoryUsage();
-  const cpuUsage = process.cpuUsage();
-  console.log(
-    `Memory Usage: RSS ${memoryUsage.rss}, Heap Total ${memoryUsage.heapTotal}, Heap Used ${memoryUsage.heapUsed}`
-  );
-  console.log(`CPU Usage: User ${cpuUsage.user}, System ${cpuUsage.system}`);
-}
-
 // Create flashsale event for testing- sale 50% for all products
 async function seederFlashSaleEvent() {
   try {
@@ -103,9 +93,6 @@ async function seederFlashSaleEvent() {
 
         lastId = products[products.length - 1]._id;
       }
-
-      // Log resource usage after processing each batch
-      logResourceUsage();
     }
     const end = performance.now();
     console.log("Processing time", (end - start) / 1000, "s");

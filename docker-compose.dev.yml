@@ -1,18 +1,42 @@
 version: "3.8"
 
 services:
-  redis:
+  redis-shard-1:
     image: redis
     ports:
       - "6379:6379"
     volumes:
-      - redis-data:/var/lib/redis
+      - redis-data-1:/var/lib/redis
+    command: redis-server --appendonly yes
+
+  redis-shard-2:
+    image: redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-data-2:/var/lib/redis
+    command: redis-server --appendonly yes
+
+  redis-shard-3:
+    image: redis
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis-data-3:/var/lib/redis
+    command: redis-server --appendonly yes
+
+  redis-shard-4:
+    image: redis
+    ports:
+      - "6382:6379"
+    volumes:
+      - redis-data-4:/var/lib/redis
     command: redis-server --appendonly yes
 
   redis_queue:
     image: redis
     ports:
-      - "6380:6379" # Sử dụng cổng 6380 thay vì 6379
+      - "6378:6379" # Sử dụng cổng 6378 để tránh trùng với cổng của các redis khác
     volumes:
       - redis-queue-data:/var/lib/redis
     command: redis-server --appendonly yes # Bạn có thể thêm các tùy chọn cấu hình khác nếu cần
@@ -36,7 +60,10 @@ services:
   #     - mysql-data:/var/lib/mysql
 
 volumes:
-  redis-data:
+  redis-data-1:
+  redis-data-2:
+  redis-data-3:
+  redis-data-4:
   redis-queue-data:
   mongo-data:
   mysql-data:

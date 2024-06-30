@@ -16,7 +16,7 @@ const io = socketIo(server, {
 
 // Kết nối Redis
 const redisClient = new Redis({
-  port: 6380, // Thay đổi nếu cần
+  port: 6378, // Thay đổi nếu cần
   host: "localhost", // Thay đổi nếu cần
 });
 

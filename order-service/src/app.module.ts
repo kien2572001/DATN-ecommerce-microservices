@@ -10,6 +10,8 @@ import { RedisModule } from '@nestjs-modules/ioredis';
 import { OrderModule } from './modules/order/order.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FlashSaleModule } from './modules/flashsale/flashsale.module';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import { InventoryEntity } from './modules/inventory/repository/inventory.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -29,20 +31,20 @@ import { FlashSaleModule } from './modules/flashsale/flashsale.module';
       }),
       inject: [ConfigService],
     }),
-    // TypeOrmModule.forRootAsync({
-    //   useFactory: (configService: ConfigService) => ({
-    //     type: 'mysql',
-    //     host: configService.get('relational_db.host'),
-    //     port: configService.get('relational_db.port'),
-    //     username: configService.get('relational_db.username'),
-    //     password: configService.get('relational_db.password'),
-    //     database: configService.get('relational_db.database'),
-    //     entities: [],
-    //     synchronize: true,
-    //     autoLoadEntities: true,
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+    TypeOrmModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get('relational_db.host'),
+        port: configService.get('relational_db.port'),
+        username: configService.get('relational_db.username'),
+        password: configService.get('relational_db.password'),
+        database: configService.get('relational_db.database'),
+        entities: [InventoryEntity],
+        synchronize: true,
+        autoLoadEntities: true,
+      }),
+      inject: [ConfigService],
+    }),
     OrderModule,
     FlashSaleModule,
   ],

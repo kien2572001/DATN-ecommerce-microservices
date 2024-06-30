@@ -122,3 +122,6 @@ export class Product extends BaseEntity {
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
 ProductSchema.plugin(paginate);
+
+ProductSchema.index({ product_name: 'text' });
+ProductSchema.index({ created_at: 1 });

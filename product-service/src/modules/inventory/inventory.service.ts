@@ -16,11 +16,36 @@ export class InventoryService {
     this.inventoryServiceUrl = this.configService.get('INVENTORY_SERVICE_URL');
   }
 
+  getShardIndex(inputString, numShards = 4) {
+    // Lấy ký tự cuối cùng của chuỗi
+    const lastChar = inputString.slice(-1);
+
+    // Kiểm tra xem ký tự cuối là số hay chữ cái
+    let charValue;
+    if (/\d/.test(lastChar)) {
+      // Nếu là số, chuyển đổi thành số nguyên
+      charValue = parseInt(lastChar, 10);
+    } else {
+      // Nếu là chữ cái, chuyển thành số thứ tự trong bảng chữ cái
+      charValue = lastChar.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0) + 10;
+    }
+
+    // Tính toán chỉ số shard bằng phép chia lấy dư
+    const shardIndex = charValue % numShards;
+
+    return shardIndex + 1;
+  }
+
   async createInventory(
     inventory: CreateInventoryDto,
+    shop_id: string,
   ): Promise<Observable<AxiosResponse<any>>> {
+    const shardIndex = this.getShardIndex(shop_id, 4);
     return this.httpService.axiosRef
-      .post(this.inventoryServiceUrl + '/public/inventory/create', inventory)
+      .post(this.inventoryServiceUrl + '/public/inventory/create', {
+        inventory: inventory,
+        shard_index: shardIndex,
+      })
       .then((response) => {
         return response.data.data;
       })
@@ -66,12 +91,14 @@ export class InventoryService {
 
   async createManyInventories(
     inventories: CreateInventoryDto[],
+    shard_id: string,
   ): Promise<Observable<AxiosResponse<any>>> {
+    const shardIndex = this.getShardIndex(shard_id, 4);
     return this.httpService.axiosRef
-      .post(
-        this.inventoryServiceUrl + '/public/inventory/create-many',
-        inventories,
-      )
+      .post(this.inventoryServiceUrl + '/public/inventory/create-many', {
+        inventories: inventories,
+        shard_index: shardIndex,
+      })
       .then((response) => {
         return response.data.data;
       })

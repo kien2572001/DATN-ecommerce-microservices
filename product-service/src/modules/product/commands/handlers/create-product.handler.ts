@@ -72,7 +72,7 @@ export class CreateProductHandler
         });
       }
       let createdInventories =
-        await this.inventoryService.createManyInventories(inventories);
+        await this.inventoryService.createManyInventories(inventories, shop_id);
 
       let minPrice = await this.findMinPriceOfInventories(
         createdInventories as any,
@@ -83,13 +83,16 @@ export class CreateProductHandler
         classifications: classifications,
       });
     } else {
-      let inventory = await this.inventoryService.createInventory({
-        product_id: newProduct._id,
-        quantity: product.inventory.quantity,
-        price: product.inventory.price,
-        discount: 0,
-        discount_price: 0,
-      } as CreateInventoryDto);
+      let inventory = await this.inventoryService.createInventory(
+        {
+          product_id: newProduct._id,
+          quantity: product.inventory.quantity,
+          price: product.inventory.price,
+          discount: 0,
+          discount_price: 0,
+        } as CreateInventoryDto,
+        shop_id,
+      );
 
       await this.productRepository.update(newProduct._id, {
         // @ts-ignore

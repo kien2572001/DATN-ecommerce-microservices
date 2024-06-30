@@ -130,9 +130,14 @@ export class InventoryPublicController {
   }
 
   @Post('create')
-  async createInventory(@Body() body: CreateInventoryDto) {
+  async createInventory(
+    @Body() body: { inventory: CreateInventoryDto; shard_index: number },
+  ) {
     try {
-      const newInventory = await this.inventoryService.createInventory(body);
+      const newInventory = await this.inventoryService.createInventory(
+        body.inventory,
+        body.shard_index,
+      );
       return this.responseHandler.createSuccessResponse(
         newInventory,
         'Inventory created successfully',
@@ -211,11 +216,17 @@ export class InventoryPublicController {
   @Post('create-many')
   async createManyInventories(
     @Request() req: any,
-    @Body() body: Array<CreateInventoryDto>,
+    @Body()
+    body: {
+      inventories: CreateInventoryDto[];
+      shard_index: number;
+    },
   ) {
     try {
-      const newInventory =
-        await this.inventoryService.createManyInventories(body);
+      const newInventory = await this.inventoryService.createManyInventories(
+        body.inventories,
+        body.shard_index,
+      );
       return this.responseHandler.createSuccessResponse(
         newInventory,
         'Inventory created successfully',

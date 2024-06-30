@@ -20,7 +20,7 @@ const { promisify } = require("util");
 
   // Kết nối Redis
   const redisClient = new Redis({
-    port: 6380,
+    port: 6378,
     host: "localhost",
   });
 

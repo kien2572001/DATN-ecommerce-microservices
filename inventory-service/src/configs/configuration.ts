@@ -16,7 +16,7 @@ export default () => ({
   },
   redis: {
     host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT, 10) || 6379,
+    port: parseInt(process.env.REDIS_PORT, 10) || 6378,
   },
   user_service_url: process.env.USER_SERVICE_URL,
   product_service_url: process.env.PRODUCT_SERVICE_URL,

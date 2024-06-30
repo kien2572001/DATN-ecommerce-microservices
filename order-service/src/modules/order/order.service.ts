@@ -11,7 +11,7 @@ import { OrderRepository } from './repository/order.repository';
 import { from, lastValueFrom, Observable, firstValueFrom } from 'rxjs';
 import configuration from 'src/configs/configuration';
 import Stripe from 'stripe';
-import { RedisService } from 'src/utilities/redis.service';
+import { InventoryService } from '../inventory/inventory.service';
 @Injectable()
 export class OrderService implements OnModuleInit {
   private readonly inventoryServiceUrl: string;
@@ -27,7 +27,7 @@ export class OrderService implements OnModuleInit {
     private readonly configService: ConfigService,
     // @Inject('ORDER_SERVICE') private kafkaClient: ClientKafka,
     @Inject('INVENTORY_SERVICE_GRPC') private clientGrpc: ClientGrpc,
-    private readonly redisService: RedisService,
+    private readonly inventoryService: InventoryService,
   ) {
     this.productServiceUrl = this.configService.get('product_service_url');
     this.inventoryServiceUrl = this.configService.get('inventory_service_url');
@@ -38,7 +38,7 @@ export class OrderService implements OnModuleInit {
   onModuleInit() {
     this.inventoryServiceGrpc = this.clientGrpc.getService('InventoryService');
   }
-  redisClient;
+
   private async checkInventoryAvailabilityAndDeduct(
     orderItems: {
       inventory_id: string;
@@ -61,112 +61,6 @@ export class OrderService implements OnModuleInit {
     } catch (err) {
       console.error(err);
       return false;
-    }
-  }
-
-  async checkInventoryAvailabilityAndDeductRedis(
-    orderItems: {
-      inventory_id: string;
-      quantity: number;
-      price: number;
-    }[],
-  ) {
-    //console.log('Purchasing inventories:', inventories);
-    const keys = orderItems.map((i) => `inventory:${i.inventory_id}`);
-    const time = new Date().getTime();
-    const args = [orderItems.length, time.toString()];
-    for (let i = 0; i < orderItems.length; i++) {
-      args.push(orderItems[i].quantity.toString());
-      args.push(orderItems[i].price.toString());
-    }
-    const luaScript = `
-      local numInventories = tonumber(ARGV[1])
-      redis.log(redis.LOG_NOTICE, "Number of inventories: " .. numInventories)
-      local current_time_ms = tonumber(ARGV[2])
-      redis.log(redis.LOG_NOTICE, "Time: " .. current_time_ms)
-      local inventories = {}
-
-      for i = 1, numInventories do
-          local quantity = tonumber(ARGV[2 * i + 1])
-          redis.log(redis.LOG_NOTICE, "Quantity: " .. quantity)
-          local price = tonumber(ARGV[2 * i + 2])
-          redis.log(redis.LOG_NOTICE, "Price: " .. price)
-          table.insert(inventories, { quantity = quantity, price = price })
-      end
-
-      for i = 1, #inventories do
-          local start_time = redis.call("HGET", KEYS[i], "flash_sale_start_time")
-          local end_time = redis.call("HGET", KEYS[i], "flash_sale_end_time")
-          local flash_sale_quantity = redis.call("HGET", KEYS[i], "flash_sale_quantity")
-          local price
-          local quantity
-          redis.call("SET", "check_flash_sale_ongoing:" .. KEYS[i], "0")
-          if start_time and end_time and flash_sale_quantity then
-              start_time = tonumber(start_time)
-              end_time = tonumber(end_time)
-              flash_sale_quantity = tonumber(flash_sale_quantity)
-              local now = current_time_ms
-              if now >= start_time and now <= end_time and flash_sale_quantity > 0 then        
-                  price = redis.call("HGET", KEYS[i], "flash_sale_price")
-                  if not price then
-                      return 0
-                  end
-                  price = tonumber(price)
-
-                  quantity = flash_sale_quantity
-                  redis.call("SET", "check_flash_sale_ongoing:" .. KEYS[i], "1")                  
-              end
-          end
-
-          local is_flash_sale_ongoing = redis.call("GET", "check_flash_sale_ongoing:" .. KEYS[i])
-
-          if is_flash_sale_ongoing == "0" then
-              price = redis.call("HGET", KEYS[i], "price")
-              if not price then
-                  return 0
-              end
-              price = tonumber(price)
-
-              quantity = redis.call("HGET", KEYS[i], "quantity")
-              if not quantity then
-                  return 0
-              end
-              quantity = tonumber(quantity)
-          end
-
-          if inventories[i].price < price then
-              return 0
-          end
-
-          if quantity < inventories[i].quantity then
-              return 0
-          end
-      end
-
-      for i = 1, #inventories do
-          local check_flash_sale_ongoing = redis.call("GET", "check_flash_sale_ongoing:" .. KEYS[i])
-          if check_flash_sale_ongoing == "1" then
-              local quantity = redis.call("HGET", KEYS[i], "flash_sale_quantity")
-              quantity = tonumber(quantity)
-              quantity = quantity - inventories[i].quantity
-              redis.call("HSET", KEYS[i], "flash_sale_quantity", tostring(quantity))
-          elseif check_flash_sale_ongoing == "0" then
-              local quantity = redis.call("HGET", KEYS[i], "quantity")
-              quantity = tonumber(quantity)
-              quantity = quantity - inventories[i].quantity
-              redis.call("HSET", KEYS[i], "quantity", tostring(quantity))
-          end
-      end
-
-      return 1`;
-
-    // Gọi Lua script trên Redis
-    const result = await this.redisService.evalClient1(luaScript, keys, args);
-    //console.log('Result:', result);
-    if (result === 1) {
-      return true;
-    } else {
-      throw new Error('Failed to purchase inventories');
     }
   }
 
@@ -218,17 +112,17 @@ export class OrderService implements OnModuleInit {
     //     createOrderDto.order_items,
     //   ),
     // );
-    const isInventoryAvailable =
-      await this.checkInventoryAvailabilityAndDeductRedis(
-        createOrderDto.order_items,
-      );
-    console.log('isInventoryAvailable', isInventoryAvailable);
-    // @ts-ignore
-    if (isInventoryAvailable.success === false) {
-      throw new Error('Inventory is out of stock');
-    }
+    // const isInventoryAvailable =
+    //   await this.checkInventoryAvailabilityAndDeductRedis(
+    //     createOrderDto.order_items,
+    //   );
+    // console.log('isInventoryAvailable', isInventoryAvailable);
+    //@ts-ignore
+    // if (isInventoryAvailable.success === false) {
+    //   throw new Error('Inventory is out of stock');
+    // }
 
-    //http
+    //http;
     // const isInventoryAvailable = await this.checkInventoryAvailabilityAndDeduct(
     //   createOrderDto.order_items.map((item) => ({
     //     inventory_id: item.inventory_id,
@@ -236,10 +130,14 @@ export class OrderService implements OnModuleInit {
     //     price: item.price,
     //   })),
     // );
+    const isInventoryAvailable =
+      await this.inventoryService.purchaseInventories(
+        createOrderDto.order_items,
+      );
+    console.log('isInventoryAvailable', isInventoryAvailable);
     if (isInventoryAvailable === false) {
       throw new Error('Inventory is out of stock');
     }
-    console.log('isInventoryAvailable', isInventoryAvailable);
 
     try {
       // Step 2: Tạo đơn hàng
@@ -308,42 +206,45 @@ export class OrderService implements OnModuleInit {
     }
   }
 
-  async createOrder(createOrderDto: CreateOrderDto) {
+  async createOrder(createOrderDto: CreateOrderDto): Promise<string> {
     const code = createOrderDto.code || uuidv4();
-    const order: any = {};
-    order.code = code;
-    order.user_id = createOrderDto.user_id;
-    order.shop_id = createOrderDto.shop_id;
-    order.shipping_address = createOrderDto.shipping_address;
-    order.shipping_fee = createOrderDto.shipping_fee;
-    order.payment_method = createOrderDto.payment_method;
-    order.status = OrderStatusEnum.PENDING;
-    order.total = createOrderDto.order_items.reduce(
+    const currentDate = new Date();
+
+    const total = createOrderDto.order_items.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0,
     );
-    order.created_at = new Date();
-    order.updated_at = new Date();
-    // order.order_items = createOrderDto.order_items.map((item) => {
-    //   const orderItem: any = {};
-    //   orderItem.inventory_id = item.inventory_id;
-    //   orderItem.product_id = item.product_id;
-    //   orderItem.quantity = item.quantity;
-    //   orderItem.price = item.price;
-    //   return orderItem;
-    // });
-    order.order_items = createOrderDto.order_items;
+
+    const order = {
+      code,
+      user_id: createOrderDto.user_id,
+      shop_id: createOrderDto.shop_id,
+      shipping_address: createOrderDto.shipping_address,
+      shipping_fee: createOrderDto.shipping_fee,
+      payment_method: createOrderDto.payment_method,
+      status: OrderStatusEnum.PENDING,
+      total,
+      created_at: currentDate,
+      updated_at: currentDate,
+      order_items: createOrderDto.order_items,
+    };
 
     const randomNumber = Math.floor(Math.random() * 2);
-    const queueName = 'order_queue_' + randomNumber;
-    await this.clientRedis.set(
-      'order:' + code,
-      JSON.stringify(order),
-      'EX',
-      3600,
-    );
-    await this.clientRedis.rpush(queueName, JSON.stringify(order));
-    return order.code;
+    const queueName = `order_queue_${randomNumber}`;
+
+    // Sử dụng pipeline để gửi nhiều lệnh Redis đồng thời
+    const pipeline = this.clientRedis.pipeline();
+    pipeline.set(`order:${code}`, JSON.stringify(order), 'EX', 3600);
+    pipeline.rpush(queueName, JSON.stringify(order));
+
+    try {
+      await pipeline.exec();
+    } catch (error) {
+      console.error('Redis pipeline execution error:', error);
+      throw new Error('Could not create order due to Redis error');
+    }
+
+    return code;
   }
 
   async findOrderByCode(code: string) {

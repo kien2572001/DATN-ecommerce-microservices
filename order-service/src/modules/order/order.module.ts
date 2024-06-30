@@ -11,6 +11,7 @@ import { OrderRepository } from './repository/order.repository';
 import { join } from 'path';
 import { OrderEventController } from './order-event.controller';
 import { RedisService } from 'src/utilities/redis.service';
+import { InventoryModule } from '../inventory/inventory.module';
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -47,6 +48,7 @@ import { RedisService } from 'src/utilities/redis.service';
         },
       },
     ]),
+    InventoryModule,
   ],
   controllers: [OrderPublicController, OrderEventController],
   providers: [OrderService, OrderRepository, RedisService],

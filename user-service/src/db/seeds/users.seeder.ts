@@ -45,7 +45,7 @@ export class UserSeeder implements Seeder {
       }));
 
     const sellers = DataFactory.createForClass(UserEntity)
-      .generate(10)
+      .generate(100)
       .map((user) => ({
         ...user,
         role: 'seller',
